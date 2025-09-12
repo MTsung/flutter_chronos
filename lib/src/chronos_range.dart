@@ -1,4 +1,4 @@
-import 'package:flutter_chronos/chronos.dart';
+import 'package:flutter_chronos/flutter_chronos.dart';
 
 /// Represents a range between two [Chronos] date-time instances.
 ///

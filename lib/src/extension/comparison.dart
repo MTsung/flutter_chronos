@@ -1,4 +1,4 @@
-import 'package:flutter_chronos/chronos.dart';
+import 'package:flutter_chronos/flutter_chronos.dart';
 
 /// Extension providing comparison methods for Chronos instances.
 ///

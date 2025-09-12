@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_chronos/chronos.dart';
+import 'package:flutter_chronos/flutter_chronos.dart';
 
 void main() {
   group('ChronosHuman', () {
