@@ -11,7 +11,7 @@
   </a>
 </p>
 
-Language: [English](README.md) | 繁體中文
+Language: [English](https://github.com/MTsung/flutter_chronos/blob/main/README.md) | 繁體中文
 
 -----
 
