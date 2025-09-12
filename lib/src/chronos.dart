@@ -2,13 +2,90 @@ import 'package:flutter_chronos/src/extension/type_casting.dart';
 import 'package:flutter_chronos/src/extension/modifiers.dart';
 import 'package:flutter_chronos/src/chronos_config.dart';
 
+/// A powerful extension of [DateTime] with additional utilities for date and time manipulation.
+///
+/// [Chronos] provides all the functionality of [DateTime] plus additional methods
+/// for date arithmetic, formatting, comparisons, and human-readable representations.
+/// It maintains full compatibility with [DateTime] while offering enhanced capabilities.
+///
+/// ## Creating Chronos instances
+///
+/// ```dart
+/// // Create from date components
+/// final chronos = Chronos(2024, 3, 15, 14, 30, 45);
+///
+/// // Create current time
+/// final now = Chronos.now();
+///
+/// // Create from timestamp
+/// final fromTimestamp = Chronos.fromTimestamp(1710511845);
+///
+/// // Parse from string
+/// final parsed = Chronos.parse('2024-03-15 14:30:45');
+/// ```
+///
+/// ## Date operations
+///
+/// ```dart
+/// final date = Chronos.now();
+/// final tomorrow = date.addDay();
+/// final lastWeek = date.subWeek();
+/// final startOfMonth = date.startOfMonth();
+/// ```
 class Chronos extends DateTime {
+  /// Creates a [Chronos] instance with the given date and time components.
+  ///
+  /// The [year] parameter is required. All other parameters are optional and
+  /// default to their minimum values (1 for month and day, 0 for time components).
+  /// The resulting instance will be in the local timezone.
+  ///
+  /// Example:
+  /// ```dart
+  /// final chronos1 = Chronos(2024); // 2024-01-01 00:00:00
+  /// final chronos2 = Chronos(2024, 3, 15); // 2024-03-15 00:00:00
+  /// final chronos3 = Chronos(2024, 3, 15, 14, 30, 45); // 2024-03-15 14:30:45
+  /// ```
   Chronos(super.year, [super.month, super.day, super.hour, super.minute, super.second, super.millisecond, super.microsecond]);
 
+  /// Creates a [Chronos] instance in UTC timezone with the given date and time components.
+  ///
+  /// Similar to the default constructor but creates the instance in UTC timezone
+  /// instead of local timezone. The [year] parameter is required, all others are optional.
+  ///
+  /// Example:
+  /// ```dart
+  /// final utcChronos = Chronos.utc(2024, 3, 15, 14, 30, 45);
+  /// print(utcChronos.isUtc); // true
+  /// ```
   Chronos.utc(super.year, [super.month, super.day, super.hour, super.minute, super.second, super.millisecond, super.microsecond]) : super.utc();
 
+  /// Creates a [Chronos] instance from milliseconds since Unix epoch.
+  ///
+  /// The [millisecondsSinceEpoch] parameter represents the number of milliseconds
+  /// since January 1, 1970, 00:00:00 UTC. The [isUtc] parameter determines
+  /// whether the resulting instance should be in UTC (true) or local timezone (false).
+  ///
+  /// Example:
+  /// ```dart
+  /// final chronos1 = Chronos.fromMillisecondsSinceEpoch(1710511845000);
+  /// final chronos2 = Chronos.fromMillisecondsSinceEpoch(1710511845000, isUtc: true);
+  /// print(chronos2.isUtc); // true
+  /// ```
   Chronos.fromMillisecondsSinceEpoch(super.millisecondsSinceEpoch, {super.isUtc}) : super.fromMillisecondsSinceEpoch();
 
+  /// Creates a [Chronos] instance from microseconds since Unix epoch.
+  ///
+  /// The [microsecondsSinceEpoch] parameter represents the number of microseconds
+  /// since January 1, 1970, 00:00:00 UTC. The [isUtc] parameter determines
+  /// whether the resulting instance should be in UTC (true) or local timezone (false).
+  /// This constructor provides higher precision than [fromMillisecondsSinceEpoch].
+  ///
+  /// Example:
+  /// ```dart
+  /// final chronos1 = Chronos.fromMicrosecondsSinceEpoch(1710511845000000);
+  /// final chronos2 = Chronos.fromMicrosecondsSinceEpoch(1710511845000000, isUtc: true);
+  /// print(chronos2.microsecond); // Preserves microsecond precision
+  /// ```
   Chronos.fromMicrosecondsSinceEpoch(super.microsecondsSinceEpoch, {super.isUtc}) : super.fromMicrosecondsSinceEpoch();
 
   /// Parses a string and returns a Chronos instance.
