@@ -147,7 +147,8 @@ extension ChronosBoundaries on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final startOfMillisecond = date.startOfMillisecond(); // 2024-03-15 14:30:45.123000
   /// ```
-  Chronos startOfMillisecond() => Chronos(year, month, day, hour, minute, second, millisecond);
+  Chronos startOfMillisecond() =>
+      Chronos(year, month, day, hour, minute, second, millisecond);
 
   /// Returns the start of the season (first day of season at 00:00:00.000).
   ///
@@ -162,7 +163,8 @@ extension ChronosBoundaries on Chronos {
       seasonStartMonth = Month.march.value;
     } else if (month >= Month.june.value && month <= Month.august.value) {
       seasonStartMonth = Month.june.value;
-    } else if (month >= Month.september.value && month <= Month.november.value) {
+    } else if (month >= Month.september.value &&
+        month <= Month.november.value) {
       seasonStartMonth = Month.september.value;
     } else {
       seasonStartMonth = Month.december.value;
@@ -233,7 +235,9 @@ extension ChronosBoundaries on Chronos {
   /// final endOfWeek = date.endOfWeek(); // 2024-03-16 23:59:59.999999 (Saturday)
   /// ```
   Chronos endOfWeek() {
-    final daysToSaturday = weekday == 7 ? 6 : 6 - weekday; // Saturday is 6 days after Sunday
+    final daysToSaturday = weekday == 7
+        ? 6
+        : 6 - weekday; // Saturday is 6 days after Sunday
     return add(Duration(days: daysToSaturday)).toChronos().endOfDay();
   }
 
@@ -265,7 +269,8 @@ extension ChronosBoundaries on Chronos {
   /// final date = Chronos(2024, 8, 15); // August (Q3)
   /// final endOfQuarter = date.endOfQuarter(); // 2024-09-30 23:59:59.999999
   /// ```
-  Chronos endOfQuarter() => copyWith(month: ((month - 1) ~/ 3 + 1) * 3 + 1, day: 0).endOfDay();
+  Chronos endOfQuarter() =>
+      copyWith(month: ((month - 1) ~/ 3 + 1) * 3 + 1, day: 0).endOfDay();
 
   /// Returns the end of the year (December 31st at 23:59:59.999999).
   ///
@@ -341,7 +346,8 @@ extension ChronosBoundaries on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final endOfMinute = date.endOfMinute(); // 2024-03-15 14:30:59.999999
   /// ```
-  Chronos endOfMinute() => Chronos(year, month, day, hour, minute, 59, 999, 999);
+  Chronos endOfMinute() =>
+      Chronos(year, month, day, hour, minute, 59, 999, 999);
 
   /// Returns the end of the second (999 milliseconds, 999 microseconds).
   ///
@@ -350,7 +356,8 @@ extension ChronosBoundaries on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final endOfSecond = date.endOfSecond(); // 2024-03-15 14:30:45.999999
   /// ```
-  Chronos endOfSecond() => Chronos(year, month, day, hour, minute, second, 999, 999);
+  Chronos endOfSecond() =>
+      Chronos(year, month, day, hour, minute, second, 999, 999);
 
   /// Returns the end of the millisecond (999 microseconds).
   ///
@@ -359,7 +366,8 @@ extension ChronosBoundaries on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final endOfMillisecond = date.endOfMillisecond(); // 2024-03-15 14:30:45.123999
   /// ```
-  Chronos endOfMillisecond() => Chronos(year, month, day, hour, minute, second, millisecond, 999);
+  Chronos endOfMillisecond() =>
+      Chronos(year, month, day, hour, minute, second, millisecond, 999);
 
   /// Returns the end of the season (last day of season at 23:59:59.999999).
   ///
@@ -374,7 +382,8 @@ extension ChronosBoundaries on Chronos {
       seasonEndMonth = Month.may.value;
     } else if (month >= Month.june.value && month <= Month.august.value) {
       seasonEndMonth = Month.august.value;
-    } else if (month >= Month.september.value && month <= Month.november.value) {
+    } else if (month >= Month.september.value &&
+        month <= Month.november.value) {
       seasonEndMonth = Month.november.value;
     } else {
       seasonEndMonth = Month.february.value;

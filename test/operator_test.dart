@@ -51,7 +51,9 @@ void main() {
       expect(date1.isAtSameMomentAs(date2), false);
 
       // Test with different constructors
-      final fromTimestamp = Chronos.fromMillisecondsSinceEpoch(date1.millisecondsSinceEpoch);
+      final fromTimestamp = Chronos.fromMillisecondsSinceEpoch(
+        date1.millisecondsSinceEpoch,
+      );
       expect(date1.isAtSameMomentAs(fromTimestamp), true);
 
       // Test with microsecond precision
@@ -85,11 +87,15 @@ void main() {
       expect(date1 == date3, false);
 
       // Test with different constructors but same moment
-      final fromTimestamp = Chronos.fromMicrosecondsSinceEpoch(date1.microsecondsSinceEpoch);
+      final fromTimestamp = Chronos.fromMicrosecondsSinceEpoch(
+        date1.microsecondsSinceEpoch,
+      );
       expect(date1 == fromTimestamp, true);
 
       // Test with DateTime conversion
-      final dateTime = DateTime.fromMicrosecondsSinceEpoch(date1.microsecondsSinceEpoch);
+      final dateTime = DateTime.fromMicrosecondsSinceEpoch(
+        date1.microsecondsSinceEpoch,
+      );
       final chronosFromDateTime = dateTime.toChronos();
       expect(date1 == chronosFromDateTime, true);
     });
@@ -244,7 +250,10 @@ void main() {
       final date = Chronos(2024, 2, 29, 12, 0, 0);
 
       // Chain multiple operations
-      final result = date.add(Duration(days: 1)).subtract(Duration(hours: 2)).add(Duration(minutes: 30));
+      final result = date
+          .add(Duration(days: 1))
+          .subtract(Duration(hours: 2))
+          .add(Duration(minutes: 30));
 
       expect(result.year, 2024);
       expect(result.month, 3);
@@ -413,7 +422,9 @@ void main() {
       expect(result1.isAtSameMomentAs(result2), true);
 
       // Test mixed operations
-      final result3 = date.add(Duration(hours: 2)).subtract(Duration(minutes: 30));
+      final result3 = date
+          .add(Duration(hours: 2))
+          .subtract(Duration(minutes: 30));
       expect(result3.hour, 13);
       expect(result3.minute, 30);
     });

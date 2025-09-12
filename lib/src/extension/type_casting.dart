@@ -29,6 +29,24 @@ extension TypeCasting on DateTime {
   /// print(utcChronos.isUtc); // true
   /// ```
   Chronos toChronos() => isUtc
-      ? Chronos.utc(year, month, day, hour, minute, second, millisecond, microsecond)
-      : Chronos(year, month, day, hour, minute, second, millisecond, microsecond);
+      ? Chronos.utc(
+          year,
+          month,
+          day,
+          hour,
+          minute,
+          second,
+          millisecond,
+          microsecond,
+        )
+      : Chronos(
+          year,
+          month,
+          day,
+          hour,
+          minute,
+          second,
+          millisecond,
+          microsecond,
+        );
 }

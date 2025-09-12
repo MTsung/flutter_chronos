@@ -168,25 +168,67 @@ void main() {
 
   group('Time Unit Positions - Microsecond', () {
     test('microsecond positions', () {
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMillisecond, 750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfSecond, 500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMinute, 45500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfHour, 1845500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfDay, 52245500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfWeek, 138645500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMonth, 2125845500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfQuarter, 7396245500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfYear, 30983445500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfIsoYear, 30897045500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfDecade, 125677845500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfCentury, 725207445500750);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMillennium, 725207445500750);
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMillisecond,
+        750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfSecond,
+        500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMinute,
+        45500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfHour,
+        1845500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfDay,
+        52245500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfWeek,
+        138645500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMonth,
+        2125845500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfQuarter,
+        7396245500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfYear,
+        30983445500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfIsoYear,
+        30897045500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfDecade,
+        125677845500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfCentury,
+        725207445500750,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMillennium,
+        725207445500750,
+      );
     });
   });
 
   group('Time Unit Positions - Other Units', () {
     test('basic time positions', () {
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).millisecondOfSecond, 500);
+      expect(
+        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).millisecondOfSecond,
+        500,
+      );
       expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).secondOfMinute, 45);
       expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).minuteOfHour, 30);
       expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).hourOfDay, 14);

@@ -189,7 +189,8 @@ extension ChronosComparison on Chronos {
   /// final date2 = Chronos(2024, 3, 15, 14, 30, 45, 123, 789);
   /// print(date1.isSameMillisecond(date2)); // true (both in 123rd millisecond)
   /// ```
-  bool isSameMillisecond([Chronos? other]) => isSameUnit(TimeUnit.millisecond, other);
+  bool isSameMillisecond([Chronos? other]) =>
+      isSameUnit(TimeUnit.millisecond, other);
 
   /// Returns true if this date is in the same microsecond as [other] (or current microsecond if null).
   ///
@@ -199,7 +200,8 @@ extension ChronosComparison on Chronos {
   /// final date2 = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// print(date1.isSameMicrosecond(date2)); // true (exact same time)
   /// ```
-  bool isSameMicrosecond([Chronos? other]) => isSameUnit(TimeUnit.microsecond, other);
+  bool isSameMicrosecond([Chronos? other]) =>
+      isSameUnit(TimeUnit.microsecond, other);
 
   /// Returns true if this date is in the same millennium as [other] (or current millennium if null).
   ///
@@ -209,7 +211,8 @@ extension ChronosComparison on Chronos {
   /// final date2 = Chronos(2500, 8, 20);
   /// print(date1.isSameMillennium(date2)); // true (both in 3rd millennium)
   /// ```
-  bool isSameMillennium([Chronos? other]) => isSameUnit(TimeUnit.millennium, other);
+  bool isSameMillennium([Chronos? other]) =>
+      isSameUnit(TimeUnit.millennium, other);
 
   /// Returns true if this date is in the same century as [other] (or current century if null).
   ///
@@ -259,9 +262,11 @@ extension ChronosComparison on Chronos {
 
     switch (timeUnit) {
       case TimeUnit.microsecond:
-        return microsecond == other.microsecond && isSameUnit(TimeUnit.millisecond, other);
+        return microsecond == other.microsecond &&
+            isSameUnit(TimeUnit.millisecond, other);
       case TimeUnit.millisecond:
-        return millisecond == other.millisecond && isSameUnit(TimeUnit.second, other);
+        return millisecond == other.millisecond &&
+            isSameUnit(TimeUnit.second, other);
       case TimeUnit.second:
         return second == other.second && isSameUnit(TimeUnit.minute, other);
       case TimeUnit.minute:
@@ -285,7 +290,8 @@ extension ChronosComparison on Chronos {
       case TimeUnit.decade:
         return decade == other.decade && isSameUnit(TimeUnit.century, other);
       case TimeUnit.century:
-        return century == other.century && isSameUnit(TimeUnit.millennium, other);
+        return century == other.century &&
+            isSameUnit(TimeUnit.millennium, other);
       case TimeUnit.millennium:
         return millennium == other.millennium;
     }
@@ -622,9 +628,15 @@ extension ChronosComparison on Chronos {
     bool check(TimeUnit checkTimeUnit) {
       switch (checkTimeUnit) {
         case TimeUnit.microsecond:
-          return isSameUnit(TimeUnit.microsecond, now.addUnit(TimeUnit.microsecond));
+          return isSameUnit(
+            TimeUnit.microsecond,
+            now.addUnit(TimeUnit.microsecond),
+          );
         case TimeUnit.millisecond:
-          return isSameUnit(TimeUnit.millisecond, now.addUnit(TimeUnit.millisecond));
+          return isSameUnit(
+            TimeUnit.millisecond,
+            now.addUnit(TimeUnit.millisecond),
+          );
         case TimeUnit.second:
           return isSameUnit(TimeUnit.second, now.addUnit(TimeUnit.second));
         case TimeUnit.minute:
@@ -650,7 +662,10 @@ extension ChronosComparison on Chronos {
         case TimeUnit.century:
           return isSameUnit(TimeUnit.century, now.addUnit(TimeUnit.century));
         case TimeUnit.millennium:
-          return isSameUnit(TimeUnit.millennium, now.addUnit(TimeUnit.millennium));
+          return isSameUnit(
+            TimeUnit.millennium,
+            now.addUnit(TimeUnit.millennium),
+          );
       }
     }
 
@@ -802,9 +817,15 @@ extension ChronosComparison on Chronos {
     bool check(TimeUnit checkTimeUnit) {
       switch (checkTimeUnit) {
         case TimeUnit.microsecond:
-          return isSameUnit(TimeUnit.microsecond, now.subUnit(TimeUnit.microsecond));
+          return isSameUnit(
+            TimeUnit.microsecond,
+            now.subUnit(TimeUnit.microsecond),
+          );
         case TimeUnit.millisecond:
-          return isSameUnit(TimeUnit.millisecond, now.subUnit(TimeUnit.millisecond));
+          return isSameUnit(
+            TimeUnit.millisecond,
+            now.subUnit(TimeUnit.millisecond),
+          );
         case TimeUnit.second:
           return isSameUnit(TimeUnit.second, now.subUnit(TimeUnit.second));
         case TimeUnit.minute:
@@ -830,7 +851,10 @@ extension ChronosComparison on Chronos {
         case TimeUnit.century:
           return isSameUnit(TimeUnit.century, now.subUnit(TimeUnit.century));
         case TimeUnit.millennium:
-          return isSameUnit(TimeUnit.millennium, now.subUnit(TimeUnit.millennium));
+          return isSameUnit(
+            TimeUnit.millennium,
+            now.subUnit(TimeUnit.millennium),
+          );
       }
     }
 
@@ -947,7 +971,8 @@ extension ChronosComparison on Chronos {
   /// print(leapYear.isLeapYear); // true (2024 is divisible by 4)
   /// print(normalYear.isLeapYear); // false
   /// ```
-  bool get isLeapYear => (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
+  bool get isLeapYear =>
+      (year % 400 == 0) || (year % 4 == 0 && year % 100 != 0);
 
   /// Returns true if this year has 53 weeks.
   ///
@@ -1035,15 +1060,30 @@ extension ChronosComparison on Chronos {
   bool isStartOfUnit(TimeUnit timeUnit, [TimeUnit? accuracyUnit]) {
     switch (timeUnit) {
       case TimeUnit.millisecond:
-        return isSameUnit(accuracyUnit ?? TimeUnit.microsecond, startOfUnit(timeUnit));
+        return isSameUnit(
+          accuracyUnit ?? TimeUnit.microsecond,
+          startOfUnit(timeUnit),
+        );
       case TimeUnit.second:
-        return isSameUnit(accuracyUnit ?? TimeUnit.millisecond, startOfUnit(timeUnit));
+        return isSameUnit(
+          accuracyUnit ?? TimeUnit.millisecond,
+          startOfUnit(timeUnit),
+        );
       case TimeUnit.minute:
-        return isSameUnit(accuracyUnit ?? TimeUnit.second, startOfUnit(timeUnit));
+        return isSameUnit(
+          accuracyUnit ?? TimeUnit.second,
+          startOfUnit(timeUnit),
+        );
       case TimeUnit.hour:
-        return isSameUnit(accuracyUnit ?? TimeUnit.second, startOfUnit(timeUnit));
+        return isSameUnit(
+          accuracyUnit ?? TimeUnit.second,
+          startOfUnit(timeUnit),
+        );
       case TimeUnit.day:
-        return isSameUnit(accuracyUnit ?? TimeUnit.second, startOfUnit(timeUnit));
+        return isSameUnit(
+          accuracyUnit ?? TimeUnit.second,
+          startOfUnit(timeUnit),
+        );
       case TimeUnit.week:
         return isSameUnit(accuracyUnit ?? TimeUnit.day, startOfUnit(timeUnit));
       case TimeUnit.isoWeek:
@@ -1085,9 +1125,15 @@ extension ChronosComparison on Chronos {
   bool isEndOfUnit(TimeUnit timeUnit, [TimeUnit? accuracyUnit]) {
     switch (timeUnit) {
       case TimeUnit.millisecond:
-        return isSameUnit(accuracyUnit ?? TimeUnit.microsecond, endOfUnit(timeUnit));
+        return isSameUnit(
+          accuracyUnit ?? TimeUnit.microsecond,
+          endOfUnit(timeUnit),
+        );
       case TimeUnit.second:
-        return isSameUnit(accuracyUnit ?? TimeUnit.millisecond, endOfUnit(timeUnit));
+        return isSameUnit(
+          accuracyUnit ?? TimeUnit.millisecond,
+          endOfUnit(timeUnit),
+        );
       case TimeUnit.minute:
         return isSameUnit(accuracyUnit ?? TimeUnit.second, endOfUnit(timeUnit));
       case TimeUnit.hour:
@@ -1123,9 +1169,11 @@ extension ChronosComparison on Chronos {
 
     if (shiftedMonth >= Month.march.value && shiftedMonth <= Month.may.value) {
       return Season.spring;
-    } else if (shiftedMonth >= Month.june.value && shiftedMonth <= Month.august.value) {
+    } else if (shiftedMonth >= Month.june.value &&
+        shiftedMonth <= Month.august.value) {
       return Season.summer;
-    } else if (shiftedMonth >= Month.september.value && shiftedMonth <= Month.november.value) {
+    } else if (shiftedMonth >= Month.september.value &&
+        shiftedMonth <= Month.november.value) {
       return Season.fall;
     } else {
       return Season.winter;

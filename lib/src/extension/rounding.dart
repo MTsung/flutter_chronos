@@ -143,7 +143,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final ceiled = date.ceilMicroseconds(1000); // rounds up to next 1000 microseconds
   /// ```
-  Chronos ceilMicroseconds([int precision = 1]) => _roundingUnit(TimeUnit.microsecond, precision, (n) => n.ceil());
+  Chronos ceilMicroseconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.microsecond, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] milliseconds.
   ///
@@ -154,7 +155,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final ceiled = date.ceilMilliseconds(100); // rounds up to next 100ms
   /// ```
-  Chronos ceilMilliseconds([int precision = 1]) => _roundingUnit(TimeUnit.millisecond, precision, (n) => n.ceil());
+  Chronos ceilMilliseconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.millisecond, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] seconds.
   ///
@@ -165,7 +167,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final ceiled = date.ceilSeconds(15); // rounds up to next 15-second mark
   /// ```
-  Chronos ceilSeconds([int precision = 1]) => _roundingUnit(TimeUnit.second, precision, (n) => n.ceil());
+  Chronos ceilSeconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.second, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] minutes.
   ///
@@ -176,7 +179,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final ceiled = date.ceilMinutes(15); // rounds up to next 15-minute mark
   /// ```
-  Chronos ceilMinutes([int precision = 1]) => _roundingUnit(TimeUnit.minute, precision, (n) => n.ceil());
+  Chronos ceilMinutes([int precision = 1]) =>
+      _roundingUnit(TimeUnit.minute, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] hours.
   ///
@@ -187,7 +191,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final ceiled = date.ceilHours(6); // rounds up to next 6-hour mark
   /// ```
-  Chronos ceilHours([int precision = 1]) => _roundingUnit(TimeUnit.hour, precision, (n) => n.ceil());
+  Chronos ceilHours([int precision = 1]) =>
+      _roundingUnit(TimeUnit.hour, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] days.
   ///
@@ -198,7 +203,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final ceiled = date.ceilDays(7); // rounds up to next 7-day mark
   /// ```
-  Chronos ceilDays([int precision = 1]) => _roundingUnit(TimeUnit.day, precision, (n) => n.ceil());
+  Chronos ceilDays([int precision = 1]) =>
+      _roundingUnit(TimeUnit.day, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] weeks.
   ///
@@ -209,7 +215,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final ceiled = date.ceilWeeks(2); // rounds up to next 2-week mark
   /// ```
-  Chronos ceilWeeks([int precision = 1]) => _roundingUnit(TimeUnit.week, precision, (n) => n.ceil());
+  Chronos ceilWeeks([int precision = 1]) =>
+      _roundingUnit(TimeUnit.week, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] months.
   ///
@@ -220,7 +227,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final ceiled = date.ceilMonths(3); // rounds up to next 3-month mark
   /// ```
-  Chronos ceilMonths([int precision = 1]) => _roundingUnit(TimeUnit.month, precision, (n) => n.ceil());
+  Chronos ceilMonths([int precision = 1]) =>
+      _roundingUnit(TimeUnit.month, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] quarters.
   ///
@@ -231,7 +239,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15); // Q1
   /// final ceiled = date.ceilQuarters(2); // rounds up to next 2-quarter mark
   /// ```
-  Chronos ceilQuarters([int precision = 1]) => _roundingUnit(TimeUnit.quarter, precision, (n) => n.ceil());
+  Chronos ceilQuarters([int precision = 1]) =>
+      _roundingUnit(TimeUnit.quarter, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] years.
   ///
@@ -242,7 +251,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final ceiled = date.ceilYears(5); // rounds up to next 5-year mark
   /// ```
-  Chronos ceilYears([int precision = 1]) => _roundingUnit(TimeUnit.year, precision, (n) => n.ceil());
+  Chronos ceilYears([int precision = 1]) =>
+      _roundingUnit(TimeUnit.year, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] decades.
   ///
@@ -253,7 +263,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final ceiled = date.ceilDecades(2); // rounds up to next 2-decade mark
   /// ```
-  Chronos ceilDecades([int precision = 1]) => _roundingUnit(TimeUnit.decade, precision, (n) => n.ceil());
+  Chronos ceilDecades([int precision = 1]) =>
+      _roundingUnit(TimeUnit.decade, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] centuries.
   ///
@@ -264,7 +275,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final ceiled = date.ceilCenturies(2); // rounds up to next 2-century mark
   /// ```
-  Chronos ceilCenturies([int precision = 1]) => _roundingUnit(TimeUnit.century, precision, (n) => n.ceil());
+  Chronos ceilCenturies([int precision = 1]) =>
+      _roundingUnit(TimeUnit.century, precision, (n) => n.ceil());
 
   /// Rounds up to the next multiple of [precision] millennia.
   ///
@@ -275,7 +287,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final ceiled = date.ceilMillennia(2); // rounds up to next 2-millennium mark
   /// ```
-  Chronos ceilMillennia([int precision = 1]) => _roundingUnit(TimeUnit.millennium, precision, (n) => n.ceil());
+  Chronos ceilMillennia([int precision = 1]) =>
+      _roundingUnit(TimeUnit.millennium, precision, (n) => n.ceil());
 
   /// Rounds down to the previous microsecond.
   ///
@@ -401,7 +414,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final floored = date.floorMicroseconds(1000); // rounds down to previous 1000 microseconds
   /// ```
-  Chronos floorMicroseconds([int precision = 1]) => _roundingUnit(TimeUnit.microsecond, precision, (n) => n.floor());
+  Chronos floorMicroseconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.microsecond, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] milliseconds.
   ///
@@ -412,7 +426,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final floored = date.floorMilliseconds(100); // rounds down to previous 100ms
   /// ```
-  Chronos floorMilliseconds([int precision = 1]) => _roundingUnit(TimeUnit.millisecond, precision, (n) => n.floor());
+  Chronos floorMilliseconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.millisecond, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] seconds.
   ///
@@ -423,7 +438,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final floored = date.floorSeconds(15); // rounds down to previous 15-second mark
   /// ```
-  Chronos floorSeconds([int precision = 1]) => _roundingUnit(TimeUnit.second, precision, (n) => n.floor());
+  Chronos floorSeconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.second, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] minutes.
   ///
@@ -434,7 +450,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final floored = date.floorMinutes(15); // rounds down to previous 15-minute mark
   /// ```
-  Chronos floorMinutes([int precision = 1]) => _roundingUnit(TimeUnit.minute, precision, (n) => n.floor());
+  Chronos floorMinutes([int precision = 1]) =>
+      _roundingUnit(TimeUnit.minute, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] hours.
   ///
@@ -445,7 +462,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final floored = date.floorHours(6); // rounds down to previous 6-hour mark
   /// ```
-  Chronos floorHours([int precision = 1]) => _roundingUnit(TimeUnit.hour, precision, (n) => n.floor());
+  Chronos floorHours([int precision = 1]) =>
+      _roundingUnit(TimeUnit.hour, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] days.
   ///
@@ -456,7 +474,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final floored = date.floorDays(7); // rounds down to previous 7-day mark
   /// ```
-  Chronos floorDays([int precision = 1]) => _roundingUnit(TimeUnit.day, precision, (n) => n.floor());
+  Chronos floorDays([int precision = 1]) =>
+      _roundingUnit(TimeUnit.day, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] weeks.
   ///
@@ -467,7 +486,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final floored = date.floorWeeks(2); // rounds down to previous 2-week mark
   /// ```
-  Chronos floorWeeks([int precision = 1]) => _roundingUnit(TimeUnit.week, precision, (n) => n.floor());
+  Chronos floorWeeks([int precision = 1]) =>
+      _roundingUnit(TimeUnit.week, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] months.
   ///
@@ -478,7 +498,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final floored = date.floorMonths(3); // rounds down to previous 3-month mark
   /// ```
-  Chronos floorMonths([int precision = 1]) => _roundingUnit(TimeUnit.month, precision, (n) => n.floor());
+  Chronos floorMonths([int precision = 1]) =>
+      _roundingUnit(TimeUnit.month, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] quarters.
   ///
@@ -489,7 +510,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15); // Q1
   /// final floored = date.floorQuarters(2); // rounds down to previous 2-quarter mark
   /// ```
-  Chronos floorQuarters([int precision = 1]) => _roundingUnit(TimeUnit.quarter, precision, (n) => n.floor());
+  Chronos floorQuarters([int precision = 1]) =>
+      _roundingUnit(TimeUnit.quarter, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] years.
   ///
@@ -500,7 +522,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final floored = date.floorYears(5); // rounds down to previous 5-year mark
   /// ```
-  Chronos floorYears([int precision = 1]) => _roundingUnit(TimeUnit.year, precision, (n) => n.floor());
+  Chronos floorYears([int precision = 1]) =>
+      _roundingUnit(TimeUnit.year, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] decades.
   ///
@@ -511,7 +534,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final floored = date.floorDecades(2); // rounds down to previous 2-decade mark
   /// ```
-  Chronos floorDecades([int precision = 1]) => _roundingUnit(TimeUnit.decade, precision, (n) => n.floor());
+  Chronos floorDecades([int precision = 1]) =>
+      _roundingUnit(TimeUnit.decade, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] centuries.
   ///
@@ -522,7 +546,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final floored = date.floorCenturies(2); // rounds down to previous 2-century mark
   /// ```
-  Chronos floorCenturies([int precision = 1]) => _roundingUnit(TimeUnit.century, precision, (n) => n.floor());
+  Chronos floorCenturies([int precision = 1]) =>
+      _roundingUnit(TimeUnit.century, precision, (n) => n.floor());
 
   /// Rounds down to the previous multiple of [precision] millennia.
   ///
@@ -533,7 +558,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final floored = date.floorMillennia(2); // rounds down to previous 2-millennium mark
   /// ```
-  Chronos floorMillennia([int precision = 1]) => _roundingUnit(TimeUnit.millennium, precision, (n) => n.floor());
+  Chronos floorMillennia([int precision = 1]) =>
+      _roundingUnit(TimeUnit.millennium, precision, (n) => n.floor());
 
   /// Rounds to the nearest microsecond.
   ///
@@ -661,7 +687,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final rounded = date.roundMicroseconds(1000); // rounds to nearest 1000 microseconds
   /// ```
-  Chronos roundMicroseconds([int precision = 1]) => _roundingUnit(TimeUnit.microsecond, precision, (n) => n.round());
+  Chronos roundMicroseconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.microsecond, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] milliseconds.
   ///
@@ -672,7 +699,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123);
   /// final rounded = date.roundMilliseconds(100); // rounds to nearest 100ms
   /// ```
-  Chronos roundMilliseconds([int precision = 1]) => _roundingUnit(TimeUnit.millisecond, precision, (n) => n.round());
+  Chronos roundMilliseconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.millisecond, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] seconds.
   ///
@@ -683,7 +711,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final rounded = date.roundSeconds(15); // rounds to nearest 15-second mark
   /// ```
-  Chronos roundSeconds([int precision = 1]) => _roundingUnit(TimeUnit.second, precision, (n) => n.round());
+  Chronos roundSeconds([int precision = 1]) =>
+      _roundingUnit(TimeUnit.second, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] minutes.
   ///
@@ -694,7 +723,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final rounded = date.roundMinutes(15); // rounds to nearest 15-minute mark
   /// ```
-  Chronos roundMinutes([int precision = 1]) => _roundingUnit(TimeUnit.minute, precision, (n) => n.round());
+  Chronos roundMinutes([int precision = 1]) =>
+      _roundingUnit(TimeUnit.minute, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] hours.
   ///
@@ -705,7 +735,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final rounded = date.roundHours(6); // rounds to nearest 6-hour mark
   /// ```
-  Chronos roundHours([int precision = 1]) => _roundingUnit(TimeUnit.hour, precision, (n) => n.round());
+  Chronos roundHours([int precision = 1]) =>
+      _roundingUnit(TimeUnit.hour, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] days.
   ///
@@ -716,7 +747,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final rounded = date.roundDays(7); // rounds to nearest 7-day mark
   /// ```
-  Chronos roundDays([int precision = 1]) => _roundingUnit(TimeUnit.day, precision, (n) => n.round());
+  Chronos roundDays([int precision = 1]) =>
+      _roundingUnit(TimeUnit.day, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] weeks.
   ///
@@ -727,7 +759,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final rounded = date.roundWeeks(2); // rounds to nearest 2-week mark
   /// ```
-  Chronos roundWeeks([int precision = 1]) => _roundingUnit(TimeUnit.week, precision, (n) => n.round());
+  Chronos roundWeeks([int precision = 1]) =>
+      _roundingUnit(TimeUnit.week, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] months.
   ///
@@ -738,7 +771,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final rounded = date.roundMonths(3); // rounds to nearest 3-month mark
   /// ```
-  Chronos roundMonths([int precision = 1]) => _roundingUnit(TimeUnit.month, precision, (n) => n.round());
+  Chronos roundMonths([int precision = 1]) =>
+      _roundingUnit(TimeUnit.month, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] quarters.
   ///
@@ -749,7 +783,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15); // Q1
   /// final rounded = date.roundQuarters(2); // rounds to nearest 2-quarter mark
   /// ```
-  Chronos roundQuarters([int precision = 1]) => _roundingUnit(TimeUnit.quarter, precision, (n) => n.round());
+  Chronos roundQuarters([int precision = 1]) =>
+      _roundingUnit(TimeUnit.quarter, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] years.
   ///
@@ -760,7 +795,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final rounded = date.roundYears(5); // rounds to nearest 5-year mark
   /// ```
-  Chronos roundYears([int precision = 1]) => _roundingUnit(TimeUnit.year, precision, (n) => n.round());
+  Chronos roundYears([int precision = 1]) =>
+      _roundingUnit(TimeUnit.year, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] decades.
   ///
@@ -771,7 +807,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final rounded = date.roundDecades(2); // rounds to nearest 2-decade mark
   /// ```
-  Chronos roundDecades([int precision = 1]) => _roundingUnit(TimeUnit.decade, precision, (n) => n.round());
+  Chronos roundDecades([int precision = 1]) =>
+      _roundingUnit(TimeUnit.decade, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] centuries.
   ///
@@ -782,7 +819,8 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final rounded = date.roundCenturies(2); // rounds to nearest 2-century mark
   /// ```
-  Chronos roundCenturies([int precision = 1]) => _roundingUnit(TimeUnit.century, precision, (n) => n.round());
+  Chronos roundCenturies([int precision = 1]) =>
+      _roundingUnit(TimeUnit.century, precision, (n) => n.round());
 
   /// Rounds to the nearest multiple of [precision] millennia.
   ///
@@ -793,9 +831,14 @@ extension ChronosRounding on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final rounded = date.roundMillennia(2); // rounds to nearest 2-millennium mark
   /// ```
-  Chronos roundMillennia([int precision = 1]) => _roundingUnit(TimeUnit.millennium, precision, (n) => n.round());
+  Chronos roundMillennia([int precision = 1]) =>
+      _roundingUnit(TimeUnit.millennium, precision, (n) => n.round());
 
-  Chronos _roundingUnit(TimeUnit unit, int precision, int Function(num) mathFunc) {
+  Chronos _roundingUnit(
+    TimeUnit unit,
+    int precision,
+    int Function(num) mathFunc,
+  ) {
     final start = startOfUnit(unit);
     final diff = diffInUnit(unit, start);
     final rounded = mathFunc(diff / precision) * precision;

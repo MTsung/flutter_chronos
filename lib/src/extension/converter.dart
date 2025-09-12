@@ -39,7 +39,8 @@ extension ChronosConverter on Chronos {
   /// print(date.format('h:mm a', 'en_US')); // "2:30 PM"
   /// print(date.format('HH:mm', 'de')); // "14:30"
   /// ```
-  String format([String? newPattern, String? locale]) => DateFormat(newPattern, locale).format(this);
+  String format([String? newPattern, String? locale]) =>
+      DateFormat(newPattern, locale).format(this);
 
   /// Converts to ISO date string format (yyyy-MM-dd).
   ///
@@ -118,7 +119,8 @@ extension ChronosConverter on Chronos {
   /// }
   /// // Output: "Meeting time: Mon, Mar 18, 2024", "Meeting time: Fri, Mar 22, 2024"
   /// ```
-  String toFormattedDayDateString() => DateFormat('EEE, MMM d, yyyy').format(this);
+  String toFormattedDayDateString() =>
+      DateFormat('EEE, MMM d, yyyy').format(this);
 
   /// Converts to 24-hour time string format (HH:mm:ss).
   ///
@@ -220,7 +222,8 @@ extension ChronosConverter on Chronos {
   /// //         "Meeting: Wed, Mar 20, 2024 2:00 PM"
   /// //         "Dinner: Fri, Mar 22, 2024 7:30 PM"
   /// ```
-  String toDayDateTimeString() => DateFormat('EEE, MMM d, yyyy h:mm a').format(this);
+  String toDayDateTimeString() =>
+      DateFormat('EEE, MMM d, yyyy h:mm a').format(this);
 
   /// Converts to local date-time string format (yyyy-MM-ddTHH:mm:ss).
   ///
@@ -255,7 +258,8 @@ extension ChronosConverter on Chronos {
   /// //         updated_at: 2024-03-15T10:00:00
   /// //         scheduled_at: 2024-03-20T09:00:00
   /// ```
-  String toDateTimeLocalString() => DateFormat("yyyy-MM-ddTHH:mm:ss").format(this);
+  String toDateTimeLocalString() =>
+      DateFormat("yyyy-MM-ddTHH:mm:ss").format(this);
 
   /// Converts to RFC 822 format string.
   ///
@@ -288,7 +292,8 @@ extension ChronosConverter on Chronos {
   ///   print('</item>');
   /// }
   /// ```
-  String toRfc822String() => DateFormat("EEE, dd MMM yy HH:mm:ss Z", 'en_US').format(toUtc());
+  String toRfc822String() =>
+      DateFormat("EEE, dd MMM yy HH:mm:ss Z", 'en_US').format(toUtc());
 
   /// Converts to RFC 850 format string.
   ///
@@ -308,7 +313,8 @@ extension ChronosConverter on Chronos {
   /// print(y2k.toRfc850String()); // "Saturday, 01-Jan-00 00:00:00 UTC"
   /// print(millennium.toRfc850String()); // "Monday, 01-Jan-01 00:00:00 UTC"
   /// ```
-  String toRfc850String() => "${DateFormat("EEEE, dd-MMM-yy HH:mm:ss", 'en_US').format(toUtc())} UTC";
+  String toRfc850String() =>
+      "${DateFormat("EEEE, dd-MMM-yy HH:mm:ss", 'en_US').format(toUtc())} UTC";
 
   /// Converts to RFC 1036 format string.
   ///
@@ -329,7 +335,8 @@ extension ChronosConverter on Chronos {
   /// print(y2k.toRfc1036String()); // "Sat, 01 Jan 00 12:00:00 +0000"
   /// print(oldDate.toRfc1036String()); // "Fri, 31 Dec 99 23:59:59 +0000"
   /// ```
-  String toRfc1036String() => DateFormat("EEE, dd MMM yy HH:mm:ss Z", 'en_US').format(toUtc());
+  String toRfc1036String() =>
+      DateFormat("EEE, dd MMM yy HH:mm:ss Z", 'en_US').format(toUtc());
 
   /// Converts to RFC 1123 format string.
   ///
@@ -351,7 +358,8 @@ extension ChronosConverter on Chronos {
   /// // Output: Last-Modified: Sun, 10 Mar 2024 08:00:00 +0000
   /// //         Expires: Wed, 20 Mar 2024 23:59:59 +0000
   /// ```
-  String toRfc1123String() => DateFormat("EEE, dd MMM yyyy HH:mm:ss Z", 'en_US').format(toUtc());
+  String toRfc1123String() =>
+      DateFormat("EEE, dd MMM yyyy HH:mm:ss Z", 'en_US').format(toUtc());
 
   /// Converts to RFC 2822 format string (same as RFC 1123).
   ///
@@ -420,7 +428,8 @@ extension ChronosConverter on Chronos {
   /// apiResponse.forEach((key, value) => print('  "$key": "$value"'));
   /// // Output: Standard ISO 8601 timestamp format
   /// ```
-  String toRfc3339String() => DateFormat("yyyy-MM-dd'T'HH:mm:ssXXX").format(toUtc());
+  String toRfc3339String() =>
+      DateFormat("yyyy-MM-dd'T'HH:mm:ssXXX").format(toUtc());
 
   /// Converts to RFC 7231 format string (HTTP date format).
   ///
@@ -448,7 +457,8 @@ extension ChronosConverter on Chronos {
   ///   'Expires': Chronos.now().add(Duration(days: 7)).toRfc7231String(),
   /// };
   /// ```
-  String toRfc7231String() => "${DateFormat("EEE, dd MMM yyyy HH:mm:ss", 'en_US').format(toUtc())} GMT";
+  String toRfc7231String() =>
+      "${DateFormat("EEE, dd MMM yyyy HH:mm:ss", 'en_US').format(toUtc())} GMT";
 
   /// Converts to RSS format string (same as RFC 1123).
   ///
@@ -599,5 +609,6 @@ extension ChronosConverter on Chronos {
   ///   print('Set-Cookie: $cookie');
   /// }
   /// ```
-  String toCookieString() => "${DateFormat("EEEE, dd-MMM-yyyy HH:mm:ss", 'en_US').format(toUtc())} UTC";
+  String toCookieString() =>
+      "${DateFormat("EEEE, dd-MMM-yyyy HH:mm:ss", 'en_US').format(toUtc())} UTC";
 }

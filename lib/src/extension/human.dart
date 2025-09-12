@@ -22,7 +22,11 @@ extension ChronosHuman on Chronos {
   /// print(pastDate.diffForHumans(locale: 'es')); // "hace 2 horas"
   /// print(pastDate.diffForHumans(locale: 'zh_TW')); // "約 2 小時 前"
   /// ```
-  String diffForHumans({String? locale, Chronos? clock, bool allowFromNow = false}) {
+  String diffForHumans({
+    String? locale,
+    Chronos? clock,
+    bool allowFromNow = false,
+  }) {
     if (locale != null) {
       final Map localeMessagesMap = {
         'am': timeago.AmMessages(),
@@ -120,10 +124,18 @@ extension ChronosHuman on Chronos {
       };
 
       if (localeMessagesMap[locale.toLowerCase()] != null) {
-        timeago.setLocaleMessages(locale, localeMessagesMap[locale.toLowerCase()]);
+        timeago.setLocaleMessages(
+          locale,
+          localeMessagesMap[locale.toLowerCase()],
+        );
       }
     }
 
-    return timeago.format(this, locale: locale, clock: clock ?? Chronos.now(), allowFromNow: allowFromNow);
+    return timeago.format(
+      this,
+      locale: locale,
+      clock: clock ?? Chronos.now(),
+      allowFromNow: allowFromNow,
+    );
   }
 }

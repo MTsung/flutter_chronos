@@ -201,13 +201,19 @@ void main() {
       final monday = Chronos(2023, 12, 25); // Monday
       final friday = Chronos(2023, 12, 29); // Friday
 
-      expect(monday.diffInWeekdays(friday), 4); // Mon->Tue->Wed->Thu->Fri = 4 transitions
+      expect(
+        monday.diffInWeekdays(friday),
+        4,
+      ); // Mon->Tue->Wed->Thu->Fri = 4 transitions
       expect(friday.diffInWeekdays(monday), -4);
 
       // Include weekend (should skip Saturday and Sunday)
       final nextMonday = Chronos(2024, 1, 1); // Monday
       final weekdayDiff = friday.diffInWeekdays(nextMonday);
-      expect(weekdayDiff, 1); // Only Friday->Monday transition counts as 1 weekday
+      expect(
+        weekdayDiff,
+        1,
+      ); // Only Friday->Monday transition counts as 1 weekday
     });
 
     test('diffInWeekend method', () {
@@ -290,8 +296,14 @@ void main() {
       final nonLeapYearEnd = Chronos(2023, 3, 1);
 
       // Leap year has one extra day
-      expect(leapYearStart.diffInDays(leapYearEnd), 2.0); // Feb 28 -> Feb 29 -> Mar 1
-      expect(nonLeapYearStart.diffInDays(nonLeapYearEnd), 1.0); // Feb 28 -> Mar 1
+      expect(
+        leapYearStart.diffInDays(leapYearEnd),
+        2.0,
+      ); // Feb 28 -> Feb 29 -> Mar 1
+      expect(
+        nonLeapYearStart.diffInDays(nonLeapYearEnd),
+        1.0,
+      ); // Feb 28 -> Mar 1
 
       // Year difference across leap year
       final beforeLeap = Chronos(2023, 6, 15);
@@ -382,7 +394,10 @@ void main() {
 
       // Millisecond precision
       final time3 = Chronos(2023, 12, 25, 12, 0, 0, 1, 0);
-      expect(time1.diffInMilliseconds(time3), 0.001); // 1ms = 0.001s in the implementation
+      expect(
+        time1.diffInMilliseconds(time3),
+        0.001,
+      ); // 1ms = 0.001s in the implementation
       expect(time1.diffInMicroseconds(time3), 1000.0);
     });
   });

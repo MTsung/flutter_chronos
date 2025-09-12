@@ -486,16 +486,52 @@ void main() {
     });
 
     test('isEndOfWeek property', () {
-      final saturday = Chronos(2023, 12, 30, 23, 59, 59, 999, 999); // Saturday at end of day
-      final monday = Chronos(2023, 12, 25, 23, 59, 59, 999, 999); // Monday at end of day
+      final saturday = Chronos(
+        2023,
+        12,
+        30,
+        23,
+        59,
+        59,
+        999,
+        999,
+      ); // Saturday at end of day
+      final monday = Chronos(
+        2023,
+        12,
+        25,
+        23,
+        59,
+        59,
+        999,
+        999,
+      ); // Monday at end of day
 
       expect(saturday.isEndOfWeek, true);
       expect(monday.isEndOfWeek, false);
     });
 
     test('isEndOfIsoWeek property', () {
-      final sunday = Chronos(2023, 12, 31, 23, 59, 59, 999, 999); // Sunday at end of day
-      final monday = Chronos(2023, 12, 25, 23, 59, 59, 999, 999); // Monday at end of day
+      final sunday = Chronos(
+        2023,
+        12,
+        31,
+        23,
+        59,
+        59,
+        999,
+        999,
+      ); // Sunday at end of day
+      final monday = Chronos(
+        2023,
+        12,
+        25,
+        23,
+        59,
+        59,
+        999,
+        999,
+      ); // Monday at end of day
 
       expect(sunday.isEndOfIsoWeek, true);
       expect(monday.isEndOfIsoWeek, false);

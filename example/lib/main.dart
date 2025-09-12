@@ -252,7 +252,9 @@ void main() {
   print('14. Advanced date manipulations:');
   print('First Monday of month: ${now.firstOfMonth(IsoDayOfWeek.monday)}');
   print('Last Friday of month: ${now.lastOfMonth(IsoDayOfWeek.friday)}');
-  print('First Tuesday of quarter: ${now.firstOfQuarter(IsoDayOfWeek.tuesday)}');
+  print(
+    'First Tuesday of quarter: ${now.firstOfQuarter(IsoDayOfWeek.tuesday)}',
+  );
   print('Last Sunday of year: ${now.lastOfYear(IsoDayOfWeek.sunday)}');
   print('Next weekday: ${now.nextWeekday()}');
   print('Previous weekday: ${now.previousWeekday()}');
@@ -285,12 +287,16 @@ void main() {
   final dateTime = DateTime.now();
   final convertedChronos = dateTime.toChronos();
   print('DateTime to Chronos: $convertedChronos');
-  print('Are equal: ${convertedChronos.millisecondsSinceEpoch == dateTime.millisecondsSinceEpoch}\n');
+  print(
+    'Are equal: ${convertedChronos.millisecondsSinceEpoch == dateTime.millisecondsSinceEpoch}\n',
+  );
 
   // 17. Utility methods
   print('17. Utility methods:');
   print('Is leap year: ${Chronos(2024, 1, 1).year % 4 == 0}');
-  print('Days in month: ${Chronos(2024, 2, 1).endOfMonth().day}'); // February 2024
+  print(
+    'Days in month: ${Chronos(2024, 2, 1).endOfMonth().day}',
+  ); // February 2024
   print('Is same moment: ${now.isAtSameMomentAs(now)}');
   print('Is after: ${now.isAfter(birthday)}');
   print('Is before: ${now.isBefore(birthday)}');

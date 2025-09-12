@@ -124,8 +124,10 @@ extension ChronosDifference on Chronos {
 
     Chronos ceilEnd = start.addMonths(monthsDiff + 1);
 
-    double daysToFloor = end.difference(floorEnd).inMicroseconds / Duration.microsecondsPerDay;
-    double daysToCeil = ceilEnd.difference(end).inMicroseconds / Duration.microsecondsPerDay;
+    double daysToFloor =
+        end.difference(floorEnd).inMicroseconds / Duration.microsecondsPerDay;
+    double daysToCeil =
+        ceilEnd.difference(end).inMicroseconds / Duration.microsecondsPerDay;
 
     return sign * (monthsDiff + daysToFloor / (daysToFloor + daysToCeil));
   }
@@ -148,7 +150,8 @@ extension ChronosDifference on Chronos {
   /// final date2 = Chronos(2024, 3, 10);
   /// final diff = date1.diffInDays(date2); // 5.0
   /// ```
-  double diffInDays(Chronos other) => other.diff(this).inMicroseconds / Duration.microsecondsPerDay;
+  double diffInDays(Chronos other) =>
+      other.diff(this).inMicroseconds / Duration.microsecondsPerDay;
 
   /// Calculates the difference in hours between this date and [other].
   ///
@@ -158,7 +161,8 @@ extension ChronosDifference on Chronos {
   /// final date2 = Chronos(2024, 3, 15, 12, 0, 0);
   /// final diff = date1.diffInHours(date2); // 6.0
   /// ```
-  double diffInHours(Chronos other) => other.diff(this).inMicroseconds / Duration.microsecondsPerHour;
+  double diffInHours(Chronos other) =>
+      other.diff(this).inMicroseconds / Duration.microsecondsPerHour;
 
   /// Calculates the difference in minutes between this date and [other].
   ///
@@ -168,7 +172,8 @@ extension ChronosDifference on Chronos {
   /// final date2 = Chronos(2024, 3, 15, 14, 30, 0);
   /// final diff = date1.diffInMinutes(date2); // 15.0
   /// ```
-  double diffInMinutes(Chronos other) => other.diff(this).inMicroseconds / Duration.microsecondsPerMinute;
+  double diffInMinutes(Chronos other) =>
+      other.diff(this).inMicroseconds / Duration.microsecondsPerMinute;
 
   /// Calculates the difference in seconds between this date and [other].
   ///
@@ -178,7 +183,8 @@ extension ChronosDifference on Chronos {
   /// final date2 = Chronos(2024, 3, 15, 14, 30, 30);
   /// final diff = date1.diffInSeconds(date2); // 15.0
   /// ```
-  double diffInSeconds(Chronos other) => other.diff(this).inMicroseconds / Duration.microsecondsPerSecond;
+  double diffInSeconds(Chronos other) =>
+      other.diff(this).inMicroseconds / Duration.microsecondsPerSecond;
 
   /// Calculates the difference in milliseconds between this date and [other].
   ///
@@ -188,7 +194,8 @@ extension ChronosDifference on Chronos {
   /// final date2 = Chronos(2024, 3, 15, 14, 30, 45, 200);
   /// final diff = date1.diffInMilliseconds(date2); // 300.0
   /// ```
-  double diffInMilliseconds(Chronos other) => other.diff(this).inMilliseconds / 1000;
+  double diffInMilliseconds(Chronos other) =>
+      other.diff(this).inMilliseconds / 1000;
 
   /// Calculates the difference in microseconds between this date and [other].
   ///
@@ -198,7 +205,8 @@ extension ChronosDifference on Chronos {
   /// final date2 = Chronos(2024, 3, 15, 14, 30, 45, 123, 200);
   /// final diff = date1.diffInMicroseconds(date2); // 300.0
   /// ```
-  double diffInMicroseconds(Chronos other) => other.diff(this).inMicroseconds.toDouble();
+  double diffInMicroseconds(Chronos other) =>
+      other.diff(this).inMicroseconds.toDouble();
 
   /// Calculates the difference between this date and [other] in the specified [timeUnit].
   ///
@@ -271,7 +279,8 @@ extension ChronosDifference on Chronos {
   /// final friday = Chronos(2024, 3, 15); // Friday
   /// final weekdays = friday.diffInWeekdays(monday); // 5 (Mon, Tue, Wed, Thu, Fri)
   /// ```
-  int diffInWeekdays(Chronos other) => _diffInDaysFiltered(other, (o) => o.isWeekday);
+  int diffInWeekdays(Chronos other) =>
+      _diffInDaysFiltered(other, (o) => o.isWeekday);
 
   /// Calculates the number of weekend days (Saturday and Sunday) between this date and [other].
   ///
@@ -283,7 +292,8 @@ extension ChronosDifference on Chronos {
   /// final monday = Chronos(2024, 3, 18); // Monday (next week)
   /// final weekendDays = monday.diffInWeekend(friday); // 2 (Saturday and Sunday)
   /// ```
-  int diffInWeekend(Chronos other) => _diffInDaysFiltered(other, (o) => o.isWeekend);
+  int diffInWeekend(Chronos other) =>
+      _diffInDaysFiltered(other, (o) => o.isWeekend);
 
   /// Returns the microsecond position within the current century (0-based).
   ///
@@ -931,7 +941,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final position = date.monthOfMillennium; // Month number since year 2000
   /// ```
-  int get monthOfMillennium => startOfMillennium().diffInMonths(this).floor() + 1;
+  int get monthOfMillennium =>
+      startOfMillennium().diffInMonths(this).floor() + 1;
 
   /// Returns the month position within the current quarter (1-based).
   ///
@@ -985,7 +996,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final position = date.quarterOfMillennium; // Quarter number since year 2000
   /// ```
-  int get quarterOfMillennium => startOfMillennium().diffInQuarters(this).floor() + 1;
+  int get quarterOfMillennium =>
+      startOfMillennium().diffInQuarters(this).floor() + 1;
 
   /// Returns the quarter position within the current year (1-based).
   ///
@@ -1048,7 +1060,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final position = date.decadeOfMillennium; // 3 (2020s is the 3rd decade of 3rd millennium)
   /// ```
-  int get decadeOfMillennium => startOfMillennium().diffInDecade(this).floor() + 1;
+  int get decadeOfMillennium =>
+      startOfMillennium().diffInDecade(this).floor() + 1;
 
   /// Returns the century position within the current millennium (1-based).
   ///
@@ -1057,7 +1070,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final position = date.centuryOfMillennium; // 1 (21st century is the 1st century of 3rd millennium)
   /// ```
-  int get centuryOfMillennium => startOfMillennium().diffInCentury(this).floor() + 1;
+  int get centuryOfMillennium =>
+      startOfMillennium().diffInCentury(this).floor() + 1;
 
   /// Returns the number of centuries in a millennium.
   ///
@@ -1075,7 +1089,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.daysInCentury; // ~36525 (accounting for leap years)
   /// ```
-  int get daysInCentury => startOfCentury().diffInDays(startOfCentury().addCentury()).round();
+  int get daysInCentury =>
+      startOfCentury().diffInDays(startOfCentury().addCentury()).round();
 
   /// Returns the number of days in the current decade.
   ///
@@ -1084,7 +1099,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.daysInDecade; // ~3653 (accounting for leap years in 2020s)
   /// ```
-  int get daysInDecade => startOfDecade().diffInDays(startOfDecade().addDecade()).round();
+  int get daysInDecade =>
+      startOfDecade().diffInDays(startOfDecade().addDecade()).round();
 
   /// Returns the number of days in the current millennium.
   ///
@@ -1093,7 +1109,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.daysInMillennium; // ~365243 (accounting for leap years)
   /// ```
-  int get daysInMillennium => startOfMillennium().diffInDays(startOfMillennium().addMillennium()).round();
+  int get daysInMillennium => startOfMillennium()
+      .diffInDays(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of days in the current month.
   ///
@@ -1113,7 +1131,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15); // Q2
   /// final count = date.daysInQuarter; // 91 (Apr: 30 + May: 31 + Jun: 30)
   /// ```
-  int get daysInQuarter => startOfQuarter().diffInDays(startOfQuarter().addQuarter()).round();
+  int get daysInQuarter =>
+      startOfQuarter().diffInDays(startOfQuarter().addQuarter()).round();
 
   /// Returns the number of days in a week.
   ///
@@ -1160,7 +1179,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.hoursInCentury; // ~876600 (accounting for leap years)
   /// ```
-  int get hoursInCentury => startOfCentury().diffInHours(startOfCentury().addCentury()).round();
+  int get hoursInCentury =>
+      startOfCentury().diffInHours(startOfCentury().addCentury()).round();
 
   /// Returns the number of hours in a day.
   ///
@@ -1178,7 +1198,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.hoursInDecade; // ~87672 (accounting for leap years in 2020s)
   /// ```
-  int get hoursInDecade => startOfDecade().diffInHours(startOfDecade().addDecade()).round();
+  int get hoursInDecade =>
+      startOfDecade().diffInHours(startOfDecade().addDecade()).round();
 
   /// Returns the number of hours in the current millennium.
   ///
@@ -1187,7 +1208,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.hoursInMillennium; // ~8765832 (accounting for leap years)
   /// ```
-  int get hoursInMillennium => startOfMillennium().diffInHours(startOfMillennium().addMillennium()).round();
+  int get hoursInMillennium => startOfMillennium()
+      .diffInHours(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of hours in the current month.
   ///
@@ -1196,7 +1219,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.hoursInMonth; // 720 (June: 30 days * 24 hours)
   /// ```
-  int get hoursInMonth => startOfMonth().diffInHours(startOfMonth().addMonth()).round();
+  int get hoursInMonth =>
+      startOfMonth().diffInHours(startOfMonth().addMonth()).round();
 
   /// Returns the number of hours in the current quarter.
   ///
@@ -1205,7 +1229,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15); // Q2
   /// final count = date.hoursInQuarter; // 2184 (91 days * 24 hours)
   /// ```
-  int get hoursInQuarter => startOfQuarter().diffInHours(startOfQuarter().addQuarter()).round();
+  int get hoursInQuarter =>
+      startOfQuarter().diffInHours(startOfQuarter().addQuarter()).round();
 
   /// Returns the number of hours in a week.
   ///
@@ -1223,7 +1248,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.hoursInYear; // 8784 (366 days * 24 hours, leap year)
   /// ```
-  int get hoursInYear => startOfYear().diffInHours(startOfYear().addYear()).round();
+  int get hoursInYear =>
+      startOfYear().diffInHours(startOfYear().addYear()).round();
 
   /// Returns the number of microseconds in the current century.
   ///
@@ -1232,7 +1258,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.microsecondsInCentury; // ~3155760000000000000 (very large number)
   /// ```
-  int get microsecondsInCentury => startOfCentury().diffInMicroseconds(startOfCentury().addCentury()).round();
+  int get microsecondsInCentury => startOfCentury()
+      .diffInMicroseconds(startOfCentury().addCentury())
+      .round();
 
   /// Returns the number of microseconds in a day.
   ///
@@ -1250,7 +1278,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.microsecondsInDecade; // ~315619200000000000 (very large number)
   /// ```
-  int get microsecondsInDecade => startOfDecade().diffInMicroseconds(startOfDecade().addDecade()).round();
+  int get microsecondsInDecade =>
+      startOfDecade().diffInMicroseconds(startOfDecade().addDecade()).round();
 
   /// Returns the number of microseconds in an hour.
   ///
@@ -1268,7 +1297,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.microsecondsInMillennium; // Extremely large number
   /// ```
-  int get microsecondsInMillennium => startOfMillennium().diffInMicroseconds(startOfMillennium().addMillennium()).round();
+  int get microsecondsInMillennium => startOfMillennium()
+      .diffInMicroseconds(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of microseconds in a millisecond.
   ///
@@ -1295,7 +1326,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.microsecondsInMonth; // ~2592000000000000 (June: 30 days)
   /// ```
-  int get microsecondsInMonth => startOfMonth().diffInMicroseconds(startOfMonth().addMonth()).round();
+  int get microsecondsInMonth =>
+      startOfMonth().diffInMicroseconds(startOfMonth().addMonth()).round();
 
   /// Returns the number of microseconds in the current quarter.
   ///
@@ -1304,7 +1336,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15); // Q2
   /// final count = date.microsecondsInQuarter; // ~7862400000000000 (91 days)
   /// ```
-  int get microsecondsInQuarter => startOfQuarter().diffInMicroseconds(startOfQuarter().addQuarter()).round();
+  int get microsecondsInQuarter => startOfQuarter()
+      .diffInMicroseconds(startOfQuarter().addQuarter())
+      .round();
 
   /// Returns the number of microseconds in a second.
   ///
@@ -1331,7 +1365,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.microsecondsInYear; // ~31622400000000000 (366 days, leap year)
   /// ```
-  int get microsecondsInYear => startOfYear().diffInMicroseconds(startOfYear().addYear()).round();
+  int get microsecondsInYear =>
+      startOfYear().diffInMicroseconds(startOfYear().addYear()).round();
 
   /// Returns the number of milliseconds in the current century.
   ///
@@ -1340,7 +1375,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.millisecondsInCentury; // ~3155760000000000 (very large number)
   /// ```
-  int get millisecondsInCentury => startOfCentury().diffInMilliseconds(startOfCentury().addCentury()).round();
+  int get millisecondsInCentury => startOfCentury()
+      .diffInMilliseconds(startOfCentury().addCentury())
+      .round();
 
   /// Returns the number of milliseconds in a day.
   ///
@@ -1358,7 +1395,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.millisecondsInDecade; // ~315619200000000 (very large number)
   /// ```
-  int get millisecondsInDecade => startOfDecade().diffInMilliseconds(startOfDecade().addDecade()).round();
+  int get millisecondsInDecade =>
+      startOfDecade().diffInMilliseconds(startOfDecade().addDecade()).round();
 
   /// Returns the number of milliseconds in an hour.
   ///
@@ -1376,7 +1414,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.millisecondsInMillennium; // Extremely large number
   /// ```
-  int get millisecondsInMillennium => startOfMillennium().diffInMilliseconds(startOfMillennium().addMillennium()).round();
+  int get millisecondsInMillennium => startOfMillennium()
+      .diffInMilliseconds(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of milliseconds in a minute.
   ///
@@ -1394,7 +1434,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.millisecondsInMonth; // 2592000000 (June: 30 days * 24 * 60 * 60 * 1000)
   /// ```
-  int get millisecondsInMonth => startOfMonth().diffInMilliseconds(startOfMonth().addMonth()).round();
+  int get millisecondsInMonth =>
+      startOfMonth().diffInMilliseconds(startOfMonth().addMonth()).round();
 
   /// Returns the number of milliseconds in the current quarter.
   ///
@@ -1403,7 +1444,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15); // Q2
   /// final count = date.millisecondsInQuarter; // 7862400000 (91 days * 24 * 60 * 60 * 1000)
   /// ```
-  int get millisecondsInQuarter => startOfQuarter().diffInMilliseconds(startOfQuarter().addQuarter()).round();
+  int get millisecondsInQuarter => startOfQuarter()
+      .diffInMilliseconds(startOfQuarter().addQuarter())
+      .round();
 
   /// Returns the number of milliseconds in a second.
   ///
@@ -1430,7 +1473,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.millisecondsInYear; // 31622400000 (366 days * 24 * 60 * 60 * 1000, leap year)
   /// ```
-  int get millisecondsInYear => startOfYear().diffInMilliseconds(startOfYear().addYear()).round();
+  int get millisecondsInYear =>
+      startOfYear().diffInMilliseconds(startOfYear().addYear()).round();
 
   /// Returns the number of minutes in the current century.
   ///
@@ -1439,7 +1483,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.minutesInCentury; // ~52596000 (accounting for leap years)
   /// ```
-  int get minutesInCentury => startOfCentury().diffInMinutes(startOfCentury().addCentury()).round();
+  int get minutesInCentury =>
+      startOfCentury().diffInMinutes(startOfCentury().addCentury()).round();
 
   /// Returns the number of minutes in a day.
   ///
@@ -1457,7 +1502,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.minutesInDecade; // ~5260320 (accounting for leap years in 2020s)
   /// ```
-  int get minutesInDecade => startOfDecade().diffInMinutes(startOfDecade().addDecade()).round();
+  int get minutesInDecade =>
+      startOfDecade().diffInMinutes(startOfDecade().addDecade()).round();
 
   /// Returns the number of minutes in an hour.
   ///
@@ -1475,7 +1521,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.minutesInMillennium; // ~525969000 (accounting for leap years)
   /// ```
-  int get minutesInMillennium => startOfMillennium().diffInMinutes(startOfMillennium().addMillennium()).round();
+  int get minutesInMillennium => startOfMillennium()
+      .diffInMinutes(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of minutes in the current month.
   ///
@@ -1484,7 +1532,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.minutesInMonth; // 43200 (June: 30 days * 24 * 60)
   /// ```
-  int get minutesInMonth => startOfMonth().diffInMinutes(startOfMonth().addMonth()).round();
+  int get minutesInMonth =>
+      startOfMonth().diffInMinutes(startOfMonth().addMonth()).round();
 
   /// Returns the number of minutes in the current quarter.
   ///
@@ -1493,7 +1542,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15); // Q2
   /// final count = date.minutesInQuarter; // 131040 (91 days * 24 * 60)
   /// ```
-  int get minutesInQuarter => startOfQuarter().diffInMinutes(startOfQuarter().addQuarter()).round();
+  int get minutesInQuarter =>
+      startOfQuarter().diffInMinutes(startOfQuarter().addQuarter()).round();
 
   /// Returns the number of minutes in a week.
   ///
@@ -1511,7 +1561,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.minutesInYear; // 527040 (366 days * 24 * 60, leap year)
   /// ```
-  int get minutesInYear => startOfYear().diffInMinutes(startOfYear().addYear()).round();
+  int get minutesInYear =>
+      startOfYear().diffInMinutes(startOfYear().addYear()).round();
 
   /// Returns the number of months in the current century.
   ///
@@ -1520,7 +1571,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.monthsInCentury; // 1200 (100 years * 12 months)
   /// ```
-  int get monthsInCentury => startOfCentury().diffInMonths(startOfCentury().addCentury()).round();
+  int get monthsInCentury =>
+      startOfCentury().diffInMonths(startOfCentury().addCentury()).round();
 
   /// Returns the number of months in the current decade.
   ///
@@ -1529,7 +1581,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.monthsInDecade; // 120 (10 years * 12 months)
   /// ```
-  int get monthsInDecade => startOfDecade().diffInMonths(startOfDecade().addDecade()).round();
+  int get monthsInDecade =>
+      startOfDecade().diffInMonths(startOfDecade().addDecade()).round();
 
   /// Returns the number of months in the current millennium.
   ///
@@ -1538,7 +1591,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.monthsInMillennium; // 12000 (1000 years * 12 months)
   /// ```
-  int get monthsInMillennium => startOfMillennium().diffInMonths(startOfMillennium().addMillennium()).round();
+  int get monthsInMillennium => startOfMillennium()
+      .diffInMonths(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of months in the current quarter.
   ///
@@ -1547,7 +1602,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.monthsInQuarter; // 3
   /// ```
-  int get monthsInQuarter => startOfQuarter().diffInMonths(startOfQuarter().addQuarter()).round();
+  int get monthsInQuarter =>
+      startOfQuarter().diffInMonths(startOfQuarter().addQuarter()).round();
 
   /// Returns the number of months in a year.
   ///
@@ -1565,7 +1621,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.quartersInCentury; // 400 (100 years * 4 quarters)
   /// ```
-  int get quartersInCentury => startOfCentury().diffInQuarters(startOfCentury().addCentury()).round();
+  int get quartersInCentury =>
+      startOfCentury().diffInQuarters(startOfCentury().addCentury()).round();
 
   /// Returns the number of quarters in the current decade.
   ///
@@ -1574,7 +1631,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.quartersInDecade; // 40 (10 years * 4 quarters)
   /// ```
-  int get quartersInDecade => startOfDecade().diffInQuarters(startOfDecade().addDecade()).round();
+  int get quartersInDecade =>
+      startOfDecade().diffInQuarters(startOfDecade().addDecade()).round();
 
   /// Returns the number of quarters in the current millennium.
   ///
@@ -1583,7 +1641,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.quartersInMillennium; // 4000 (1000 years * 4 quarters)
   /// ```
-  int get quartersInMillennium => startOfMillennium().diffInQuarters(startOfMillennium().addMillennium()).round();
+  int get quartersInMillennium => startOfMillennium()
+      .diffInQuarters(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of quarters in a year.
   ///
@@ -1601,7 +1661,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.secondsInCentury; // ~3155760000 (accounting for leap years)
   /// ```
-  int get secondsInCentury => startOfCentury().diffInSeconds(startOfCentury().addCentury()).round();
+  int get secondsInCentury =>
+      startOfCentury().diffInSeconds(startOfCentury().addCentury()).round();
 
   /// Returns the number of seconds in a day.
   ///
@@ -1619,7 +1680,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.secondsInDecade; // ~315619200 (accounting for leap years in 2020s)
   /// ```
-  int get secondsInDecade => startOfDecade().diffInSeconds(startOfDecade().addDecade()).round();
+  int get secondsInDecade =>
+      startOfDecade().diffInSeconds(startOfDecade().addDecade()).round();
 
   /// Returns the number of seconds in an hour.
   ///
@@ -1637,7 +1699,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.secondsInMillennium; // ~31558149504 (accounting for leap years)
   /// ```
-  int get secondsInMillennium => startOfMillennium().diffInSeconds(startOfMillennium().addMillennium()).round();
+  int get secondsInMillennium => startOfMillennium()
+      .diffInSeconds(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of seconds in a minute.
   ///
@@ -1655,7 +1719,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.secondsInMonth; // 2592000 (June: 30 days * 24 * 60 * 60)
   /// ```
-  int get secondsInMonth => startOfMonth().diffInSeconds(startOfMonth().addMonth()).round();
+  int get secondsInMonth =>
+      startOfMonth().diffInSeconds(startOfMonth().addMonth()).round();
 
   /// Returns the number of seconds in the current quarter.
   ///
@@ -1664,7 +1729,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15); // Q2
   /// final count = date.secondsInQuarter; // 7862400 (91 days * 24 * 60 * 60)
   /// ```
-  int get secondsInQuarter => startOfQuarter().diffInSeconds(startOfQuarter().addQuarter()).round();
+  int get secondsInQuarter =>
+      startOfQuarter().diffInSeconds(startOfQuarter().addQuarter()).round();
 
   /// Returns the number of seconds in a week.
   ///
@@ -1682,7 +1748,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.secondsInYear; // 31622400 (366 days * 24 * 60 * 60, leap year)
   /// ```
-  int get secondsInYear => startOfYear().diffInSeconds(startOfYear().addYear()).round();
+  int get secondsInYear =>
+      startOfYear().diffInSeconds(startOfYear().addYear()).round();
 
   /// Returns the number of weeks in the current century.
   ///
@@ -1691,7 +1758,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.weeksInCentury; // ~5217 (accounting for leap years)
   /// ```
-  int get weeksInCentury => startOfCentury().diffInWeeks(startOfCentury().addCentury()).round();
+  int get weeksInCentury =>
+      startOfCentury().diffInWeeks(startOfCentury().addCentury()).round();
 
   /// Returns the number of weeks in the current decade.
   ///
@@ -1700,7 +1768,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.weeksInDecade; // ~522 (accounting for leap years in 2020s)
   /// ```
-  int get weeksInDecade => startOfDecade().diffInWeeks(startOfDecade().addDecade()).round();
+  int get weeksInDecade =>
+      startOfDecade().diffInWeeks(startOfDecade().addDecade()).round();
 
   /// Returns the number of weeks in the current millennium.
   ///
@@ -1709,7 +1778,9 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.weeksInMillennium; // ~52178 (accounting for leap years)
   /// ```
-  int get weeksInMillennium => startOfMillennium().diffInWeeks(startOfMillennium().addMillennium()).round();
+  int get weeksInMillennium => startOfMillennium()
+      .diffInWeeks(startOfMillennium().addMillennium())
+      .round();
 
   /// Returns the number of weeks in the current month.
   ///
@@ -1718,7 +1789,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.weeksInMonth; // ~4 (June spans about 4-5 weeks)
   /// ```
-  int get weeksInMonth => startOfMonth().diffInWeeks(startOfMonth().addMonth()).round();
+  int get weeksInMonth =>
+      startOfMonth().diffInWeeks(startOfMonth().addMonth()).round();
 
   /// Returns the number of weeks in the current quarter.
   ///
@@ -1727,7 +1799,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15); // Q2
   /// final count = date.weeksInQuarter; // 13 (91 days / 7 days per week)
   /// ```
-  int get weeksInQuarter => startOfQuarter().diffInWeeks(startOfQuarter().addQuarter()).round();
+  int get weeksInQuarter =>
+      startOfQuarter().diffInWeeks(startOfQuarter().addQuarter()).round();
 
   /// Returns the number of weeks in the current year.
   ///
@@ -1736,7 +1809,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.weeksInYear; // ~52 (366 days / 7 days per week, leap year)
   /// ```
-  int get weeksInYear => startOfYear().diffInWeeks(startOfYear().addYear()).round();
+  int get weeksInYear =>
+      startOfYear().diffInWeeks(startOfYear().addYear()).round();
 
   /// Returns the number of years in the current century.
   ///
@@ -1745,7 +1819,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.yearsInCentury; // 100
   /// ```
-  int get yearsInCentury => startOfCentury().diffInYears(startOfCentury().addCentury()).round();
+  int get yearsInCentury =>
+      startOfCentury().diffInYears(startOfCentury().addCentury()).round();
 
   /// Returns the number of years in the current decade.
   ///
@@ -1754,7 +1829,8 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.yearsInDecade; // 10
   /// ```
-  int get yearsInDecade => startOfDecade().diffInYears(startOfDecade().addDecade()).round();
+  int get yearsInDecade =>
+      startOfDecade().diffInYears(startOfDecade().addDecade()).round();
 
   /// Returns the number of years in the current millennium.
   ///
@@ -1763,5 +1839,7 @@ extension ChronosDifference on Chronos {
   /// final date = Chronos(2024, 6, 15);
   /// final count = date.yearsInMillennium; // 1000
   /// ```
-  int get yearsInMillennium => startOfMillennium().diffInYears(startOfMillennium().addMillennium()).round();
+  int get yearsInMillennium => startOfMillennium()
+      .diffInYears(startOfMillennium().addMillennium())
+      .round();
 }

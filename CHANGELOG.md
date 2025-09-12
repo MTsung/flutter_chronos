@@ -1,3 +1,12 @@
+# 1.0.4
+
+- Rnu dart format .
+
+# 1.0.3
+
+- Update example
+- Update README.md 
+
 # 1.0.2
 
 - Remove Chinese characters from CHANGELOG.md to satisfy pub.dev

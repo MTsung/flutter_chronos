@@ -12,7 +12,8 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final newDate = date.setDate(2025, month: 12, day: 25); // 2025-12-25 14:30:45
   /// ```
-  Chronos setDate(int year, {int month = 1, int day = 1}) => copyWith(year: year, month: month, day: day);
+  Chronos setDate(int year, {int month = 1, int day = 1}) =>
+      copyWith(year: year, month: month, day: day);
 
   /// Sets the time components while keeping date unchanged.
   ///
@@ -21,8 +22,19 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final newTime = date.setTime(hour: 9, minute: 15, second: 30); // 2024-03-15 09:15:30
   /// ```
-  Chronos setTime({int hour = 0, int minute = 0, int second = 0, int microsecond = 0, int millisecond = 0}) =>
-      copyWith(hour: hour, minute: minute, second: second, millisecond: millisecond, microsecond: microsecond);
+  Chronos setTime({
+    int hour = 0,
+    int minute = 0,
+    int second = 0,
+    int microsecond = 0,
+    int millisecond = 0,
+  }) => copyWith(
+    hour: hour,
+    minute: minute,
+    second: second,
+    millisecond: millisecond,
+    microsecond: microsecond,
+  );
 
   /// Sets the date from another Chronos instance while keeping time unchanged.
   ///
@@ -32,7 +44,8 @@ extension ChronosModifiers on Chronos {
   /// final date2 = Chronos(2025, 12, 25, 9, 15, 30);
   /// final result = date1.setDateFrom(date2); // 2025-12-25 14:30:45
   /// ```
-  Chronos setDateFrom(Chronos other) => copyWith(year: other.year, month: other.month, day: other.day);
+  Chronos setDateFrom(Chronos other) =>
+      copyWith(year: other.year, month: other.month, day: other.day);
 
   /// Sets the time from another Chronos instance while keeping date unchanged.
   ///
@@ -42,8 +55,13 @@ extension ChronosModifiers on Chronos {
   /// final date2 = Chronos(2025, 12, 25, 9, 15, 30);
   /// final result = date1.setTimeFrom(date2); // 2024-03-15 09:15:30
   /// ```
-  Chronos setTimeFrom(Chronos other) =>
-      copyWith(hour: other.hour, minute: other.minute, second: other.second, millisecond: other.millisecond, microsecond: other.microsecond);
+  Chronos setTimeFrom(Chronos other) => copyWith(
+    hour: other.hour,
+    minute: other.minute,
+    second: other.second,
+    millisecond: other.millisecond,
+    microsecond: other.microsecond,
+  );
 
   /// Sets the year while keeping other components unchanged.
   ///
@@ -268,7 +286,8 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final added = date.addMicroseconds(1000); // adds 1000 microseconds
   /// ```
-  Chronos addMicroseconds(int microseconds) => add(Duration(microseconds: microseconds)).toChronos();
+  Chronos addMicroseconds(int microseconds) =>
+      add(Duration(microseconds: microseconds)).toChronos();
 
   /// Adds the specified number of milliseconds to the date.
   ///
@@ -277,7 +296,8 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123);
   /// final added = date.addMilliseconds(500); // adds 500 milliseconds
   /// ```
-  Chronos addMilliseconds(int milliseconds) => add(Duration(milliseconds: milliseconds)).toChronos();
+  Chronos addMilliseconds(int milliseconds) =>
+      add(Duration(milliseconds: milliseconds)).toChronos();
 
   /// Adds the specified number of seconds to the date.
   ///
@@ -286,7 +306,8 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final added = date.addSeconds(30); // 2024-03-15 14:31:15
   /// ```
-  Chronos addSeconds(int seconds) => add(Duration(seconds: seconds)).toChronos();
+  Chronos addSeconds(int seconds) =>
+      add(Duration(seconds: seconds)).toChronos();
 
   /// Adds the specified number of minutes to the date.
   ///
@@ -295,7 +316,8 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final added = date.addMinutes(15); // 2024-03-15 14:45:45
   /// ```
-  Chronos addMinutes(int minutes) => add(Duration(minutes: minutes)).toChronos();
+  Chronos addMinutes(int minutes) =>
+      add(Duration(minutes: minutes)).toChronos();
 
   /// Adds the specified number of hours to the date.
   ///
@@ -1049,7 +1071,8 @@ extension ChronosModifiers on Chronos {
   /// final date2 = Chronos(2024, 6, 25); // 10 days after
   /// final closest = current.closest(date1, date2); // Returns date1 (closer)
   /// ```
-  Chronos closest(Chronos c1, Chronos c2) => (diffInMicroseconds(c1).abs() <= diffInMicroseconds(c2).abs()) ? c1 : c2;
+  Chronos closest(Chronos c1, Chronos c2) =>
+      (diffInMicroseconds(c1).abs() <= diffInMicroseconds(c2).abs()) ? c1 : c2;
 
   /// Returns the date that is farthest from this date from the two provided dates.
   ///
@@ -1063,7 +1086,8 @@ extension ChronosModifiers on Chronos {
   /// final date2 = Chronos(2024, 6, 25); // 10 days after
   /// final farthest = current.farthest(date1, date2); // Returns date2 (farther)
   /// ```
-  Chronos farthest(Chronos c1, Chronos c2) => (diffInMicroseconds(c1).abs() >= diffInMicroseconds(c2).abs()) ? c1 : c2;
+  Chronos farthest(Chronos c1, Chronos c2) =>
+      (diffInMicroseconds(c1).abs() >= diffInMicroseconds(c2).abs()) ? c1 : c2;
 
   /// Returns the earliest date from this date and the provided dates.
   ///
@@ -1145,5 +1169,6 @@ extension ChronosModifiers on Chronos {
   /// final monday = date.setIsoDayOfWeek(1); // Monday of the same ISO week
   /// final sunday = date.setIsoDayOfWeek(7); // Sunday of the same ISO week
   /// ```
-  Chronos setIsoDayOfWeek(int isoDayOfWeek) => startOfIsoWeek().addDays(isoDayOfWeek - 1);
+  Chronos setIsoDayOfWeek(int isoDayOfWeek) =>
+      startOfIsoWeek().addDays(isoDayOfWeek - 1);
 }

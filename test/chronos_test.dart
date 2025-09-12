@@ -33,7 +33,10 @@ void main() {
 
     test('fromMillisecondsSinceEpoch constructor', () {
       final timestamp = 1703505600000; // 2023-12-25 12:00:00 UTC
-      final chronos = Chronos.fromMillisecondsSinceEpoch(timestamp, isUtc: true);
+      final chronos = Chronos.fromMillisecondsSinceEpoch(
+        timestamp,
+        isUtc: true,
+      );
 
       expect(chronos.millisecondsSinceEpoch, timestamp);
       expect(chronos.isUtc, true);
@@ -41,7 +44,10 @@ void main() {
 
     test('fromMicrosecondsSinceEpoch constructor', () {
       final timestamp = 1703505600000000; // 2023-12-25 12:00:00 UTC
-      final chronos = Chronos.fromMicrosecondsSinceEpoch(timestamp, isUtc: true);
+      final chronos = Chronos.fromMicrosecondsSinceEpoch(
+        timestamp,
+        isUtc: true,
+      );
 
       expect(chronos.microsecondsSinceEpoch, timestamp);
       expect(chronos.isUtc, true);
@@ -101,7 +107,10 @@ void main() {
       final now = Chronos.now();
       final dartNow = DateTime.now();
 
-      expect((now.millisecondsSinceEpoch - dartNow.millisecondsSinceEpoch).abs(), lessThan(1000));
+      expect(
+        (now.millisecondsSinceEpoch - dartNow.millisecondsSinceEpoch).abs(),
+        lessThan(1000),
+      );
     });
 
     test('today method', () {
@@ -554,14 +563,38 @@ void main() {
 
   group('Basic Methods', () {
     test('diff method', () {
-      expect(Chronos(2023, 12, 25, 12).diff(Chronos(2023, 12, 25, 14)).inHours, -2);
-      expect(Chronos(2023, 12, 25, 14).diff(Chronos(2023, 12, 25, 12)).inHours, 2);
-      expect(Chronos(2023, 12, 25, 12, 0).diff(Chronos(2023, 12, 25, 12, 30)).inMinutes, -30);
-      expect(Chronos(2023, 12, 25, 23, 0).diff(Chronos(2023, 12, 26, 1, 0)).inHours, -2);
+      expect(
+        Chronos(2023, 12, 25, 12).diff(Chronos(2023, 12, 25, 14)).inHours,
+        -2,
+      );
+      expect(
+        Chronos(2023, 12, 25, 14).diff(Chronos(2023, 12, 25, 12)).inHours,
+        2,
+      );
+      expect(
+        Chronos(
+          2023,
+          12,
+          25,
+          12,
+          0,
+        ).diff(Chronos(2023, 12, 25, 12, 30)).inMinutes,
+        -30,
+      );
+      expect(
+        Chronos(2023, 12, 25, 23, 0).diff(Chronos(2023, 12, 26, 1, 0)).inHours,
+        -2,
+      );
       expect(Chronos(2023, 1, 31).diff(Chronos(2023, 2, 1)).inDays, -1);
-      expect(Chronos(2023, 12, 31, 23, 59).diff(Chronos(2024, 1, 1, 0, 0)).inMinutes, -1);
+      expect(
+        Chronos(2023, 12, 31, 23, 59).diff(Chronos(2024, 1, 1, 0, 0)).inMinutes,
+        -1,
+      );
       expect(Chronos(2023, 2, 28).diff(Chronos(2024, 2, 29)).inDays, -366);
-      expect(Chronos(2023, 12, 25, 12).diff(Chronos(2023, 12, 25, 12)).inSeconds, 0);
+      expect(
+        Chronos(2023, 12, 25, 12).diff(Chronos(2023, 12, 25, 12)).inSeconds,
+        0,
+      );
     });
 
     test('copy method', () {
@@ -627,7 +660,11 @@ void main() {
 
   group('Fluent Interface', () {
     test('method chaining', () {
-      final result = Chronos(2023, 1, 1).addMonths(6).addDays(15).addHours(12).setMinute(30);
+      final result = Chronos(
+        2023,
+        1,
+        1,
+      ).addMonths(6).addDays(15).addHours(12).setMinute(30);
 
       expect(result.year, 2023);
       expect(result.month, 7);
@@ -637,7 +674,11 @@ void main() {
     });
 
     test('complex fluent operations', () {
-      final result = Chronos(2023, 12, 25).startOfMonth().addWeeks(2).nextWeekday().setTime(hour: 9, minute: 30);
+      final result = Chronos(
+        2023,
+        12,
+        25,
+      ).startOfMonth().addWeeks(2).nextWeekday().setTime(hour: 9, minute: 30);
 
       expect(result.month, 12);
       expect(result.isWeekday, true);

@@ -52,7 +52,11 @@ void main() {
     test('isSameIsoWeek method', () {
       final monday = Chronos(2023, 12, 25); // Monday
       final sunday = Chronos(2023, 12, 31); // Sunday (same ISO week)
-      final nextMonday = Chronos(2024, 1, 1); // Next Monday (different ISO week)
+      final nextMonday = Chronos(
+        2024,
+        1,
+        1,
+      ); // Next Monday (different ISO week)
 
       expect(monday.isSameIsoWeek(sunday), true);
       expect(monday.isSameIsoWeek(nextMonday), false);
@@ -124,9 +128,21 @@ void main() {
     test('isSameDecade method', () {
       // Decade calculation: (year - 1) ~/ 10 + 1
       // Let's test with years we know are in different decades
-      final date1 = Chronos(2021, 1, 1); // decade 203: (2021-1) ~/ 10 + 1 = 2020 ~/ 10 + 1 = 202 + 1 = 203
-      final date2 = Chronos(2025, 12, 31); // decade 203: (2025-1) ~/ 10 + 1 = 2024 ~/ 10 + 1 = 202 + 1 = 203
-      final date3 = Chronos(2031, 1, 1); // decade 204: (2031-1) ~/ 10 + 1 = 2030 ~/ 10 + 1 = 203 + 1 = 204
+      final date1 = Chronos(
+        2021,
+        1,
+        1,
+      ); // decade 203: (2021-1) ~/ 10 + 1 = 2020 ~/ 10 + 1 = 202 + 1 = 203
+      final date2 = Chronos(
+        2025,
+        12,
+        31,
+      ); // decade 203: (2025-1) ~/ 10 + 1 = 2024 ~/ 10 + 1 = 202 + 1 = 203
+      final date3 = Chronos(
+        2031,
+        1,
+        1,
+      ); // decade 204: (2031-1) ~/ 10 + 1 = 2030 ~/ 10 + 1 = 203 + 1 = 204
 
       expect(date1.isSameDecade(date2), true);
       expect(date1.isSameDecade(date3), false);
@@ -207,7 +223,13 @@ void main() {
 
     test('isCurrentDay property', () {
       final now = Chronos.now(); // Returns fake time: 2025-01-15 10:30:00
-      final today = Chronos(now.year, now.month, now.day, 12, 0); // 2025-01-15 12:00:00
+      final today = Chronos(
+        now.year,
+        now.month,
+        now.day,
+        12,
+        0,
+      ); // 2025-01-15 12:00:00
       final yesterday = now.subDay(); // 2025-01-14 10:30:00
 
       expect(today.isCurrentDay, true);
@@ -216,7 +238,13 @@ void main() {
 
     test('isCurrentHour property', () {
       final now = Chronos.now(); // Returns fake time: 2025-01-15 10:30:00
-      final thisHour = Chronos(now.year, now.month, now.day, now.hour, 30); // 2025-01-15 10:30:00
+      final thisHour = Chronos(
+        now.year,
+        now.month,
+        now.day,
+        now.hour,
+        30,
+      ); // 2025-01-15 10:30:00
       final lastHour = now.subHour(); // 2025-01-15 09:30:00
 
       expect(thisHour.isCurrentHour, true);
@@ -225,7 +253,14 @@ void main() {
 
     test('isCurrentMinute property', () {
       final now = Chronos.now(); // Returns fake time: 2025-01-15 10:30:00
-      final thisMinute = Chronos(now.year, now.month, now.day, now.hour, now.minute, 30); // 2025-01-15 10:30:30
+      final thisMinute = Chronos(
+        now.year,
+        now.month,
+        now.day,
+        now.hour,
+        now.minute,
+        30,
+      ); // 2025-01-15 10:30:30
       final lastMinute = now.subMinute(); // 2025-01-15 10:29:00
 
       expect(thisMinute.isCurrentMinute, true);
@@ -234,7 +269,15 @@ void main() {
 
     test('isCurrentSecond property', () {
       final now = Chronos.now(); // Returns fake time: 2025-01-15 10:30:00
-      final thisSecond = Chronos(now.year, now.month, now.day, now.hour, now.minute, now.second, 500); // 2025-01-15 10:30:00.500
+      final thisSecond = Chronos(
+        now.year,
+        now.month,
+        now.day,
+        now.hour,
+        now.minute,
+        now.second,
+        500,
+      ); // 2025-01-15 10:30:00.500
       final lastSecond = now.subSecond(); // 2025-01-15 10:29:59
 
       expect(thisSecond.isCurrentSecond, true);
@@ -251,7 +294,8 @@ void main() {
     });
 
     test('isCurrentDecade property', () {
-      final now = Chronos.now(); // Returns fake time: 2025-01-15 10:30:00 (2020s decade)
+      final now =
+          Chronos.now(); // Returns fake time: 2025-01-15 10:30:00 (2020s decade)
       final thisDecade = now; // 2025-01-15 10:30:00 (2020s decade)
       final lastDecade = now.subDecade(); // 2015-01-15 10:30:00 (2010s decade)
 
@@ -260,18 +304,22 @@ void main() {
     });
 
     test('isCurrentCentury property', () {
-      final now = Chronos.now(); // Returns fake time: 2025-01-15 10:30:00 (21st century)
+      final now =
+          Chronos.now(); // Returns fake time: 2025-01-15 10:30:00 (21st century)
       final thisCentury = now; // 2025-01-15 10:30:00 (21st century)
-      final lastCentury = now.subCentury(); // 1925-01-15 10:30:00 (20th century)
+      final lastCentury = now
+          .subCentury(); // 1925-01-15 10:30:00 (20th century)
 
       expect(thisCentury.isCurrentCentury, true);
       expect(lastCentury.isCurrentCentury, false);
     });
 
     test('isCurrentMillennium property', () {
-      final now = Chronos.now(); // Returns fake time: 2025-01-15 10:30:00 (3rd millennium)
+      final now =
+          Chronos.now(); // Returns fake time: 2025-01-15 10:30:00 (3rd millennium)
       final thisMillennium = now; // 2025-01-15 10:30:00 (3rd millennium)
-      final lastMillennium = now.subMillennium(); // 1025-01-15 10:30:00 (2nd millennium)
+      final lastMillennium = now
+          .subMillennium(); // 1025-01-15 10:30:00 (2nd millennium)
 
       expect(thisMillennium.isCurrentMillennium, true);
       expect(lastMillennium.isCurrentMillennium, false);
@@ -446,7 +494,11 @@ void main() {
 
     test('isBirthday method', () {
       final birthday = Chronos(1990, 6, 15);
-      final sameBirthday = Chronos(2023, 6, 15); // Same month and day, different year
+      final sameBirthday = Chronos(
+        2023,
+        6,
+        15,
+      ); // Same month and day, different year
       final differentDay = Chronos(2023, 6, 16);
       final differentMonth = Chronos(2023, 7, 15);
 
@@ -459,7 +511,10 @@ void main() {
   group('Timezone and DST Comparisons', () {
     test('isDst property', () {
       final chronos = Chronos(2023, 7, 15); // Summer date
-      expect(chronos.isDst, isA<bool>()); // Keep this as isA<bool>() since DST depends on system timezone
+      expect(
+        chronos.isDst,
+        isA<bool>(),
+      ); // Keep this as isA<bool>() since DST depends on system timezone
     });
 
     test('isLocal property', () {
@@ -554,7 +609,11 @@ void main() {
     test('isLeapYear property', () {
       final leapYear = Chronos(2024, 1, 1); // 2024 is a leap year
       final nonLeapYear = Chronos(2023, 1, 1); // 2023 is not a leap year
-      final centuryLeapYear = Chronos(2000, 1, 1); // 2000 is a leap year (divisible by 400)
+      final centuryLeapYear = Chronos(
+        2000,
+        1,
+        1,
+      ); // 2000 is a leap year (divisible by 400)
       final centuryNonLeapYear = Chronos(1900, 1, 1); // 1900 is not a leap year
 
       expect(leapYear.isLeapYear, true);

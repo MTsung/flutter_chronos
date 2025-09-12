@@ -50,7 +50,10 @@ void main() {
       final end = Chronos(2024, 3, 15, 15, 45, 30);
       final range = ChronosRange(start, end);
 
-      expect(range.duration, const Duration(hours: 1, minutes: 15, seconds: 15));
+      expect(
+        range.duration,
+        const Duration(hours: 1, minutes: 15, seconds: 15),
+      );
     });
 
     test('isEmpty returns true for equal start and end', () {
@@ -73,7 +76,10 @@ void main() {
     late ChronosRange businessHours;
 
     setUp(() {
-      businessHours = ChronosRange(Chronos(2024, 3, 15, 9, 0), Chronos(2024, 3, 15, 17, 0));
+      businessHours = ChronosRange(
+        Chronos(2024, 3, 15, 9, 0),
+        Chronos(2024, 3, 15, 17, 0),
+      );
     });
 
     test('returns true for time within range', () {
@@ -122,23 +128,41 @@ void main() {
     late ChronosRange evening;
 
     setUp(() {
-      morning = ChronosRange(Chronos(2024, 3, 15, 8, 0), Chronos(2024, 3, 15, 12, 0));
+      morning = ChronosRange(
+        Chronos(2024, 3, 15, 8, 0),
+        Chronos(2024, 3, 15, 12, 0),
+      );
 
-      afternoon = ChronosRange(Chronos(2024, 3, 15, 12, 0), Chronos(2024, 3, 15, 17, 0));
+      afternoon = ChronosRange(
+        Chronos(2024, 3, 15, 12, 0),
+        Chronos(2024, 3, 15, 17, 0),
+      );
 
-      lunch = ChronosRange(Chronos(2024, 3, 15, 11, 30), Chronos(2024, 3, 15, 13, 0));
+      lunch = ChronosRange(
+        Chronos(2024, 3, 15, 11, 30),
+        Chronos(2024, 3, 15, 13, 0),
+      );
 
-      evening = ChronosRange(Chronos(2024, 3, 15, 18, 0), Chronos(2024, 3, 15, 22, 0));
+      evening = ChronosRange(
+        Chronos(2024, 3, 15, 18, 0),
+        Chronos(2024, 3, 15, 22, 0),
+      );
     });
 
-    test('returns false for ranges touching at endpoints (excludeEnd=true)', () {
-      expect(morning.overlaps(afternoon), false);
-      expect(morning.overlaps(afternoon, true), false);
-    });
+    test(
+      'returns false for ranges touching at endpoints (excludeEnd=true)',
+      () {
+        expect(morning.overlaps(afternoon), false);
+        expect(morning.overlaps(afternoon, true), false);
+      },
+    );
 
-    test('returns true for ranges touching at endpoints (excludeEnd=false)', () {
-      expect(morning.overlaps(afternoon, false), true);
-    });
+    test(
+      'returns true for ranges touching at endpoints (excludeEnd=false)',
+      () {
+        expect(morning.overlaps(afternoon, false), true);
+      },
+    );
 
     test('returns true for ranges with actual overlap', () {
       expect(morning.overlaps(lunch), true);
@@ -155,12 +179,18 @@ void main() {
     });
 
     test('returns true for identical ranges', () {
-      final sameMorning = ChronosRange(Chronos(2024, 3, 15, 8, 0), Chronos(2024, 3, 15, 12, 0));
+      final sameMorning = ChronosRange(
+        Chronos(2024, 3, 15, 8, 0),
+        Chronos(2024, 3, 15, 12, 0),
+      );
       expect(morning.overlaps(sameMorning), true);
     });
 
     test('returns true for range contained within another', () {
-      final shortBreak = ChronosRange(Chronos(2024, 3, 15, 10, 0), Chronos(2024, 3, 15, 10, 15));
+      final shortBreak = ChronosRange(
+        Chronos(2024, 3, 15, 10, 0),
+        Chronos(2024, 3, 15, 10, 15),
+      );
       expect(morning.overlaps(shortBreak), true);
       expect(shortBreak.overlaps(morning), true);
     });
@@ -182,11 +212,20 @@ void main() {
     late ChronosRange meeting3;
 
     setUp(() {
-      meeting1 = ChronosRange(Chronos(2024, 3, 15, 10, 0), Chronos(2024, 3, 15, 12, 0));
+      meeting1 = ChronosRange(
+        Chronos(2024, 3, 15, 10, 0),
+        Chronos(2024, 3, 15, 12, 0),
+      );
 
-      meeting2 = ChronosRange(Chronos(2024, 3, 15, 11, 0), Chronos(2024, 3, 15, 14, 0));
+      meeting2 = ChronosRange(
+        Chronos(2024, 3, 15, 11, 0),
+        Chronos(2024, 3, 15, 14, 0),
+      );
 
-      meeting3 = ChronosRange(Chronos(2024, 3, 15, 15, 0), Chronos(2024, 3, 15, 16, 0));
+      meeting3 = ChronosRange(
+        Chronos(2024, 3, 15, 15, 0),
+        Chronos(2024, 3, 15, 16, 0),
+      );
     });
 
     test('returns intersection for overlapping ranges', () {
@@ -212,7 +251,10 @@ void main() {
     });
 
     test('returns smaller range when one contains the other', () {
-      final largeRange = ChronosRange(Chronos(2024, 3, 15, 9, 0), Chronos(2024, 3, 15, 15, 0));
+      final largeRange = ChronosRange(
+        Chronos(2024, 3, 15, 9, 0),
+        Chronos(2024, 3, 15, 15, 0),
+      );
 
       final intersection = largeRange.intersect(meeting1);
 
@@ -222,7 +264,10 @@ void main() {
     });
 
     test('handles partial overlaps correctly', () {
-      final partialOverlap = ChronosRange(Chronos(2024, 3, 15, 11, 30), Chronos(2024, 3, 15, 13, 30));
+      final partialOverlap = ChronosRange(
+        Chronos(2024, 3, 15, 11, 30),
+        Chronos(2024, 3, 15, 13, 30),
+      );
 
       final intersection = meeting1.intersect(partialOverlap);
 
@@ -242,7 +287,10 @@ void main() {
     });
 
     test('returns empty range for ranges touching at endpoints', () {
-      final touchingRange = ChronosRange(Chronos(2024, 3, 15, 12, 0), Chronos(2024, 3, 15, 14, 0));
+      final touchingRange = ChronosRange(
+        Chronos(2024, 3, 15, 12, 0),
+        Chronos(2024, 3, 15, 14, 0),
+      );
 
       final intersection = meeting1.intersect(touchingRange);
       expect(intersection, isNull);
@@ -251,7 +299,10 @@ void main() {
 
   group('ChronosRange toString method', () {
     test('returns correct string representation', () {
-      final range = ChronosRange(Chronos(2024, 3, 15, 9, 0), Chronos(2024, 3, 15, 17, 0));
+      final range = ChronosRange(
+        Chronos(2024, 3, 15, 9, 0),
+        Chronos(2024, 3, 15, 17, 0),
+      );
 
       final result = range.toString();
       expect(result, contains('2024-03-15 09:00:00.000'));
@@ -272,7 +323,10 @@ void main() {
     });
 
     test('handles different date formats', () {
-      final range = ChronosRange(Chronos(2024, 12, 31, 23, 59, 59, 999), Chronos(2025, 1, 1, 0, 0, 0, 0));
+      final range = ChronosRange(
+        Chronos(2024, 12, 31, 23, 59, 59, 999),
+        Chronos(2025, 1, 1, 0, 0, 0, 0),
+      );
 
       final result = range.toString();
       expect(result, contains('2024-12-31'));
@@ -292,21 +346,30 @@ void main() {
     });
 
     test('handles year boundaries', () {
-      final range = ChronosRange(Chronos(2023, 12, 31, 23, 0), Chronos(2024, 1, 1, 1, 0));
+      final range = ChronosRange(
+        Chronos(2023, 12, 31, 23, 0),
+        Chronos(2024, 1, 1, 1, 0),
+      );
 
       expect(range.duration, const Duration(hours: 2));
       expect(range.contains(Chronos(2024, 1, 1, 0, 0)), true);
     });
 
     test('handles leap year dates', () {
-      final range = ChronosRange(Chronos(2024, 2, 28, 12, 0), Chronos(2024, 3, 1, 12, 0));
+      final range = ChronosRange(
+        Chronos(2024, 2, 28, 12, 0),
+        Chronos(2024, 3, 1, 12, 0),
+      );
 
       expect(range.duration, const Duration(days: 2));
       expect(range.contains(Chronos(2024, 2, 29, 12, 0)), true);
     });
 
     test('handles very long ranges', () {
-      final centuryRange = ChronosRange(Chronos(1900, 1, 1), Chronos(2000, 1, 1));
+      final centuryRange = ChronosRange(
+        Chronos(1900, 1, 1),
+        Chronos(2000, 1, 1),
+      );
 
       expect(centuryRange.duration.inDays, greaterThan(36500));
       expect(centuryRange.contains(Chronos(1950, 6, 15)), true);
@@ -324,9 +387,15 @@ void main() {
 
   group('ChronosRange Real-world Scenarios', () {
     test('business hours scenario', () {
-      final businessHours = ChronosRange(Chronos(2024, 3, 15, 9, 0), Chronos(2024, 3, 15, 17, 0));
+      final businessHours = ChronosRange(
+        Chronos(2024, 3, 15, 9, 0),
+        Chronos(2024, 3, 15, 17, 0),
+      );
 
-      final lunchBreak = ChronosRange(Chronos(2024, 3, 15, 12, 0), Chronos(2024, 3, 15, 13, 0));
+      final lunchBreak = ChronosRange(
+        Chronos(2024, 3, 15, 12, 0),
+        Chronos(2024, 3, 15, 13, 0),
+      );
 
       expect(businessHours.contains(Chronos(2024, 3, 15, 10, 30)), true);
       expect(businessHours.overlaps(lunchBreak), true);
@@ -334,11 +403,20 @@ void main() {
     });
 
     test('meeting conflict detection', () {
-      final meeting1 = ChronosRange(Chronos(2024, 3, 15, 14, 0), Chronos(2024, 3, 15, 15, 0));
+      final meeting1 = ChronosRange(
+        Chronos(2024, 3, 15, 14, 0),
+        Chronos(2024, 3, 15, 15, 0),
+      );
 
-      final meeting2 = ChronosRange(Chronos(2024, 3, 15, 14, 30), Chronos(2024, 3, 15, 15, 30));
+      final meeting2 = ChronosRange(
+        Chronos(2024, 3, 15, 14, 30),
+        Chronos(2024, 3, 15, 15, 30),
+      );
 
-      final meeting3 = ChronosRange(Chronos(2024, 3, 15, 15, 0), Chronos(2024, 3, 15, 16, 0));
+      final meeting3 = ChronosRange(
+        Chronos(2024, 3, 15, 15, 0),
+        Chronos(2024, 3, 15, 16, 0),
+      );
 
       expect(meeting1.overlaps(meeting2), true);
       expect(meeting1.overlaps(meeting3), false);
@@ -346,27 +424,45 @@ void main() {
     });
 
     test('shift scheduling scenario', () {
-      final morningShift = ChronosRange(Chronos(2024, 3, 15, 6, 0), Chronos(2024, 3, 15, 14, 0));
+      final morningShift = ChronosRange(
+        Chronos(2024, 3, 15, 6, 0),
+        Chronos(2024, 3, 15, 14, 0),
+      );
 
-      final afternoonShift = ChronosRange(Chronos(2024, 3, 15, 14, 0), Chronos(2024, 3, 15, 22, 0));
+      final afternoonShift = ChronosRange(
+        Chronos(2024, 3, 15, 14, 0),
+        Chronos(2024, 3, 15, 22, 0),
+      );
 
-      final nightShift = ChronosRange(Chronos(2024, 3, 15, 22, 0), Chronos(2024, 3, 16, 6, 0));
+      final nightShift = ChronosRange(
+        Chronos(2024, 3, 15, 22, 0),
+        Chronos(2024, 3, 16, 6, 0),
+      );
 
       expect(morningShift.overlaps(afternoonShift), false);
       expect(afternoonShift.overlaps(nightShift), false);
       expect(morningShift.overlaps(nightShift), false);
 
-      final fullDay = ChronosRange(Chronos(2024, 3, 15, 6, 0), Chronos(2024, 3, 16, 6, 0));
+      final fullDay = ChronosRange(
+        Chronos(2024, 3, 15, 6, 0),
+        Chronos(2024, 3, 16, 6, 0),
+      );
 
       expect(fullDay.duration, const Duration(hours: 24));
     });
 
     test('event duration calculation', () {
-      final conference = ChronosRange(Chronos(2024, 3, 15, 9, 0), Chronos(2024, 3, 15, 17, 30));
+      final conference = ChronosRange(
+        Chronos(2024, 3, 15, 9, 0),
+        Chronos(2024, 3, 15, 17, 30),
+      );
 
       expect(conference.duration, const Duration(hours: 8, minutes: 30));
 
-      final keynote = ChronosRange(Chronos(2024, 3, 15, 9, 0), Chronos(2024, 3, 15, 10, 30));
+      final keynote = ChronosRange(
+        Chronos(2024, 3, 15, 9, 0),
+        Chronos(2024, 3, 15, 10, 30),
+      );
 
       expect(conference.contains(keynote.start), true);
       expect(conference.contains(keynote.end), true);

@@ -85,8 +85,14 @@ void main() {
       final timestamp = 1709211045000; // Fixed timestamp
 
       // Create UTC and local DateTime from same timestamp
-      final utcDateTime = DateTime.fromMillisecondsSinceEpoch(timestamp, isUtc: true);
-      final localDateTime = DateTime.fromMillisecondsSinceEpoch(timestamp, isUtc: false);
+      final utcDateTime = DateTime.fromMillisecondsSinceEpoch(
+        timestamp,
+        isUtc: true,
+      );
+      final localDateTime = DateTime.fromMillisecondsSinceEpoch(
+        timestamp,
+        isUtc: false,
+      );
 
       final utcChronos = utcDateTime.toChronos();
       final localChronos = localDateTime.toChronos();

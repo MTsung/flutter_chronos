@@ -75,7 +75,9 @@ void main() {
     });
     test('setTimestamp method', () {
       final date = Chronos(2022, 1, 1);
-      final newDate = date.setTimestamp(1672531200).toUtc(); // 2023-01-01 00:00:00 UTC
+      final newDate = date
+          .setTimestamp(1672531200)
+          .toUtc(); // 2023-01-01 00:00:00 UTC
       expect(newDate.year, 2023);
       expect(newDate.month, 1);
       expect(newDate.day, 1);
@@ -404,31 +406,79 @@ void main() {
 
     group('Addition - Single Units', () {
       test('addMicrosecond method', () {
-        expect(Chronos(2023, 1, 1, 0, 0, 0, 0, 0).addMicrosecond(), Chronos(2023, 1, 1, 0, 0, 0, 0, 1));
-        expect(Chronos(2023, 1, 1, 0, 0, 0, 0, 999).addMicrosecond(), Chronos(2023, 1, 1, 0, 0, 0, 1, 0));
-        expect(Chronos(2023, 1, 1, 0, 0, 0, 999, 999).addMicrosecond(), Chronos(2023, 1, 1, 0, 0, 1, 0, 0));
-        expect(Chronos(2023, 1, 1, 0, 0, 59, 999, 999).addMicrosecond(), Chronos(2023, 1, 1, 0, 1, 0, 0, 0));
-        expect(Chronos(2023, 1, 1, 0, 59, 59, 999, 999).addMicrosecond(), Chronos(2023, 1, 1, 1, 0, 0, 0, 0));
-        expect(Chronos(2023, 1, 1, 23, 59, 59, 999, 999).addMicrosecond(), Chronos(2023, 1, 2, 0, 0, 0, 0, 0));
-        expect(Chronos(2023, 12, 31, 23, 59, 59, 999, 999).addMicrosecond(), Chronos(2024, 1, 1, 0, 0, 0, 0, 0));
+        expect(
+          Chronos(2023, 1, 1, 0, 0, 0, 0, 0).addMicrosecond(),
+          Chronos(2023, 1, 1, 0, 0, 0, 0, 1),
+        );
+        expect(
+          Chronos(2023, 1, 1, 0, 0, 0, 0, 999).addMicrosecond(),
+          Chronos(2023, 1, 1, 0, 0, 0, 1, 0),
+        );
+        expect(
+          Chronos(2023, 1, 1, 0, 0, 0, 999, 999).addMicrosecond(),
+          Chronos(2023, 1, 1, 0, 0, 1, 0, 0),
+        );
+        expect(
+          Chronos(2023, 1, 1, 0, 0, 59, 999, 999).addMicrosecond(),
+          Chronos(2023, 1, 1, 0, 1, 0, 0, 0),
+        );
+        expect(
+          Chronos(2023, 1, 1, 0, 59, 59, 999, 999).addMicrosecond(),
+          Chronos(2023, 1, 1, 1, 0, 0, 0, 0),
+        );
+        expect(
+          Chronos(2023, 1, 1, 23, 59, 59, 999, 999).addMicrosecond(),
+          Chronos(2023, 1, 2, 0, 0, 0, 0, 0),
+        );
+        expect(
+          Chronos(2023, 12, 31, 23, 59, 59, 999, 999).addMicrosecond(),
+          Chronos(2024, 1, 1, 0, 0, 0, 0, 0),
+        );
       });
 
       test('addMillisecond method', () {
-        expect(Chronos(2023, 1, 1, 0, 0, 0, 0).addMillisecond(), Chronos(2023, 1, 1, 0, 0, 0, 1));
-        expect(Chronos(2023, 1, 1, 0, 0, 0, 999).addMillisecond(), Chronos(2023, 1, 1, 0, 0, 1, 0));
-        expect(Chronos(2023, 12, 31, 23, 59, 59, 999).addMillisecond(), Chronos(2024, 1, 1, 0, 0, 0, 0));
+        expect(
+          Chronos(2023, 1, 1, 0, 0, 0, 0).addMillisecond(),
+          Chronos(2023, 1, 1, 0, 0, 0, 1),
+        );
+        expect(
+          Chronos(2023, 1, 1, 0, 0, 0, 999).addMillisecond(),
+          Chronos(2023, 1, 1, 0, 0, 1, 0),
+        );
+        expect(
+          Chronos(2023, 12, 31, 23, 59, 59, 999).addMillisecond(),
+          Chronos(2024, 1, 1, 0, 0, 0, 0),
+        );
       });
 
       test('addSecond method', () {
-        expect(Chronos(2023, 1, 1, 0, 0, 0).addSecond(), Chronos(2023, 1, 1, 0, 0, 1));
-        expect(Chronos(2023, 1, 1, 0, 0, 59).addSecond(), Chronos(2023, 1, 1, 0, 1, 0));
-        expect(Chronos(2023, 12, 31, 23, 59, 59).addSecond(), Chronos(2024, 1, 1, 0, 0, 0));
+        expect(
+          Chronos(2023, 1, 1, 0, 0, 0).addSecond(),
+          Chronos(2023, 1, 1, 0, 0, 1),
+        );
+        expect(
+          Chronos(2023, 1, 1, 0, 0, 59).addSecond(),
+          Chronos(2023, 1, 1, 0, 1, 0),
+        );
+        expect(
+          Chronos(2023, 12, 31, 23, 59, 59).addSecond(),
+          Chronos(2024, 1, 1, 0, 0, 0),
+        );
       });
 
       test('addMinute method', () {
-        expect(Chronos(2023, 1, 1, 0, 0).addMinute(), Chronos(2023, 1, 1, 0, 1));
-        expect(Chronos(2023, 1, 1, 0, 59).addMinute(), Chronos(2023, 1, 1, 1, 0));
-        expect(Chronos(2023, 12, 31, 23, 59).addMinute(), Chronos(2024, 1, 1, 0, 0));
+        expect(
+          Chronos(2023, 1, 1, 0, 0).addMinute(),
+          Chronos(2023, 1, 1, 0, 1),
+        );
+        expect(
+          Chronos(2023, 1, 1, 0, 59).addMinute(),
+          Chronos(2023, 1, 1, 1, 0),
+        );
+        expect(
+          Chronos(2023, 12, 31, 23, 59).addMinute(),
+          Chronos(2024, 1, 1, 0, 0),
+        );
       });
 
       test('addHour method', () {
@@ -649,7 +699,10 @@ void main() {
       test('previousWeekendDay method', () {
         expect(Chronos(2023, 12, 25).previousWeekendDay().isWeekend, true);
         expect(Chronos(2023, 12, 31).previousWeekendDay().isWeekend, true);
-        expect(Chronos(2023, 12, 25).previousWeekendDay(), Chronos(2023, 12, 24));
+        expect(
+          Chronos(2023, 12, 25).previousWeekendDay(),
+          Chronos(2023, 12, 24),
+        );
       });
 
       test('addWeekdays method', () {
@@ -665,61 +718,190 @@ void main() {
       });
 
       test('firstOfMonth method', () {
-        expect(Chronos(2023, 1, 15).firstOfMonth(IsoDayOfWeek.monday), Chronos(2023, 1, 2));
-        expect(Chronos(2023, 2, 15).firstOfMonth(IsoDayOfWeek.tuesday), Chronos(2023, 2, 7));
-        expect(Chronos(2023, 3, 15).firstOfMonth(IsoDayOfWeek.wednesday), Chronos(2023, 3, 1));
-        expect(Chronos(2023, 4, 15).firstOfMonth(IsoDayOfWeek.thursday), Chronos(2023, 4, 6));
-        expect(Chronos(2023, 5, 15).firstOfMonth(IsoDayOfWeek.friday), Chronos(2023, 5, 5));
-        expect(Chronos(2023, 6, 15).firstOfMonth(IsoDayOfWeek.saturday), Chronos(2023, 6, 3));
-        expect(Chronos(2023, 7, 15).firstOfMonth(IsoDayOfWeek.sunday), Chronos(2023, 7, 2));
-        expect(Chronos(2023, 8, 15).firstOfMonth(IsoDayOfWeek.monday), Chronos(2023, 8, 7));
-        expect(Chronos(2023, 9, 15).firstOfMonth(IsoDayOfWeek.tuesday), Chronos(2023, 9, 5));
-        expect(Chronos(2023, 10, 15).firstOfMonth(IsoDayOfWeek.wednesday), Chronos(2023, 10, 4));
-        expect(Chronos(2023, 11, 15).firstOfMonth(IsoDayOfWeek.thursday), Chronos(2023, 11, 2));
-        expect(Chronos(2023, 12, 15).firstOfMonth(IsoDayOfWeek.friday), Chronos(2023, 12, 1));
+        expect(
+          Chronos(2023, 1, 15).firstOfMonth(IsoDayOfWeek.monday),
+          Chronos(2023, 1, 2),
+        );
+        expect(
+          Chronos(2023, 2, 15).firstOfMonth(IsoDayOfWeek.tuesday),
+          Chronos(2023, 2, 7),
+        );
+        expect(
+          Chronos(2023, 3, 15).firstOfMonth(IsoDayOfWeek.wednesday),
+          Chronos(2023, 3, 1),
+        );
+        expect(
+          Chronos(2023, 4, 15).firstOfMonth(IsoDayOfWeek.thursday),
+          Chronos(2023, 4, 6),
+        );
+        expect(
+          Chronos(2023, 5, 15).firstOfMonth(IsoDayOfWeek.friday),
+          Chronos(2023, 5, 5),
+        );
+        expect(
+          Chronos(2023, 6, 15).firstOfMonth(IsoDayOfWeek.saturday),
+          Chronos(2023, 6, 3),
+        );
+        expect(
+          Chronos(2023, 7, 15).firstOfMonth(IsoDayOfWeek.sunday),
+          Chronos(2023, 7, 2),
+        );
+        expect(
+          Chronos(2023, 8, 15).firstOfMonth(IsoDayOfWeek.monday),
+          Chronos(2023, 8, 7),
+        );
+        expect(
+          Chronos(2023, 9, 15).firstOfMonth(IsoDayOfWeek.tuesday),
+          Chronos(2023, 9, 5),
+        );
+        expect(
+          Chronos(2023, 10, 15).firstOfMonth(IsoDayOfWeek.wednesday),
+          Chronos(2023, 10, 4),
+        );
+        expect(
+          Chronos(2023, 11, 15).firstOfMonth(IsoDayOfWeek.thursday),
+          Chronos(2023, 11, 2),
+        );
+        expect(
+          Chronos(2023, 12, 15).firstOfMonth(IsoDayOfWeek.friday),
+          Chronos(2023, 12, 1),
+        );
       });
 
       test('lastOfMonth method', () {
-        expect(Chronos(2023, 1, 15).lastOfMonth(IsoDayOfWeek.monday), Chronos(2023, 1, 30));
-        expect(Chronos(2023, 2, 15).lastOfMonth(IsoDayOfWeek.tuesday), Chronos(2023, 2, 28));
-        expect(Chronos(2023, 3, 15).lastOfMonth(IsoDayOfWeek.wednesday), Chronos(2023, 3, 29));
-        expect(Chronos(2023, 4, 15).lastOfMonth(IsoDayOfWeek.thursday), Chronos(2023, 4, 27));
-        expect(Chronos(2023, 5, 15).lastOfMonth(IsoDayOfWeek.friday), Chronos(2023, 5, 26));
-        expect(Chronos(2023, 6, 15).lastOfMonth(IsoDayOfWeek.saturday), Chronos(2023, 6, 24));
-        expect(Chronos(2023, 7, 15).lastOfMonth(IsoDayOfWeek.sunday), Chronos(2023, 7, 30));
-        expect(Chronos(2023, 8, 15).lastOfMonth(IsoDayOfWeek.monday), Chronos(2023, 8, 28));
-        expect(Chronos(2023, 9, 15).lastOfMonth(IsoDayOfWeek.tuesday), Chronos(2023, 9, 26));
-        expect(Chronos(2023, 10, 15).lastOfMonth(IsoDayOfWeek.wednesday), Chronos(2023, 10, 25));
-        expect(Chronos(2023, 11, 15).lastOfMonth(IsoDayOfWeek.thursday), Chronos(2023, 11, 30));
-        expect(Chronos(2023, 12, 15).lastOfMonth(IsoDayOfWeek.friday), Chronos(2023, 12, 29));
+        expect(
+          Chronos(2023, 1, 15).lastOfMonth(IsoDayOfWeek.monday),
+          Chronos(2023, 1, 30),
+        );
+        expect(
+          Chronos(2023, 2, 15).lastOfMonth(IsoDayOfWeek.tuesday),
+          Chronos(2023, 2, 28),
+        );
+        expect(
+          Chronos(2023, 3, 15).lastOfMonth(IsoDayOfWeek.wednesday),
+          Chronos(2023, 3, 29),
+        );
+        expect(
+          Chronos(2023, 4, 15).lastOfMonth(IsoDayOfWeek.thursday),
+          Chronos(2023, 4, 27),
+        );
+        expect(
+          Chronos(2023, 5, 15).lastOfMonth(IsoDayOfWeek.friday),
+          Chronos(2023, 5, 26),
+        );
+        expect(
+          Chronos(2023, 6, 15).lastOfMonth(IsoDayOfWeek.saturday),
+          Chronos(2023, 6, 24),
+        );
+        expect(
+          Chronos(2023, 7, 15).lastOfMonth(IsoDayOfWeek.sunday),
+          Chronos(2023, 7, 30),
+        );
+        expect(
+          Chronos(2023, 8, 15).lastOfMonth(IsoDayOfWeek.monday),
+          Chronos(2023, 8, 28),
+        );
+        expect(
+          Chronos(2023, 9, 15).lastOfMonth(IsoDayOfWeek.tuesday),
+          Chronos(2023, 9, 26),
+        );
+        expect(
+          Chronos(2023, 10, 15).lastOfMonth(IsoDayOfWeek.wednesday),
+          Chronos(2023, 10, 25),
+        );
+        expect(
+          Chronos(2023, 11, 15).lastOfMonth(IsoDayOfWeek.thursday),
+          Chronos(2023, 11, 30),
+        );
+        expect(
+          Chronos(2023, 12, 15).lastOfMonth(IsoDayOfWeek.friday),
+          Chronos(2023, 12, 29),
+        );
       });
 
       test('firstOfQuarter method', () {
-        expect(Chronos(2023, 1, 15).firstOfQuarter(IsoDayOfWeek.monday), Chronos(2023, 1, 2));
-        expect(Chronos(2023, 2, 15).firstOfQuarter(IsoDayOfWeek.tuesday), Chronos(2023, 1, 3));
-        expect(Chronos(2023, 3, 15).firstOfQuarter(IsoDayOfWeek.wednesday), Chronos(2023, 1, 4));
+        expect(
+          Chronos(2023, 1, 15).firstOfQuarter(IsoDayOfWeek.monday),
+          Chronos(2023, 1, 2),
+        );
+        expect(
+          Chronos(2023, 2, 15).firstOfQuarter(IsoDayOfWeek.tuesday),
+          Chronos(2023, 1, 3),
+        );
+        expect(
+          Chronos(2023, 3, 15).firstOfQuarter(IsoDayOfWeek.wednesday),
+          Chronos(2023, 1, 4),
+        );
 
-        expect(Chronos(2023, 4, 15).firstOfQuarter(IsoDayOfWeek.thursday), Chronos(2023, 4, 6));
-        expect(Chronos(2023, 5, 15).firstOfQuarter(IsoDayOfWeek.friday), Chronos(2023, 4, 7));
-        expect(Chronos(2023, 6, 15).firstOfQuarter(IsoDayOfWeek.saturday), Chronos(2023, 4, 1));
+        expect(
+          Chronos(2023, 4, 15).firstOfQuarter(IsoDayOfWeek.thursday),
+          Chronos(2023, 4, 6),
+        );
+        expect(
+          Chronos(2023, 5, 15).firstOfQuarter(IsoDayOfWeek.friday),
+          Chronos(2023, 4, 7),
+        );
+        expect(
+          Chronos(2023, 6, 15).firstOfQuarter(IsoDayOfWeek.saturday),
+          Chronos(2023, 4, 1),
+        );
 
-        expect(Chronos(2023, 7, 15).firstOfQuarter(IsoDayOfWeek.sunday), Chronos(2023, 7, 2));
-        expect(Chronos(2023, 8, 15).firstOfQuarter(IsoDayOfWeek.monday), Chronos(2023, 7, 3));
-        expect(Chronos(2023, 9, 15).firstOfQuarter(IsoDayOfWeek.tuesday), Chronos(2023, 7, 4));
+        expect(
+          Chronos(2023, 7, 15).firstOfQuarter(IsoDayOfWeek.sunday),
+          Chronos(2023, 7, 2),
+        );
+        expect(
+          Chronos(2023, 8, 15).firstOfQuarter(IsoDayOfWeek.monday),
+          Chronos(2023, 7, 3),
+        );
+        expect(
+          Chronos(2023, 9, 15).firstOfQuarter(IsoDayOfWeek.tuesday),
+          Chronos(2023, 7, 4),
+        );
 
-        expect(Chronos(2023, 10, 15).firstOfQuarter(IsoDayOfWeek.wednesday), Chronos(2023, 10, 4));
-        expect(Chronos(2023, 11, 15).firstOfQuarter(IsoDayOfWeek.thursday), Chronos(2023, 10, 5));
-        expect(Chronos(2023, 12, 15).firstOfQuarter(IsoDayOfWeek.friday), Chronos(2023, 10, 6));
+        expect(
+          Chronos(2023, 10, 15).firstOfQuarter(IsoDayOfWeek.wednesday),
+          Chronos(2023, 10, 4),
+        );
+        expect(
+          Chronos(2023, 11, 15).firstOfQuarter(IsoDayOfWeek.thursday),
+          Chronos(2023, 10, 5),
+        );
+        expect(
+          Chronos(2023, 12, 15).firstOfQuarter(IsoDayOfWeek.friday),
+          Chronos(2023, 10, 6),
+        );
       });
 
       test('lastOfYear method', () {
-        expect(Chronos(2023, 1, 15).lastOfYear(IsoDayOfWeek.monday), Chronos(2023, 12, 25));
-        expect(Chronos(2023, 2, 15).lastOfYear(IsoDayOfWeek.tuesday), Chronos(2023, 12, 26));
-        expect(Chronos(2023, 3, 15).lastOfYear(IsoDayOfWeek.wednesday), Chronos(2023, 12, 27));
-        expect(Chronos(2023, 4, 15).lastOfYear(IsoDayOfWeek.thursday), Chronos(2023, 12, 28));
-        expect(Chronos(2023, 5, 15).lastOfYear(IsoDayOfWeek.friday), Chronos(2023, 12, 29));
-        expect(Chronos(2023, 6, 15).lastOfYear(IsoDayOfWeek.saturday), Chronos(2023, 12, 30));
-        expect(Chronos(2023, 7, 15).lastOfYear(IsoDayOfWeek.sunday), Chronos(2023, 12, 31));
+        expect(
+          Chronos(2023, 1, 15).lastOfYear(IsoDayOfWeek.monday),
+          Chronos(2023, 12, 25),
+        );
+        expect(
+          Chronos(2023, 2, 15).lastOfYear(IsoDayOfWeek.tuesday),
+          Chronos(2023, 12, 26),
+        );
+        expect(
+          Chronos(2023, 3, 15).lastOfYear(IsoDayOfWeek.wednesday),
+          Chronos(2023, 12, 27),
+        );
+        expect(
+          Chronos(2023, 4, 15).lastOfYear(IsoDayOfWeek.thursday),
+          Chronos(2023, 12, 28),
+        );
+        expect(
+          Chronos(2023, 5, 15).lastOfYear(IsoDayOfWeek.friday),
+          Chronos(2023, 12, 29),
+        );
+        expect(
+          Chronos(2023, 6, 15).lastOfYear(IsoDayOfWeek.saturday),
+          Chronos(2023, 12, 30),
+        );
+        expect(
+          Chronos(2023, 7, 15).lastOfYear(IsoDayOfWeek.sunday),
+          Chronos(2023, 12, 31),
+        );
       });
     });
   });
