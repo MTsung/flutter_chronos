@@ -14,12 +14,10 @@ platforms:
   web:
 
 topics:
-  - DateTime
-  - Date
-  - Time
-
-screenshots:
-  - path: img/dash.png
+  - datetime
+  - date-time
+  - date
+  - time
 
 environment:
   sdk: ^3.8.1
