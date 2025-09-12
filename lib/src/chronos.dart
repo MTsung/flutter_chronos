@@ -45,7 +45,16 @@ class Chronos extends DateTime {
   /// final chronos2 = Chronos(2024, 3, 15); // 2024-03-15 00:00:00
   /// final chronos3 = Chronos(2024, 3, 15, 14, 30, 45); // 2024-03-15 14:30:45
   /// ```
-  Chronos(super.year, [super.month, super.day, super.hour, super.minute, super.second, super.millisecond, super.microsecond]);
+  Chronos(
+    super.year, [
+    super.month,
+    super.day,
+    super.hour,
+    super.minute,
+    super.second,
+    super.millisecond,
+    super.microsecond,
+  ]);
 
   /// Creates a [Chronos] instance in UTC timezone with the given date and time components.
   ///
@@ -57,7 +66,16 @@ class Chronos extends DateTime {
   /// final utcChronos = Chronos.utc(2024, 3, 15, 14, 30, 45);
   /// print(utcChronos.isUtc); // true
   /// ```
-  Chronos.utc(super.year, [super.month, super.day, super.hour, super.minute, super.second, super.millisecond, super.microsecond]) : super.utc();
+  Chronos.utc(
+    super.year, [
+    super.month,
+    super.day,
+    super.hour,
+    super.minute,
+    super.second,
+    super.millisecond,
+    super.microsecond,
+  ]) : super.utc();
 
   /// Creates a [Chronos] instance from milliseconds since Unix epoch.
   ///
@@ -71,7 +89,10 @@ class Chronos extends DateTime {
   /// final chronos2 = Chronos.fromMillisecondsSinceEpoch(1710511845000, isUtc: true);
   /// print(chronos2.isUtc); // true
   /// ```
-  Chronos.fromMillisecondsSinceEpoch(super.millisecondsSinceEpoch, {super.isUtc}) : super.fromMillisecondsSinceEpoch();
+  Chronos.fromMillisecondsSinceEpoch(
+    super.millisecondsSinceEpoch, {
+    super.isUtc,
+  }) : super.fromMillisecondsSinceEpoch();
 
   /// Creates a [Chronos] instance from microseconds since Unix epoch.
   ///
@@ -86,7 +107,10 @@ class Chronos extends DateTime {
   /// final chronos2 = Chronos.fromMicrosecondsSinceEpoch(1710511845000000, isUtc: true);
   /// print(chronos2.microsecond); // Preserves microsecond precision
   /// ```
-  Chronos.fromMicrosecondsSinceEpoch(super.microsecondsSinceEpoch, {super.isUtc}) : super.fromMicrosecondsSinceEpoch();
+  Chronos.fromMicrosecondsSinceEpoch(
+    super.microsecondsSinceEpoch, {
+    super.isUtc,
+  }) : super.fromMicrosecondsSinceEpoch();
 
   /// Parses a string and returns a Chronos instance.
   ///
@@ -102,7 +126,8 @@ class Chronos extends DateTime {
   /// final chronos2 = Chronos.parse('2024-03-15T14:30:45Z');
   /// print(chronos2.isUtc); // true
   /// ```
-  static Chronos parse(String formattedString) => DateTime.parse(formattedString).toChronos();
+  static Chronos parse(String formattedString) =>
+      DateTime.parse(formattedString).toChronos();
 
   /// Tries to parse a string and returns a Chronos instance or null if parsing fails.
   ///
@@ -117,7 +142,8 @@ class Chronos extends DateTime {
   /// final invalidChronos = Chronos.tryParse('invalid-date');
   /// print(invalidChronos == null); // true
   /// ```
-  static Chronos? tryParse(String formattedString) => DateTime.tryParse(formattedString)?.toChronos();
+  static Chronos? tryParse(String formattedString) =>
+      DateTime.tryParse(formattedString)?.toChronos();
 
   /// Creates a Chronos instance from a Unix timestamp.
   ///
@@ -131,7 +157,8 @@ class Chronos extends DateTime {
   /// print(chronos.isUtc); // true
   /// print(chronos.year); // 2024
   /// ```
-  static Chronos fromTimestamp(int timestamp) => DateTime.fromMillisecondsSinceEpoch(timestamp * 1000).toChronos();
+  static Chronos fromTimestamp(int timestamp) =>
+      DateTime.fromMillisecondsSinceEpoch(timestamp * 1000).toChronos();
 
   /// Converts a DateTime instance to a Chronos instance.
   ///
@@ -200,7 +227,9 @@ class Chronos extends DateTime {
   int get isoWeek {
     final thursday = addDays(4 - isoDayOfWeek);
     final firstDayOfYear = Chronos(thursday.year, 1, 1);
-    final firstThursday = firstDayOfYear.addDays((4 - firstDayOfYear.weekday + 7) % 7);
+    final firstThursday = firstDayOfYear.addDays(
+      (4 - firstDayOfYear.weekday + 7) % 7,
+    );
 
     return ((thursday.diff(firstThursday).inDays) ~/ 7) + 1;
   }
@@ -251,7 +280,17 @@ class Chronos extends DateTime {
   @override
   int get hashCode => millisecondsSinceEpoch.hashCode;
 
-  Chronos copyWith({int? year, int? month, int? day, int? hour, int? minute, int? second, int? millisecond, int? microsecond, bool? isUtc}) {
+  Chronos copyWith({
+    int? year,
+    int? month,
+    int? day,
+    int? hour,
+    int? minute,
+    int? second,
+    int? millisecond,
+    int? microsecond,
+    bool? isUtc,
+  }) {
     return ((isUtc ?? this.isUtc) ? Chronos.utc : Chronos.new)(
       year ?? this.year,
       month ?? this.month,

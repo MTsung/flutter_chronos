@@ -30,7 +30,8 @@ class ChronosRange {
   ///   Chronos(2024, 3, 15, 15, 30), // 3:30 PM
   /// );
   /// ```
-  const ChronosRange(this.start, this.end) : assert(start <= end, 'end must not be before start');
+  const ChronosRange(this.start, this.end)
+    : assert(start <= end, 'end must not be before start');
 
   /// Returns the duration of this range.
   ///
