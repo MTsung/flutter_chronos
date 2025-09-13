@@ -291,7 +291,7 @@ extension ChronosBoundaries on Chronos {
   Chronos endOfIsoYear() {
     final nextYearJan4 = Chronos(year + 1, 1, 4);
     final nextIsoYearStart = nextYearJan4.startOfIsoWeek();
-    return nextIsoYearStart.subtract(Duration(microseconds: 1)).toChronos();
+    return nextIsoYearStart.subMicrosecond();
   }
 
   /// Returns the end of the decade (last year of decade at 23:59:59.999999).

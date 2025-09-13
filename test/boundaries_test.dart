@@ -801,7 +801,7 @@ void main() {
     });
 
     test('endOfIsoYear method', () {
-      final chronos = Chronos(2023, 6, 15);
+      final chronos = Chronos(2025, 6, 15);
       final endOfIsoYear = chronos.endOfIsoYear();
 
       // Should be the Sunday before the start of the next ISO year
