@@ -82,10 +82,10 @@ extension ChronosBoundaries on Chronos {
   /// Example:
   /// ```dart
   /// final date = Chronos(2024, 8, 15);
-  /// final startOfDecade = date.startOfDecade(); // 2020-01-01 00:00:00.000
+  /// final startOfDecade = date.startOfDecade(); // 2021-01-01 00:00:00.000
   /// ```
   Chronos startOfDecade() {
-    final decadeStartYear = (year ~/ 10) * 10;
+    final decadeStartYear = (year ~/ 10) * 10 + 1;
     return Chronos(decadeStartYear, 1, 1);
   }
 
@@ -299,10 +299,10 @@ extension ChronosBoundaries on Chronos {
   /// Example:
   /// ```dart
   /// final date = Chronos(2024, 8, 15);
-  /// final endOfDecade = date.endOfDecade(); // 2029-12-31 23:59:59.999999
+  /// final endOfDecade = date.endOfDecade(); // 2030-12-31 23:59:59.999999
   /// ```
   Chronos endOfDecade() {
-    final decadeEndYear = (year ~/ 10) * 10 + 9;
+    final decadeEndYear = ((year - 1) ~/ 10) * 10 + 10;
     return Chronos(decadeEndYear, 12, 31, 23, 59, 59, 999, 999);
   }
 
