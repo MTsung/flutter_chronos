@@ -1,3 +1,8 @@
+# 1.0.9
+
+- Corrected the spelling of `getTimeZonOffset()` → `getTimeZoneOffset()`
+- Update README.md 
+
 # 1.0.8
 
 - Fix correct rounding logic
