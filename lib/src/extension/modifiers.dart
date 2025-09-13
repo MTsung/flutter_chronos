@@ -151,7 +151,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final added = date.addMicrosecond(); // 2024-03-15 14:30:45.123457
   /// ```
-  Chronos addMicrosecond() => addMicroseconds(1).toChronos();
+  Chronos addMicrosecond() => addMicroseconds(1);
 
   /// Adds one millisecond to the date.
   ///
@@ -160,7 +160,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123);
   /// final added = date.addMillisecond(); // 2024-03-15 14:30:45.124
   /// ```
-  Chronos addMillisecond() => addMilliseconds(1).toChronos();
+  Chronos addMillisecond() => addMilliseconds(1);
 
   /// Adds one second to the date.
   ///
@@ -169,7 +169,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final added = date.addSecond(); // 2024-03-15 14:30:46
   /// ```
-  Chronos addSecond() => addSeconds(1).toChronos();
+  Chronos addSecond() => addSeconds(1);
 
   /// Adds one minute to the date.
   ///
@@ -178,7 +178,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final added = date.addMinute(); // 2024-03-15 14:31:45
   /// ```
-  Chronos addMinute() => addMinutes(1).toChronos();
+  Chronos addMinute() => addMinutes(1);
 
   /// Adds one hour to the date.
   ///
@@ -187,7 +187,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final added = date.addHour(); // 2024-03-15 15:30:45
   /// ```
-  Chronos addHour() => addHours(1).toChronos();
+  Chronos addHour() => addHours(1);
 
   /// Adds one day to the date.
   ///
@@ -196,7 +196,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final tomorrow = date.addDay(); // 2024-03-16
   /// ```
-  Chronos addDay() => addDays(1).toChronos();
+  Chronos addDay() => addDays(1);
 
   /// Adds one week to the date.
   ///
@@ -205,7 +205,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final added = date.addWeek(); // 2024-03-22
   /// ```
-  Chronos addWeek() => addWeeks(1).toChronos();
+  Chronos addWeek() => addWeeks(1);
 
   /// Adds one ISO week to the date.
   ///
@@ -214,7 +214,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final added = date.addIsoWeek(); // 2024-03-22
   /// ```
-  Chronos addIsoWeek() => addIsoWeeks(1).toChronos();
+  Chronos addIsoWeek() => addIsoWeeks(1);
 
   /// Adds one month to the date.
   ///
@@ -223,7 +223,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final nextMonth = date.addMonth(); // 2024-04-15
   /// ```
-  Chronos addMonth() => addMonths(1).toChronos();
+  Chronos addMonth() => addMonths(1);
 
   /// Adds one year to the date.
   ///
@@ -232,7 +232,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final added = date.addYear(); // 2025-03-15
   /// ```
-  Chronos addYear() => addYears(1).toChronos();
+  Chronos addYear() => addYears(1);
 
   /// Adds one ISO year to the date.
   ///
@@ -241,7 +241,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final added = date.addIsoYear(); // 2025-03-15
   /// ```
-  Chronos addIsoYear() => addIsoYears(1).toChronos();
+  Chronos addIsoYear() => addIsoYears(1);
 
   /// Adds one quarter to the date.
   ///
@@ -250,7 +250,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15); // Q1
   /// final added = date.addQuarter(); // 2024-06-15 (Q2)
   /// ```
-  Chronos addQuarter() => addQuarters(1).toChronos();
+  Chronos addQuarter() => addQuarters(1);
 
   /// Adds one decade to the date.
   ///
@@ -259,7 +259,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final added = date.addDecade(); // 2034-03-15
   /// ```
-  Chronos addDecade() => addDecades(1).toChronos();
+  Chronos addDecade() => addDecades(1);
 
   /// Adds one century to the date.
   ///
@@ -268,7 +268,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final added = date.addCentury(); // 2124-03-15
   /// ```
-  Chronos addCentury() => addCenturies(1).toChronos();
+  Chronos addCentury() => addCenturies(1);
 
   /// Adds one millennium to the date.
   ///
@@ -277,7 +277,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final added = date.addMillennium(); // 3024-03-15
   /// ```
-  Chronos addMillennium() => addMillennia(1).toChronos();
+  Chronos addMillennium() => addMillennia(1);
 
   /// Adds the specified number of microseconds to the date.
   ///
@@ -480,7 +480,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   /// final subtracted = date.subMicrosecond(); // 2024-03-15 14:30:45.123455
   /// ```
-  Chronos subMicrosecond() => subMicroseconds(1).toChronos();
+  Chronos subMicrosecond() => subMicroseconds(1);
 
   /// Subtracts one millisecond from the date.
   ///
@@ -489,7 +489,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45, 123);
   /// final subtracted = date.subMillisecond(); // 2024-03-15 14:30:45.122
   /// ```
-  Chronos subMillisecond() => subMilliseconds(1).toChronos();
+  Chronos subMillisecond() => subMilliseconds(1);
 
   /// Subtracts one second from the date.
   ///
@@ -498,7 +498,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final subtracted = date.subSecond(); // 2024-03-15 14:30:44
   /// ```
-  Chronos subSecond() => subSeconds(1).toChronos();
+  Chronos subSecond() => subSeconds(1);
 
   /// Subtracts one minute from the date.
   ///
@@ -507,7 +507,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final subtracted = date.subMinute(); // 2024-03-15 14:29:45
   /// ```
-  Chronos subMinute() => subMinutes(1).toChronos();
+  Chronos subMinute() => subMinutes(1);
 
   /// Subtracts one hour from the date.
   ///
@@ -516,7 +516,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final subtracted = date.subHour(); // 2024-03-15 13:30:45
   /// ```
-  Chronos subHour() => subHours(1).toChronos();
+  Chronos subHour() => subHours(1);
 
   /// Subtracts one day from the date.
   ///
@@ -525,7 +525,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final yesterday = date.subDay(); // 2024-03-14
   /// ```
-  Chronos subDay() => subDays(1).toChronos();
+  Chronos subDay() => subDays(1);
 
   /// Subtracts one week from the date.
   ///
@@ -534,7 +534,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final subtracted = date.subWeek(); // 2024-03-08
   /// ```
-  Chronos subWeek() => subWeeks(1).toChronos();
+  Chronos subWeek() => subWeeks(1);
 
   /// Subtracts one ISO week from the date.
   ///
@@ -543,7 +543,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final subtracted = date.subIsoWeek(); // 2024-03-08
   /// ```
-  Chronos subIsoWeek() => subIsoWeeks(1).toChronos();
+  Chronos subIsoWeek() => subIsoWeeks(1);
 
   /// Subtracts one month from the date.
   ///
@@ -552,7 +552,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final lastMonth = date.subMonth(); // 2024-02-15
   /// ```
-  Chronos subMonth() => subMonths(1).toChronos();
+  Chronos subMonth() => subMonths(1);
 
   /// Subtracts one year from the date.
   ///
@@ -561,7 +561,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final lastYear = date.subYear(); // 2023-03-15
   /// ```
-  Chronos subYear() => subYears(1).toChronos();
+  Chronos subYear() => subYears(1);
 
   /// Subtracts one ISO year from the date.
   ///
@@ -570,7 +570,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final subtracted = date.subIsoYear(); // 2023-03-15
   /// ```
-  Chronos subIsoYear() => subIsoYears(1).toChronos();
+  Chronos subIsoYear() => subIsoYears(1);
 
   /// Subtracts one quarter from the date.
   ///
@@ -579,7 +579,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 6, 15); // Q2
   /// final subtracted = date.subQuarter(); // 2024-03-15 (Q1)
   /// ```
-  Chronos subQuarter() => subQuarters(1).toChronos();
+  Chronos subQuarter() => subQuarters(1);
 
   /// Subtracts one decade from the date.
   ///
@@ -588,7 +588,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final subtracted = date.subDecade(); // 2014-03-15
   /// ```
-  Chronos subDecade() => subDecades(1).toChronos();
+  Chronos subDecade() => subDecades(1);
 
   /// Subtracts one century from the date.
   ///
@@ -597,7 +597,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15);
   /// final subtracted = date.subCentury(); // 1924-03-15
   /// ```
-  Chronos subCentury() => subCenturies(1).toChronos();
+  Chronos subCentury() => subCenturies(1);
 
   /// Subtracts one millennium from the date.
   ///
