@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MTsung/flutter_chronos/refs/heads/main/img/dash_logo.png" height="100" alt="Flutter Chronos" />
+  <img src="https://raw.githubusercontent.com/MTsung/flutter_chronos/refs/heads/main/img/dash_logo.png" width="100%" alt="Flutter Chronos" />
 </p>
 
 <p align="center">
@@ -34,21 +34,6 @@ Chronos 繼承自 Dart 原生 DateTime，讓你除了原本的基本功能之外
 - 可設定現在時間（Fake Now），讓單元測試（Unit Testing）更方便撰寫。
 
 ---
-
-## 安裝
-
-在 `pubspec.yaml` 加入依賴：
-
-```yaml
-dependencies:
-  flutter_chronos: ^1.0.1
-```
-
-並在程式中引入：
-
-```dart
-import 'package:chronos/chronos.dart';
-```
 
 # 實例化
 

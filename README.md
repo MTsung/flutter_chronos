@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://raw.githubusercontent.com/MTsung/flutter_chronos/refs/heads/main/img/dash_logo.png" height="100" alt="Flutter Chronos" />
+  <img src="https://raw.githubusercontent.com/MTsung/flutter_chronos/refs/heads/main/img/dash_logo.png" width="100%" alt="Flutter Chronos" />
 </p>
 
 <p align="center">
@@ -35,21 +35,6 @@ Chronos extends Dart's native DateTime, providing you with more intuitive time m
 - Set current time (Fake Now) for more convenient unit testing.
 
 ---
-
-## Installation
-
-Add dependency in `pubspec.yaml`:
-
-```yaml
-dependencies:
-  flutter_chronos: ^1.0.1
-```
-
-And import in your code:
-
-```dart
-import 'package:chronos/chronos.dart';
-```
 
 # Instantiation
 
