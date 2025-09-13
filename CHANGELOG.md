@@ -1,3 +1,8 @@
+# 1.0.11
+
+- Decade now defined as years ending with 1 to 0 (e.g., 2001~2010)
+- Corrected `_roundingUnit` floor/ceil/round behavior to align with PHP Carbon
+
 # 1.0.10
 
 - Update setMonth() and setYear() to use addMonths/addYears for overflow-safe handling
