@@ -1,3 +1,7 @@
+# 1.0.6
+
+- Update example
+
 # 1.0.5
 
 - Optimized internal code for better readability and maintainability.
