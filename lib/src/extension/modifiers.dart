@@ -70,7 +70,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final newYear = date.setYear(2025); // 2025-03-15 14:30:45
   /// ```
-  Chronos setYear(int year) => copyWith(year: year);
+  Chronos setYear(int year) => addYears(year - this.year);
 
   /// Sets the month while keeping other components unchanged.
   ///
@@ -79,7 +79,7 @@ extension ChronosModifiers on Chronos {
   /// final date = Chronos(2024, 3, 15, 14, 30, 45);
   /// final newMonth = date.setMonth(12); // 2024-12-15 14:30:45
   /// ```
-  Chronos setMonth(int month) => copyWith(month: month);
+  Chronos setMonth(int month) => addMonths(month - this.month);
 
   /// Sets the day while keeping other components unchanged.
   ///

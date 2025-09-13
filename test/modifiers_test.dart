@@ -37,6 +37,12 @@ void main() {
       final date = Chronos(2022, 1, 1);
       final newDate = date.setYear(2023);
       expect(newDate.year, 2023);
+
+      final date1 = Chronos(2024, 2, 29);
+      final newDate1 = date1.setYear(2023);
+      expect(newDate1.year, 2023);
+      expect(newDate1.month, 2);
+      expect(newDate1.day, 28);
     });
     test('setMonth method', () {
       final date = Chronos(2022, 1, 1);
@@ -351,11 +357,10 @@ void main() {
       expect(newDate.day, 1);
 
       // Setting the month on a day that doesn't exist in the target month
-      final date2 = Chronos(2023, 1, 31);
+      final date2 = Chronos(2023, 1, 31, 23, 59, 9);
       final newDate2 = date2.setMonth(2);
-      // DateTime rolls over, so Jan 31 + 1 month is not Feb 28, but March 3
-      expect(newDate2.month, 3);
-      expect(newDate2.day, 3);
+      expect(newDate2.month, 2);
+      expect(newDate2.day, 28);
     });
     test('leap year handling in setters', () {
       // Leap year: setting to Feb 29 should be successful
