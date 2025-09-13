@@ -1,6 +1,6 @@
 name: flutter_chronos
 description: A powerful and intuitive date and time utilities library for Flutter.
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/MTsung/flutter_chronos
 repository: https://github.com/MTsung/flutter_chronos
 issue_tracker: https://github.com/MTsung/flutter_chronos/issues
@@ -15,9 +15,10 @@ platforms:
 
 topics:
   - datetime
-  - date-time
   - date
   - time
+  - carbon
+  - moment
 
 screenshots:
   - description: Flutter Chronos

@@ -1,3 +1,8 @@
+# 1.0.5
+
+- Optimized internal code for better readability and maintainability.
+- Update README.md 
+
 # 1.0.4
 
 - Rnu dart format .
