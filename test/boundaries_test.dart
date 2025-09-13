@@ -119,7 +119,7 @@ void main() {
       final chronos = Chronos(2023, 12, 25);
       final result = chronos.startOfDecade();
 
-      expect(result.year, 2020);
+      expect(result.year, 2021);
       expect(result.month, 1);
       expect(result.day, 1);
     });
@@ -323,7 +323,7 @@ void main() {
       final chronos = Chronos(2023, 12, 25);
       final result = chronos.endOfDecade();
 
-      expect(result.year, 2029);
+      expect(result.year, 2030);
       expect(result.month, 12);
       expect(result.day, 31);
     });
@@ -407,7 +407,7 @@ void main() {
     });
 
     test('isStartOfDecade property', () {
-      final decadeStart = Chronos(2020, 1, 1, 0, 0, 0);
+      final decadeStart = Chronos(2021, 1, 1, 0, 0, 0);
       final notDecadeStart = Chronos(2023, 1, 1, 0, 0, 0);
 
       expect(decadeStart.isStartOfDecade, true);
@@ -522,7 +522,7 @@ void main() {
     });
 
     test('isEndOfDecade property', () {
-      final decadeEnd = Chronos(2029, 12, 31, 23, 59, 59, 999, 999);
+      final decadeEnd = Chronos(2030, 12, 31, 23, 59, 59, 999, 999);
       final notDecadeEnd = Chronos(2023, 12, 31, 23, 59, 59, 999, 999);
 
       expect(decadeEnd.isEndOfDecade, true);

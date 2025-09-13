@@ -210,7 +210,7 @@ void main() {
       );
       expect(
         Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfDecade,
-        125677845500750,
+        94055445500750,
       );
       expect(
         Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfCentury,
@@ -266,8 +266,8 @@ void main() {
     });
 
     test('year positions', () {
-      expect(Chronos(2021, 1, 1).yearOfDecade, 2);
-      expect(Chronos(2025, 1, 1).yearOfDecade, 6);
+      expect(Chronos(2021, 1, 1).yearOfDecade, 1);
+      expect(Chronos(2025, 1, 1).yearOfDecade, 5);
       expect(Chronos(2023, 1, 1).yearOfCentury, 23);
       expect(Chronos(2023, 1, 1).yearOfMillennium, 23);
     });

@@ -199,8 +199,46 @@ void main() {
   print('Ceil day: ${testDate.ceilDay()}'); // Ceil day: 2024-03-16 00:00:00.000
   print('Floor day: ${testDate.floorDay()}'); // Floor day: 2024-03-15 00:00:00.000
   print('Round day: ${testDate.roundDay()}'); // Round day: 2024-03-16 00:00:00.000
-  print('Round to 15 minutes: ${testDate.roundMinutes(15)}'); // Round to 15 minutes: 2024-03-15 14:30:00.000
-  print('Round to 6 hours: ${testDate.roundHours(6)}'); // Round to 6 hours: 2024-03-15 14:00:00.000
+
+  print('Floor Microseconds: ${testDate.floorMicroseconds(5)}'); // Floor Microseconds: 2024-03-15 14:30:45.123455
+  print('Floor Milliseconds: ${testDate.floorMilliseconds(5)}'); // Floor Milliseconds: 2024-03-15 14:30:45.000
+  print('Floor Seconds: ${testDate.floorSeconds(5)}'); // Floor Seconds: 2024-03-15 14:30:45.000
+  print('Floor Minutes: ${testDate.floorMinutes(5)}'); // Floor Minutes: 2024-03-15 14:30:00.000
+  print('Floor Hours: ${testDate.floorHours(5)}'); // Floor Hours: 2024-03-15 10:00:00.000
+  print('Floor Days: ${testDate.floorDays(5)}'); // Floor Days: 2024-03-11 00:00:00.000
+  print('Floor Weeks: ${testDate.floorWeeks(5)}'); // Floor Weeks: 2024-03-01 00:00:00.000
+  print('Floor Months: ${testDate.floorMonths(5)}'); // Floor Months: 2024-01-01 00:00:00.000
+  print('Floor Quarters: ${testDate.floorQuarters(5)}'); // Floor Quarters: 2024-01-01 00:00:00.000
+  print('Floor Years: ${testDate.floorYears(5)}'); // Floor Years: 2021-01-01 00:00:00.000
+  print('Floor Decades: ${testDate.floorDecades(5)}'); // Floor Decades: 2001-01-01 00:00:00.000
+  print('Floor Centuries: ${testDate.floorCenturies(5)}'); // Floor Centuries: 2001-01-01 00:00:00.000
+  print('Floor Millennia: ${testDate.floorMillennia(5)}'); // Floor Millennia: 0001-01-01 00:00:00.000
+  print('Ceil Microseconds: ${testDate.ceilMicroseconds(5)}'); // Ceil Microseconds: 2024-03-15 14:30:45.123460
+  print('Ceil Milliseconds: ${testDate.ceilMilliseconds(5)}'); // Ceil Milliseconds: 2024-03-15 14:30:45.005
+  print('Ceil Seconds: ${testDate.ceilSeconds(5)}'); // Ceil Seconds: 2024-03-15 14:30:50.000
+  print('Ceil Minutes: ${testDate.ceilMinutes(5)}'); // Ceil Minutes: 2024-03-15 14:35:00.000
+  print('Ceil Hours: ${testDate.ceilHours(5)}'); // Ceil Hours: 2024-03-15 15:00:00.000
+  print('Ceil Days: ${testDate.ceilDays(5)}'); // Ceil Days: 2024-03-16 00:00:00.000
+  print('Ceil Weeks: ${testDate.ceilWeeks(5)}'); // Ceil Weeks: 2024-04-05 00:00:00.000
+  print('Ceil Months: ${testDate.ceilMonths(5)}'); // Ceil Months: 2024-06-01 00:00:00.000
+  print('Ceil Quarters: ${testDate.ceilQuarters(5)}'); // Ceil Quarters: 2025-04-01 00:00:00.000
+  print('Ceil Years: ${testDate.ceilYears(5)}'); // Ceil Years: 2026-01-01 00:00:00.000
+  print('Ceil Decades: ${testDate.ceilDecades(5)}'); // Ceil Decades: 2051-01-01 00:00:00.000
+  print('Ceil Centuries: ${testDate.ceilCenturies(5)}'); // Ceil Centuries: 2501-01-01 00:00:00.000
+  print('Ceil Millennia: ${testDate.ceilMillennia(5)}'); // Ceil Millennia: 5001-01-01 00:00:00.000
+  print('Round Microseconds: ${testDate.roundMicroseconds(5)}'); // Round Microseconds: 2024-03-15 14:30:45.123455
+  print('Round Milliseconds: ${testDate.roundMilliseconds(5)}'); // Round Milliseconds: 2024-03-15 14:30:45.000
+  print('Round Seconds: ${testDate.roundSeconds(5)}'); // Round Seconds: 2024-03-15 14:30:45.000
+  print('Round Minutes: ${testDate.roundMinutes(5)}'); // Round Minutes: 2024-03-15 14:30:00.000
+  print('Round Hours: ${testDate.roundHours(5)}'); // Round Hours: 2024-03-15 15:00:00.000
+  print('Round Days: ${testDate.roundDays(5)}'); // Round Days: 2024-03-16 00:00:00.000
+  print('Round Weeks: ${testDate.roundWeeks(5)}'); // Round Weeks: 2024-03-01 00:00:00.000
+  print('Round Months: ${testDate.roundMonths(5)}'); // Round Months: 2024-01-01 00:00:00.000
+  print('Round Quarters: ${testDate.roundQuarters(5)}'); // Round Quarters: 2024-01-01 00:00:00.000
+  print('Round Years: ${testDate.roundYears(5)}'); // Round Years: 2026-01-01 00:00:00.000
+  print('Round Decades: ${testDate.roundDecades(5)}'); // Round Decades: 2001-01-01 00:00:00.000
+  print('Round Centuries: ${testDate.roundCenturies(5)}'); // Round Centuries: 2001-01-01 00:00:00.000
+  print('Round Millennia: ${testDate.roundMillennia(5)}'); // Round Millennia: 0001-01-01 00:00:00.000
 
   print('Set year to 2025: ${now.setYear(2025)}'); // Set year to 2025: 2025-09-13 11:23:41.703648
   print('Set month to December: ${now.setMonth(12)}'); // Set month to December: 2025-12-13 11:23:41.703648
