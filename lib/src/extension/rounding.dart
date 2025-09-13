@@ -839,7 +839,24 @@ extension ChronosRounding on Chronos {
     int precision,
     int Function(num) mathFunc,
   ) {
-    final start = startOfUnit(unit);
+    Map temp = {
+      TimeUnit.century: TimeUnit.millennium,
+      TimeUnit.decade: TimeUnit.century,
+      TimeUnit.year: TimeUnit.decade,
+      TimeUnit.quarter: TimeUnit.year,
+      TimeUnit.month: TimeUnit.year,
+      TimeUnit.week: TimeUnit.month,
+      TimeUnit.day: TimeUnit.month,
+      TimeUnit.hour: TimeUnit.day,
+      TimeUnit.minute: TimeUnit.hour,
+      TimeUnit.second: TimeUnit.minute,
+      TimeUnit.millisecond: TimeUnit.second,
+      TimeUnit.microsecond: TimeUnit.millisecond,
+    };
+
+    final start = TimeUnit.millennium == unit
+        ? Chronos(1)
+        : startOfUnit(temp[unit]);
     final diff = start.diffInUnit(unit, this);
     final rounded = mathFunc(diff / precision) * precision;
 
