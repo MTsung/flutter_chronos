@@ -35,10 +35,7 @@ void main() {
       final shortResult = pastDate.diffForHumans(locale: 'en_short');
 
       expect(shortResult, isNotEmpty);
-      expect(
-        shortResult.length,
-        lessThan(10),
-      ); // Short format should be shorter
+      expect(shortResult.length, lessThan(10));
     });
 
     test('diffForHumans with custom clock', () {

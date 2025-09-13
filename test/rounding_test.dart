@@ -6,8 +6,6 @@ void main() {
     test('rounding works by position within unit', () {
       final date = Chronos(2024, 2, 29, 14, 30, 45, 500, 750);
 
-      // The rounding methods work by calculating position within the unit
-      // and then rounding that position
       expect(date.ceilSecond(), isA<Chronos>());
       expect(date.floorSecond(), isA<Chronos>());
       expect(date.roundSecond(), isA<Chronos>());
@@ -249,12 +247,10 @@ void main() {
       final utcDate = Chronos.utc(2024, 2, 29, 14, 30, 45, 500);
       final localDate = Chronos(2024, 2, 29, 14, 30, 45, 500);
 
-      // Test that rounding operations preserve timezone
       final utcCeiled = utcDate.ceilSecond();
       final utcFloored = utcDate.floorMinute();
       final utcRounded = utcDate.roundHour();
 
-      // Note: The actual timezone preservation may depend on implementation
       expect(utcCeiled, isA<Chronos>());
       expect(utcFloored, isA<Chronos>());
       expect(utcRounded, isA<Chronos>());

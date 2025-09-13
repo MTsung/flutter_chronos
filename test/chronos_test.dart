@@ -32,7 +32,7 @@ void main() {
     });
 
     test('fromMillisecondsSinceEpoch constructor', () {
-      final timestamp = 1703505600000; // 2023-12-25 12:00:00 UTC
+      final timestamp = 1703505600000;
       final chronos = Chronos.fromMillisecondsSinceEpoch(
         timestamp,
         isUtc: true,
@@ -43,7 +43,7 @@ void main() {
     });
 
     test('fromMicrosecondsSinceEpoch constructor', () {
-      final timestamp = 1703505600000000; // 2023-12-25 12:00:00 UTC
+      final timestamp = 1703505600000000;
       final chronos = Chronos.fromMicrosecondsSinceEpoch(
         timestamp,
         isUtc: true,
@@ -83,7 +83,7 @@ void main() {
     });
 
     test('fromTimestamp method', () {
-      final timestamp = 1703505600; // 2023-12-25 12:00:00 UTC
+      final timestamp = 1703505600;
       final chronos = Chronos.fromTimestamp(timestamp);
 
       expect(chronos.timestamp, timestamp);
@@ -717,9 +717,8 @@ void main() {
     });
 
     test('daylight saving time transitions', () {
-      // This test depends on local timezone, so we'll just verify it doesn't crash
-      final springForward = Chronos(2023, 3, 12); // Typical DST start in US
-      final fallBack = Chronos(2023, 11, 5); // Typical DST end in US
+      final springForward = Chronos(2023, 3, 12);
+      final fallBack = Chronos(2023, 11, 5);
 
       expect(() => springForward.addHours(24), returnsNormally);
       expect(() => fallBack.addHours(24), returnsNormally);

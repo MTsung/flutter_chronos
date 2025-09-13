@@ -145,11 +145,9 @@ void main() {
 
   group('Week Boundaries', () {
     test('startOfWeek method', () {
-      // Monday, December 25, 2023
       final monday = Chronos(2023, 12, 25);
       final startOfWeek = monday.startOfWeek();
 
-      // Should be Sunday, December 24, 2023
       expect(startOfWeek.year, 2023);
       expect(startOfWeek.month, 12);
       expect(startOfWeek.day, 24);
@@ -160,11 +158,9 @@ void main() {
     });
 
     test('endOfWeek method', () {
-      // Monday, December 25, 2023
       final monday = Chronos(2023, 12, 25);
       final endOfWeek = monday.endOfWeek();
 
-      // Should be Saturday, December 30, 2023
       expect(endOfWeek.year, 2023);
       expect(endOfWeek.month, 12);
       expect(endOfWeek.day, 30);
@@ -175,11 +171,9 @@ void main() {
     });
 
     test('startOfIsoWeek method', () {
-      // Wednesday, December 27, 2023
       final wednesday = Chronos(2023, 12, 27);
       final startOfIsoWeek = wednesday.startOfIsoWeek();
 
-      // Should be Monday, December 25, 2023
       expect(startOfIsoWeek.year, 2023);
       expect(startOfIsoWeek.month, 12);
       expect(startOfIsoWeek.day, 25);
@@ -190,11 +184,9 @@ void main() {
     });
 
     test('endOfIsoWeek method', () {
-      // Monday, December 25, 2023
       final monday = Chronos(2023, 12, 25);
       final endOfIsoWeek = monday.endOfIsoWeek();
 
-      // Should be Sunday, December 31, 2023
       expect(endOfIsoWeek.year, 2023);
       expect(endOfIsoWeek.month, 12);
       expect(endOfIsoWeek.day, 31);
@@ -277,7 +269,6 @@ void main() {
     });
 
     test('endOfMonth method', () {
-      // February in non-leap year
       final feb = Chronos(2023, 2, 15);
       final endOfFeb = feb.endOfMonth();
       expect(endOfFeb.day, 28);
@@ -285,17 +276,14 @@ void main() {
       expect(endOfFeb.minute, 59);
       expect(endOfFeb.second, 59);
 
-      // February in leap year
       final febLeap = Chronos(2024, 2, 15);
       final endOfFebLeap = febLeap.endOfMonth();
       expect(endOfFebLeap.day, 29);
 
-      // April (30 days)
       final apr = Chronos(2023, 4, 15);
       final endOfApr = apr.endOfMonth();
       expect(endOfApr.day, 30);
 
-      // December (31 days)
       final dec = Chronos(2023, 12, 15);
       final endOfDec = dec.endOfMonth();
       expect(endOfDec.day, 31);
@@ -369,16 +357,16 @@ void main() {
     });
 
     test('isStartOfWeek property', () {
-      final sunday = Chronos(2023, 12, 24, 0, 0, 0); // Sunday at midnight
-      final monday = Chronos(2023, 12, 25, 0, 0, 0); // Monday at midnight
+      final sunday = Chronos(2023, 12, 24, 0, 0, 0);
+      final monday = Chronos(2023, 12, 25, 0, 0, 0);
 
       expect(sunday.isStartOfWeek, true);
       expect(monday.isStartOfWeek, false);
     });
 
     test('isStartOfIsoWeek property', () {
-      final monday = Chronos(2023, 12, 25, 0, 0, 0); // Monday at midnight
-      final tuesday = Chronos(2023, 12, 26, 0, 0, 0); // Tuesday at midnight
+      final monday = Chronos(2023, 12, 25, 0, 0, 0);
+      final tuesday = Chronos(2023, 12, 26, 0, 0, 0);
 
       expect(monday.isStartOfIsoWeek, true);
       expect(tuesday.isStartOfIsoWeek, false);
@@ -411,7 +399,6 @@ void main() {
     });
 
     test('isStartOfIsoYear property', () {
-      // ISO year 2024 starts on January 1, 2024 (Monday)
       final isoYearStart = Chronos(2024, 1, 1, 0, 0, 0);
       final notIsoYearStart = Chronos(2024, 1, 2, 0, 0, 0);
 
@@ -486,52 +473,16 @@ void main() {
     });
 
     test('isEndOfWeek property', () {
-      final saturday = Chronos(
-        2023,
-        12,
-        30,
-        23,
-        59,
-        59,
-        999,
-        999,
-      ); // Saturday at end of day
-      final monday = Chronos(
-        2023,
-        12,
-        25,
-        23,
-        59,
-        59,
-        999,
-        999,
-      ); // Monday at end of day
+      final saturday = Chronos(2023, 12, 30, 23, 59, 59, 999, 999);
+      final monday = Chronos(2023, 12, 25, 23, 59, 59, 999, 999);
 
       expect(saturday.isEndOfWeek, true);
       expect(monday.isEndOfWeek, false);
     });
 
     test('isEndOfIsoWeek property', () {
-      final sunday = Chronos(
-        2023,
-        12,
-        31,
-        23,
-        59,
-        59,
-        999,
-        999,
-      ); // Sunday at end of day
-      final monday = Chronos(
-        2023,
-        12,
-        25,
-        23,
-        59,
-        59,
-        999,
-        999,
-      ); // Monday at end of day
+      final sunday = Chronos(2023, 12, 31, 23, 59, 59, 999, 999);
+      final monday = Chronos(2023, 12, 25, 23, 59, 59, 999, 999);
 
       expect(sunday.isEndOfIsoWeek, true);
       expect(monday.isEndOfIsoWeek, false);
@@ -564,11 +515,10 @@ void main() {
     });
 
     test('isEndOfIsoYear property', () {
-      // This is complex to test as it depends on ISO year calculations
-      final chronos = Chronos(2023, 12, 31);
+      final chronos = Chronos(2022, 12, 31);
       final endOfIsoYear = chronos.endOfIsoYear();
 
-      expect(endOfIsoYear.isEndOfIsoYear, true);
+      expect(endOfIsoYear, Chronos(2023, 1, 1, 23, 59, 59, 999, 999));
     });
 
     test('isEndOfDecade property', () {
@@ -628,22 +578,16 @@ void main() {
     });
 
     test('isLastOfMonth property', () {
-      // isLastOfMonth checks if the current date is the same as the end of the month
-      // This means it compares with "today", so we need to test with actual dates
       ChronosConfig().setFakeNow(Chronos(2023, 12, 31, 10, 30, 0));
       try {
         final today = Chronos.now();
         final endOfThisMonth = today.endOfMonth();
 
-        // Test if today is the last day of the month
         expect(today.isLastOfMonth, today.day == endOfThisMonth.day);
 
-        // Test with specific dates
         final lastDayOfDec = Chronos(2023, 12, 31);
         final notLastDay = Chronos(2023, 12, 25);
 
-        // These will only be true if the test is run on those specific days
-        // So we test the logic instead
         expect(lastDayOfDec.endOfMonth().day, 31);
         expect(notLastDay.endOfMonth().day, 31);
         expect(lastDayOfDec.day == lastDayOfDec.endOfMonth().day, true);
@@ -720,77 +664,67 @@ void main() {
       expect(endOfHour.second, 59);
 
       final endOfMonth = chronos.endOfUnit(TimeUnit.month);
-      expect(endOfMonth.day, 31); // December has 31 days
+      expect(endOfMonth.day, 31);
       expect(endOfMonth.hour, 23);
     });
   });
 
   group('Season Boundaries', () {
     test('startOfSeason method', () {
-      // Spring (March-May)
       final springDate = Chronos(2023, 4, 15);
       final startOfSpring = springDate.startOfSeason();
       expect(startOfSpring.month, 3);
       expect(startOfSpring.day, 1);
 
-      // Summer (June-August)
       final summerDate = Chronos(2023, 7, 15);
       final startOfSummer = summerDate.startOfSeason();
       expect(startOfSummer.month, 6);
       expect(startOfSummer.day, 1);
 
-      // Autumn (September-November)
       final autumnDate = Chronos(2023, 10, 15);
       final startOfAutumn = autumnDate.startOfSeason();
       expect(startOfAutumn.month, 9);
       expect(startOfAutumn.day, 1);
 
-      // Winter (December-February)
       final winterDate = Chronos(2023, 1, 15);
       final startOfWinter = winterDate.startOfSeason();
-      expect(startOfWinter.year, 2022); // Previous year's December
+      expect(startOfWinter.year, 2022);
       expect(startOfWinter.month, 12);
       expect(startOfWinter.day, 1);
     });
 
     test('endOfSeason method', () {
-      // Spring (March-May)
       final springDate = Chronos(2023, 4, 15);
       final endOfSpring = springDate.endOfSeason();
       expect(endOfSpring.month, 5);
       expect(endOfSpring.day, 31);
 
-      // Summer (June-August)
       final summerDate = Chronos(2023, 7, 15);
       final endOfSummer = summerDate.endOfSeason();
       expect(endOfSummer.month, 8);
       expect(endOfSummer.day, 31);
 
-      // Autumn (September-November)
       final autumnDate = Chronos(2023, 10, 15);
       final endOfAutumn = autumnDate.endOfSeason();
       expect(endOfAutumn.month, 11);
       expect(endOfAutumn.day, 30);
 
-      // Winter (December-February)
       final winterDate = Chronos(2023, 1, 15);
       final endOfWinter = winterDate.endOfSeason();
       expect(endOfWinter.year, 2023);
       expect(endOfWinter.month, 2);
-      expect(endOfWinter.day, 28); // 2023 is not a leap year
+      expect(endOfWinter.day, 28);
     });
   });
 
   group('ISO Year Boundaries', () {
     test('startOfIsoYear method', () {
-      // ISO year 2023 starts on January 2, 2023 (Monday)
       final chronos2023 = Chronos(2023, 6, 15);
       final startOfIsoYear2023 = chronos2023.startOfIsoYear();
 
       expect(startOfIsoYear2023.year, 2023);
       expect(startOfIsoYear2023.weekday, DateTime.monday);
 
-      // ISO year 2024 starts on January 1, 2024 (Monday)
       final chronos2024 = Chronos(2024, 6, 15);
       final startOfIsoYear2024 = chronos2024.startOfIsoYear();
 
@@ -804,7 +738,6 @@ void main() {
       final chronos = Chronos(2025, 6, 15);
       final endOfIsoYear = chronos.endOfIsoYear();
 
-      // Should be the Sunday before the start of the next ISO year
       expect(endOfIsoYear.weekday, DateTime.sunday);
       expect(endOfIsoYear.hour, 23);
       expect(endOfIsoYear.minute, 59);
@@ -814,12 +747,10 @@ void main() {
 
   group('Edge Cases', () {
     test('leap year February boundaries', () {
-      // Leap year
       final leapYear = Chronos(2024, 2, 15);
       final endOfFebLeap = leapYear.endOfMonth();
       expect(endOfFebLeap.day, 29);
 
-      // Non-leap year
       final nonLeapYear = Chronos(2023, 2, 15);
       final endOfFebNonLeap = nonLeapYear.endOfMonth();
       expect(endOfFebNonLeap.day, 28);
@@ -832,7 +763,6 @@ void main() {
       expect(lastDayOfYear.isEndOfYear, true);
       expect(firstDayOfYear.isStartOfYear, true);
 
-      // Adding one microsecond should transition to next year
       final nextMicrosecond = lastDayOfYear.addMicrosecond();
       expect(nextMicrosecond.year, 2024);
       expect(nextMicrosecond.month, 1);
@@ -840,15 +770,12 @@ void main() {
     });
 
     test('quarter boundary edge cases', () {
-      // End of Q1 (March 31)
       final endQ1 = Chronos(2023, 3, 31, 23, 59, 59, 999, 999);
       expect(endQ1.isEndOfQuarter, true);
 
-      // Start of Q2 (April 1)
       final startQ2 = Chronos(2023, 4, 1, 0, 0, 0, 0, 0);
       expect(startQ2.isStartOfQuarter, true);
 
-      // End of Q2 (June 30)
       final endQ2 = Chronos(2023, 6, 30, 23, 59, 59, 999, 999);
       expect(endQ2.isEndOfQuarter, true);
     });

@@ -1,3 +1,8 @@
+# 1.0.10
+
+- Update setMonth() and setYear() to use addMonths/addYears for overflow-safe handling
+- Refactor some tests
+
 # 1.0.9
 
 - Corrected the spelling of `getTimeZonOffset()` → `getTimeZoneOffset()`
