@@ -115,7 +115,7 @@ print(date.microsecondsSinceEpoch);  // 1709188245500750 (微秒時間戳)
 
 ```dart
 print(date.getTimeZone());     // "CST" (時區名稱)
-print(date.getTimeZonOffset()); // 8:00:00.000000 (時區偏移)
+print(date.getTimeZoneOffset()); // 8:00:00.000000 (時區偏移)
 print(date.isUtc);             // false (是否為 UTC)
 print(date.isLocal);           // true (是否為本地時間)
 print(date.isDst);             // false (是否為夏令時間)

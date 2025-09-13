@@ -148,7 +148,7 @@ void main() {
   print('Local time: ${now.toLocal()}'); // Local time: 2025-09-13 11:23:41.703648
   print('UTC time: ${now.toUtc()}'); // UTC time: 2025-09-13 03:23:41.703648Z
   print('Timezone name: ${now.getTimeZone()}'); // Timezone name: CST
-  print('Timezone offset: ${now.getTimeZonOffset()}'); // Timezone offset: 8:00:00.000000
+  print('Timezone offset: ${now.getTimeZoneOffset()}'); // Timezone offset: 8:00:00.000000
 
   print('Duration difference: ${now.diff(birthday)}'); // Duration difference: 309720:53:41.703648
   print('Microseconds: ${now.diffInMicroseconds(birthday)}'); // Microseconds: -1114995221703648.0

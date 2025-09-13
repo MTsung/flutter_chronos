@@ -116,7 +116,7 @@ print(date.microsecondsSinceEpoch);  // 1709188245500750 (microsecond timestamp)
 
 ```dart
 print(date.getTimeZone());     // "CST" (timezone name)
-print(date.getTimeZonOffset()); // 8:00:00.000000 (timezone offset)
+print(date.getTimeZoneOffset()); // 8:00:00.000000 (timezone offset)
 print(date.isUtc);             // false (is UTC)
 print(date.isLocal);           // true (is local time)
 print(date.isDst);             // false (is daylight saving time)

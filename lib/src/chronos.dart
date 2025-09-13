@@ -188,7 +188,7 @@ class Chronos extends DateTime {
 
   String getTimeZone() => timeZoneName;
 
-  Duration getTimeZonOffset() => timeZoneOffset;
+  Duration getTimeZoneOffset() => timeZoneOffset;
 
   /// Creates a copy of this Chronos instance.
   ///

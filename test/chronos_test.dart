@@ -350,12 +350,12 @@ void main() {
       expect(utcChronos.getTimeZone(), 'UTC');
     });
 
-    test('getTimeZonOffset method', () {
+    test('getTimeZoneOffset method', () {
       final localChronos = Chronos(2023, 12, 25);
       final utcChronos = Chronos.utc(2023, 12, 25);
 
-      expect(localChronos.getTimeZonOffset(), isA<Duration>());
-      expect(utcChronos.getTimeZonOffset(), Duration.zero);
+      expect(localChronos.getTimeZoneOffset(), isA<Duration>());
+      expect(utcChronos.getTimeZoneOffset(), Duration.zero);
     });
 
     test('isUtc property', () {
