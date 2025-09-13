@@ -469,4 +469,36 @@ void main() {
       expect(conference.overlaps(keynote), true);
     });
   });
+
+  test('period', () {
+    final period = ChronosRange(
+      Chronos(2024, 2, 28),
+      Chronos(2024, 3, 15),
+    ).period(TimeUnit.hour, 6);
+    expect(period.length, 65);
+    expect(period[24], Chronos.parse('2024-03-05 00:00:00.000'));
+    expect(period[64], Chronos.parse('2024-03-15 00:00:00.000'));
+
+    expect(
+      ChronosRange(
+        Chronos(2024, 2, 28),
+        Chronos(2024, 3, 15),
+      ).period(TimeUnit.day).length,
+      17,
+    );
+    expect(
+      ChronosRange(
+        Chronos.yesterday(),
+        Chronos.tomorrow(),
+      ).period(TimeUnit.hour).length,
+      49,
+    );
+    expect(
+      ChronosRange(
+        Chronos.yesterday(),
+        Chronos.tomorrow(),
+      ).period(TimeUnit.hour, 7).length,
+      7,
+    );
+  });
 }

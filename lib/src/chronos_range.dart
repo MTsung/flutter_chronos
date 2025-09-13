@@ -159,6 +159,22 @@ class ChronosRange {
     return ChronosRange(s, e);
   }
 
+  /// Generates a list of [Chronos] objects from [start] to [end],
+  /// stepping forward by the given [timeUnit] and [value].
+  ///
+  /// Example:
+  /// ```dart
+  /// final range = ChronosRange(Chronos(2025, 1, 1), Chronos(2025, 1, 3));
+  /// final days = range.period(TimeUnit.day);
+  /// // [2025-01-01 00:00:00.000, 2025-01-02 00:00:00.000, 2025-01-03 00:00:00.000]
+  /// ```
+  ///
+  /// [timeUnit] - the unit to step by (e.g. TimeUnit.day, TimeUnit.hour).
+  /// [value] - the amount per step (default = 1).
+  List<Chronos> period(TimeUnit timeUnit, [int value = 1]) => [
+    for (var s = start; s <= end; s = s.addUnit(timeUnit, value)) s,
+  ];
+
   /// Returns a string representation of this range.
   ///
   /// The format is "start ~ end" where both dates are formatted using

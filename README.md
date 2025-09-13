@@ -1141,6 +1141,15 @@ print('Work hours: ${range.start.format('HH:mm')} - ${range.end.format('HH:mm')}
 // Output: Work hours: 09:00 - 17:00
 ```
 
+## Period List
+
+```dart
+final range = ChronosRange(Chronos(2025, 1, 1), Chronos(2025, 1, 5));
+print(range.period(TimeUnit.day));        // Get List
+print(range.period(TimeUnit.day, 2));     // Get List
+print(range.period(TimeUnit.hour, 23));   // Get List
+```
+
 # Modifiers
 
 ## Boundary Modifiers

@@ -1,3 +1,7 @@
+# 1.1.0
+
+- `ChronosRange.period()` method to generate a list of `Chronos` between start and end, stepping by a given `TimeUnit` and interval.
+
 # 1.0.12
 
 - Update README.md 

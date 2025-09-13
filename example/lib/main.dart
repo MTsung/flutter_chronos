@@ -291,6 +291,19 @@ void main() {
   print('Copy with changes: ${now.copyWith(year: 2025, month: 12, day: 25)}'); // Copy with changes: 2025-12-25 11:23:41.703648
   print('Clone: ${now.clone()}'); // Clone: 2025-09-13 11:23:41.703648
 
+  final range = ChronosRange(Chronos(2025, 1, 1), Chronos(2025, 1, 5));
+  print(range.period(TimeUnit.day)); // [2025-01-01 00:00:00.000,
+  //                                     2025-01-02 00:00:00.000,
+  //                                     2025-01-03 00:00:00.000,
+  //                                     2025-01-04 00:00:00.000,
+  //                                     2025-01-05 00:00:00.000]
+  print(range.period(TimeUnit.day, 2)); // [2025-01-01 00:00:00.000, 2025-01-03 00:00:00.000, 2025-01-05 00:00:00.000]
+  print(range.period(TimeUnit.hour, 23)); // [2025-01-01 00:00:00.000,
+  //                                          2025-01-01 23:00:00.000,
+  //                                          2025-01-02 22:00:00.000,
+  //                                          2025-01-03 21:00:00.000,
+  //                                          2025-01-04 20:00:00.000]
+
   final dateTime = DateTime.now();
   final convertedChronos = dateTime.toChronos();
   print('DateTime to Chronos: $convertedChronos'); // DateTime to Chronos: 2025-09-13 11:23:41.929690

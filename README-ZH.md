@@ -1148,6 +1148,16 @@ print('工作時間：${range.start.format('HH:mm')} - ${range.end.format('HH:mm
 // 輸出: 工作時間：09:00 - 17:00
 ```
 
+
+## 區間 List
+
+```dart
+final range = ChronosRange(Chronos(2025, 1, 1), Chronos(2025, 1, 5));
+print(range.period(TimeUnit.day));        // Get List
+print(range.period(TimeUnit.day, 2));     // Get List
+print(range.period(TimeUnit.hour, 23));   // Get List
+```
+
 # 修改器
 
 ## 邊界修改器
