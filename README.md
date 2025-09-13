@@ -15,6 +15,38 @@ Language: English | [繁體中文](https://github.com/MTsung/flutter_chronos/blo
 
 -----
 
+## Introduction
+
+Have you ever been looking for these features? Now, with Chronos, you can handle them effortlessly!
+
+```dart
+dt.ceilMinutes(5); // Ceil to the nearest 5 minutes ✅
+dt.floorHours(6); // Floor to the nearest 6 hours ✅
+dt.roundDays(3); // Round to the nearest 3 days ✅
+dt.lerp(end, 0.5); // Get the midpoint between dt and end ✅
+dt.firstOfMonth(IsoDayOfWeek.friday); // Get the first Friday of the month ✅
+dt.toDateTimeString(); // "2024-02-29 14:30:45" ✅
+dt.diffForHumans(); // "3 days ago" ✅
+dt.isDst; // Check if in daylight saving time ✅
+dt.isLeapYear; // Check if leap year ✅
+dt.isLongYear; // Check if ISO long year ✅
+dt.season; // Get the season ✅
+dt > dt1; // Check if dt is later than dt1 ✅
+dt.startOfCentury(); // Get the start of the current century ✅
+dt.endOfMonth(); // Get the end of the current month ✅
+dt.subMonths(3); // Subtract 3 months (without overflow) ✅
+dt.addWeekdays(6); // Add 6 working days ✅
+dt.addWeeks(2); // Add 2 weeks ✅
+dt.isBetween(start, end); // Check if within a range ✅
+range.overlaps(range1); // Check if time ranges overlap ✅
+dt.max(dt1); // Get the later time ✅
+dt.min(dt1); // Get the earlier time ✅
+dt.diffInYear(dt1); // Calculate the difference in years (float) ✅
+dt.setYear(2026); // Set the year ✅
+dt.daysInMonth; // Number of days in the month ✅
+dt.secondOfDay; // Number of seconds passed in the day ✅
+dt.setDay(25).setHour(8); // Fluent interface ✅
+```
 
 Chronos extends Dart's native DateTime, providing you with more intuitive time manipulation methods, flexible week and month handling, convenient time formatting, and powerful time difference calculations in addition to the original basic functionality. This allows developers to complete complex date-time logic more quickly, reducing manual calculations and errors.
 

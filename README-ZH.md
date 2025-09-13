@@ -15,6 +15,39 @@ Language: [English](https://github.com/MTsung/flutter_chronos/blob/main/README.m
 
 -----
 
+## 前言
+
+你是否曾經在找這些功能？現在只要使用 Chronos，就能輕鬆處理！
+
+```
+dt.ceilMinutes(5); // 每 5 分鐘為一區間無條件進位 ✅
+dt.floorHours(6); // 每 6 小時為一區間無條件捨去 ✅
+dt.roundDays(3); // 每 3 天為一區間四捨五入 ✅
+dt.lerp(end, 0.5); // 取 dt 與 end 的中間時間 ✅
+dt.firstOfMonth(IsoDayOfWeek.friday) // 取該月第 1 個週五 ✅
+dt.toDateTimeString() // "2024-02-29 14:30:45" ✅
+dt.diffForHumans(); // "3 days ago" ✅
+dt.isDst; // 是否在夏令時間 ✅
+dt.isLeapYear; // 是否閏年 ✅
+dt.isLongYear; // 是否為 ISO 長年 ✅
+dt.season; // 取得季節 ✅
+dt > dt1; // 是否 dt 比 dt1 晚 ✅
+dt.startOfCentury() // 取的本世紀的起始 ✅
+dt.endOfMonth() // 取的本世紀的起始 ✅
+dt.subMonths(3); // 減 3 個月（不溢位） ✅
+dt.addWeekdays(6); // 加 6 個工作天 ✅
+dt.addWeeks(2); // 加 2 週 ✅
+dt.isBetween(start, end); // 介於區間之間 ✅
+range.overlaps(range1) // 時間區間是否重疊 ✅
+dt.max(dt1); // 取較晚時間 ✅
+dt.min(dt1); // 取較早時間 ✅
+dt.diffInYear(dt1); // 計算相差年數（浮點數） ✅
+dt.setYear(2026); // 改年份 ✅
+dt.daysInMonth; // 該月份有幾天 ✅
+dt.secondOfDay; // 現在過了一天中的幾秒 ✅
+dt.setDay(25).setHour(8); // 流暢介面 ✅
+```
+
 Chronos 繼承自 Dart 原生 DateTime，讓你除了原本的基本功能之外，還有更直覺的時間操作方法、靈活的週與月份處理、方便的時間格式化以及強大的時間差計算，讓開發者能更快速地完成複雜的日期時間邏輯，減少手動計算與錯誤。
 
 ## 功能特色
