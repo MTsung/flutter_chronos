@@ -840,7 +840,7 @@ extension ChronosRounding on Chronos {
     int Function(num) mathFunc,
   ) {
     final start = startOfUnit(unit);
-    final diff = diffInUnit(unit, start);
+    final diff = start.diffInUnit(unit, this);
     final rounded = mathFunc(diff / precision) * precision;
 
     return start.addUnit(unit, rounded);

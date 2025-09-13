@@ -187,18 +187,18 @@ void main() {
 
   final testDate = Chronos(2024, 3, 15, 14, 30, 45, 123, 456);
   print('Original: $testDate'); // Original: 2024-03-15 14:30:45.123456
-  print('Ceil second: ${testDate.ceilSecond()}'); // Ceil second: 2024-03-15 14:30:45.000
-  print('Floor second: ${testDate.floorSecond()}'); // Floor second: 2024-03-15 14:30:44.000
+  print('Ceil second: ${testDate.ceilSecond()}'); // Ceil second: 2024-03-15 14:30:46.000
+  print('Floor second: ${testDate.floorSecond()}'); // Floor second: 2024-03-15 14:30:45.000
   print('Round second: ${testDate.roundSecond()}'); // Round second: 2024-03-15 14:30:45.000
-  print('Ceil minute: ${testDate.ceilMinute()}'); // Ceil minute: 2024-03-15 14:30:00.000
-  print('Floor minute: ${testDate.floorMinute()}'); // Floor minute: 2024-03-15 14:29:00.000
-  print('Round minute: ${testDate.roundMinute()}'); // Round minute: 2024-03-15 14:29:00.000
-  print('Ceil hour: ${testDate.ceilHour()}'); // Ceil hour: 2024-03-15 14:00:00.000
-  print('Floor hour: ${testDate.floorHour()}'); // Floor hour: 2024-03-15 13:00:00.000
-  print('Round hour: ${testDate.roundHour()}'); // Round hour: 2024-03-15 13:00:00.000
-  print('Ceil day: ${testDate.ceilDay()}'); // Ceil day: 2024-03-15 00:00:00.000
-  print('Floor day: ${testDate.floorDay()}'); // Floor day: 2024-03-14 00:00:00.000
-  print('Round day: ${testDate.roundDay()}'); // Round day: 2024-03-14 00:00:00.000
+  print('Ceil minute: ${testDate.ceilMinute()}'); // Ceil minute: 2024-03-15 14:31:00.000
+  print('Floor minute: ${testDate.floorMinute()}'); // Floor minute: 2024-03-15 14:30:00.000
+  print('Round minute: ${testDate.roundMinute()}'); // Round minute: 2024-03-15 14:31:00.000
+  print('Ceil hour: ${testDate.ceilHour()}'); // Ceil hour: 2024-03-15 15:00:00.000
+  print('Floor hour: ${testDate.floorHour()}'); // Floor hour: 2024-03-15 14:00:00.000
+  print('Round hour: ${testDate.roundHour()}'); // Round hour: 2024-03-15 15:00:00.000
+  print('Ceil day: ${testDate.ceilDay()}'); // Ceil day: 2024-03-16 00:00:00.000
+  print('Floor day: ${testDate.floorDay()}'); // Floor day: 2024-03-15 00:00:00.000
+  print('Round day: ${testDate.roundDay()}'); // Round day: 2024-03-16 00:00:00.000
   print('Round to 15 minutes: ${testDate.roundMinutes(15)}'); // Round to 15 minutes: 2024-03-15 14:30:00.000
   print('Round to 6 hours: ${testDate.roundHours(6)}'); // Round to 6 hours: 2024-03-15 14:00:00.000
 

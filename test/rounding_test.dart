@@ -32,7 +32,7 @@ void main() {
       expect(ceiled.day, 29);
       expect(ceiled.hour, 14);
       expect(ceiled.minute, 30);
-      expect(ceiled.second, 45);
+      expect(ceiled.second, 46);
       expect(ceiled.millisecond, 0);
       expect(ceiled.microsecond, 0);
     });
@@ -42,7 +42,7 @@ void main() {
       final ceiled = date.ceilMinute();
 
       expect(ceiled.hour, 14);
-      expect(ceiled.minute, 30);
+      expect(ceiled.minute, 31);
       expect(ceiled.second, 0);
       expect(ceiled.millisecond, 0);
       expect(ceiled.microsecond, 0);
@@ -52,7 +52,7 @@ void main() {
       final date = Chronos(2024, 2, 29, 14, 30, 45);
       final ceiled = date.ceilHour();
 
-      expect(ceiled.hour, 14);
+      expect(ceiled.hour, 15);
       expect(ceiled.minute, 0);
       expect(ceiled.second, 0);
       expect(ceiled.millisecond, 0);
@@ -63,8 +63,8 @@ void main() {
       final ceiled = date.ceilDay();
 
       expect(ceiled.year, 2024);
-      expect(ceiled.month, 2);
-      expect(ceiled.day, 29);
+      expect(ceiled.month, 3);
+      expect(ceiled.day, 1);
       expect(ceiled.hour, 0);
       expect(ceiled.minute, 0);
       expect(ceiled.second, 0);
@@ -218,12 +218,15 @@ void main() {
     test('rounding at month boundaries works', () {
       final febEnd = Chronos(2024, 2, 29, 23, 59, 59);
       final ceiledDay = febEnd.ceilDay();
-      expect(ceiledDay.day, 29);
+      expect(ceiledDay.month, 3);
+      expect(ceiledDay.day, 1);
       expect(ceiledDay.hour, 0);
 
       final decEnd = Chronos(2024, 12, 31, 23, 59, 59);
       final ceiledDay2 = decEnd.ceilDay();
-      expect(ceiledDay2.day, 31);
+      expect(ceiledDay2.year, 2025);
+      expect(ceiledDay2.month, 1);
+      expect(ceiledDay2.day, 1);
       expect(ceiledDay2.hour, 0);
     });
 
@@ -232,11 +235,13 @@ void main() {
       final flooredDay = leapDay.floorDay();
       expect(flooredDay.year, 2024);
       expect(flooredDay.month, 2);
+      expect(flooredDay.day, 29);
       expect(flooredDay.hour, 0);
 
       final nonLeapYear = Chronos(2023, 2, 28, 12, 0, 0);
       final ceiledDay = nonLeapYear.ceilDay();
-      expect(ceiledDay.day, 28);
+      expect(ceiledDay.month, 3);
+      expect(ceiledDay.day, 1);
       expect(ceiledDay.hour, 0);
     });
 
