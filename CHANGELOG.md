@@ -1,3 +1,7 @@
+# 1.0.8
+
+- Fix correct rounding logic
+
 # 1.0.7
 
 - Update README.md 
