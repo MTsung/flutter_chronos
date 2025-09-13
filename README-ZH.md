@@ -19,6 +19,7 @@ Chronos 繼承自 Dart 原生 DateTime，讓你除了原本的基本功能之外
 
 ## 功能特色
 
+- 提供了 700 種 Method，add、sub、ceil、floor、round、is、of、in、diff、format、humans format、set、mid、max、lerp、next、last、operator、overlaps、contains...
 - 支援 [ISO 週日曆](https://zh.wikipedia.org/zh-tw/ISO%E9%80%B1%E6%97%A5%E6%9B%86)
 - 支援千年、世紀、十年、年、ISO 年、季度、季節（可設定南北半球）、週、ISO 週、天、時、分、秒、毫秒、微秒。
 - 可取得或設定 ISO 週、週數、季度、年份位置；計算月份中的特定星期、季度中的第一/最後一天等。

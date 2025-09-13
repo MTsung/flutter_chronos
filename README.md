@@ -20,6 +20,7 @@ Chronos extends Dart's native DateTime, providing you with more intuitive time m
 
 ## Features
 
+- featuring 700+ methods for add, sub, ceil, floor, round, is, of, in, diff, format, human format, set, mid, max, lerp, next, last, operator, overlaps, contains...
 - Support for [ISO Week Calendar](https://en.wikipedia.org/wiki/ISO_week_date)
 - Support for millennia, centuries, decades, years, ISO years, quarters, seasons (configurable for northern/southern hemispheres), weeks, ISO weeks, days, hours, minutes, seconds, milliseconds, microseconds.
 - Get or set ISO weeks, week numbers, quarters, year positions; calculate specific weekdays in months, first/last days in quarters, etc.
