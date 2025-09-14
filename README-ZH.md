@@ -286,7 +286,7 @@ Chronos lastSun = date.lastOfYear(IsoDayOfWeek.sunday);
 
 # 流暢介面 (Fluent Interface)
 
-Chronos 支援鏈式調用，讓程式碼更簡潔易讀：
+Chronos 支援鏈式呼叫，讓程式碼更簡潔易讀：
 
 ```dart
 Chronos result = Chronos.now()
@@ -377,7 +377,7 @@ Chronos futureDate = date1 + Duration(days: 7);    // 2024-03-06 (加法)
 Chronos pastDate = date1 - Duration(hours: 2);     // 2024-02-27 22:00:00 (減法)
 
 // 鏈式運算
-Chronos result = Chronos(2024, 2, 29) + Duration(days: 1) - Duration(hours: 3); // 2024-03-01 21:00:00
+Chronos result = Chronos(2024, 2, 29) + Duration(days: 1) - Duration(hours: 3); // 2024-02-29 21:00:00.000
 ```
 
 # 比較
@@ -732,7 +732,7 @@ print(date.decadeOfMillennium);       // 千年中第幾十年
 print(date.centuryOfMillennium);      // 千年中第幾世紀
 ```
 
-## 時間單位容量
+## 在該時間的單位換算
 
 ```dart
 // 微秒容量
@@ -848,7 +848,7 @@ Chronos 使用 [timeago](https://pub.dev/packages/timeago) 套件提供時間差
 Chronos past = Chronos(2024, 2, 26);     // 3天前 (假設今天是2024/2/29)
 Chronos future = Chronos(2024, 2, 29, 16, 30); // 2小時後 (假設現在是14:30)
 
-// 基本人性化顯示 (預設英文)
+// 基本時間差異顯示 (預設英文)
 print(past.diffForHumans());     // "3 days ago"
 print(future.diffForHumans());   // "in 2 hours"
 

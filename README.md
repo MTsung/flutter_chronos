@@ -377,7 +377,7 @@ Chronos futureDate = date1 + Duration(days: 7);    // 2024-03-06 (addition)
 Chronos pastDate = date1 - Duration(hours: 2);     // 2024-02-27 22:00:00 (subtraction)
 
 // Chained operations
-Chronos result = Chronos(2024, 2, 29) + Duration(days: 1) - Duration(hours: 3); // 2024-03-01 21:00:00
+Chronos result = Chronos(2024, 2, 29) + Duration(days: 1) - Duration(hours: 3); // 2024-02-29 21:00:00.000
 ```
 # Comparisons
 
