@@ -1,3 +1,9 @@
+# 1.3.0
+
+- Added `toString_XXX` series methods for various date/time patterns with examples
+- Added `Chronos.initI18n()` to initialize locale data for i18n date formats
+- Fixed several bugs in the `toXXXString` series methods
+
 # 1.2.0
 
 - Added `Chronos.parseTime` to parse time strings into today’s date with specified time

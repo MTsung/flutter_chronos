@@ -1,6 +1,7 @@
 import 'package:flutter_chronos/src/extension/type_casting.dart';
 import 'package:flutter_chronos/src/extension/modifiers.dart';
 import 'package:flutter_chronos/src/chronos_config.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 
 /// A powerful extension of [DateTime] with additional utilities for date and time manipulation.
@@ -256,14 +257,49 @@ class Chronos extends DateTime {
   /// ```
   Chronos clone() => copy();
 
+  /// ISO weekday number (Monday = 1, Sunday = 7)
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2023, 12, 25); // Monday
+  /// print(date.isoDayOfWeek); // 1
+  /// ```
   int get isoDayOfWeek => weekday;
 
+  /// Weekday number with Sunday as 0 (Sunday = 0, Monday = 1, …, Saturday = 6)
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2023, 12, 25); // Monday
+  /// print(date.dayOfWeek); // 1
+  /// ```
   int get dayOfWeek => weekday % 7;
 
+  /// ISO year of the date (can differ from calendar year for dates near year start/end)
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2021, 1, 1);
+  /// print(date.isoYear); // 2020
+  /// ```
   int get isoYear => add(Duration(days: 4 - isoDayOfWeek)).year;
 
+  /// Calendar week number starting from the first day of the year
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2023, 1, 10);
+  /// print(date.week); // 2
+  /// ```
   int get week => ((diff(Chronos(year, 1, 1)).inDays) ~/ 7) + 1;
 
+  /// ISO 8601 week number (weeks start on Monday)
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2023, 1, 5); // Thursday
+  /// print(date.isoWeek); // 1
+  /// ```
   int get isoWeek {
     final thursday = addDays(4 - isoDayOfWeek);
     final firstDayOfYear = Chronos(thursday.year, 1, 1);
@@ -274,12 +310,40 @@ class Chronos extends DateTime {
     return ((thursday.diff(firstThursday).inDays) ~/ 7) + 1;
   }
 
+  /// Decade number (1-based, e.g., 2023 is 203rd decade)
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2023);
+  /// print(date.decade); // 203
+  /// ```
   int get decade => (year - 1) ~/ 10 + 1;
 
+  /// Century number (1-based, e.g., 2023 is 21st century)
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2023);
+  /// print(date.century); // 21
+  /// ```
   int get century => (year - 1) ~/ 100 + 1;
 
+  /// Millennium number (1-based, e.g., 2023 is 3rd millennium)
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2023);
+  /// print(date.millennium); // 3
+  /// ```
   int get millennium => (year - 1) ~/ 1000 + 1;
 
+  /// Quarter of the year (1-4)
+  ///
+  /// Example:
+  /// ```dart
+  /// final date = DateTime(2023, 12);
+  /// print(date.quarter); // 4
+  /// ```
   int get quarter => ((month - 1) ~/ 3) + 1;
 
   /// Converts this Chronos instance to local timezone.
@@ -319,6 +383,19 @@ class Chronos extends DateTime {
 
   @override
   int get hashCode => millisecondsSinceEpoch.hashCode;
+
+  /// Initializes i18n date formatting for the given locale.
+  ///
+  /// Call this once before using any i18n date format methods,
+  /// otherwise `DateFormat` may throw `LocaleDataException`.
+  ///
+  /// Example:
+  /// ```dart
+  /// await Chronos.initI18n(locale: 'en_US');
+  /// print(DateFormat.yMMMMd('en_US').format(DateTime.now()));
+  /// ```
+  static Future<void> initI18n([String locale = 'en_US']) async =>
+      await initializeDateFormatting(locale);
 
   Chronos copyWith({
     int? year,

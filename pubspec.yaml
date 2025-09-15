@@ -2,7 +2,7 @@ name: flutter_chronos
 description: >-
   A powerful and intuitive date & time utility library for Flutter,
   featuring 700+ methods for add, sub, ceil, floor, round, is, diff, format, overlaps, contains, in, of, and more.
-version: 1.2.0
+version: 1.3.0
 homepage: https://github.com/MTsung/flutter_chronos
 repository: https://github.com/MTsung/flutter_chronos
 issue_tracker: https://github.com/MTsung/flutter_chronos/issues

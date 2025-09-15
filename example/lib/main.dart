@@ -1,6 +1,6 @@
 import 'package:flutter_chronos/flutter_chronos.dart';
 
-void main() {
+void main() async {
   final now = Chronos.now();
   final birthday = Chronos(1990, 5, 15, 10, 30);
   final fromTimestamp = Chronos.fromTimestamp(1640995200);
@@ -11,6 +11,8 @@ void main() {
   final today = Chronos.today();
   final tomorrow = Chronos.tomorrow();
   final yesterday = Chronos.yesterday();
+
+  await Chronos.initI18n(); // init i18n for format
 
   print('Current time: $now'); // Current time: 2025-09-13 11:23:41.703648
   print('Birthday: $birthday'); // Birthday: 1990-05-15 10:30:00.000
@@ -127,25 +129,65 @@ void main() {
 
   print('Standard format: ${now.format('yyyy-MM-dd HH:mm:ss')}'); // Standard format: 2025-09-13 11:23:41
   print('Friendly format: ${now.format('EEEE, MMMM d, yyyy')}'); // Friendly format: Saturday, September 13, 2025
-  print('Date string: ${now.toDateString()}'); // Date string: 2025-09-13
-  print('Time string: ${now.toTimeString()}'); // Time string: 11:23:41
-  print('DateTime string: ${now.toDateTimeString()}'); // DateTime string: 2025-09-13 11:23:41
-  print('Formatted date: ${now.toFormattedDateString()}'); // Formatted date: Sep 13, 2025
-  print('Day date time: ${now.toDayDateTimeString()}'); // Day date time: Sat, Sep 13, 2025 11:23 AM
-  print('Local string: ${now.toDateTimeLocalString()}'); // Local string: 2025-09-13T11:23:41
-  print('RFC 822: ${now.toRfc822String()}'); // RFC 822: Sat, 13 Sep 25 03:23:41
-  print('RFC 1123: ${now.toRfc1123String()}'); // RFC 1123: Sat, 13 Sep 2025 03:23:41
-  print('RFC 2822: ${now.toRfc2822String()}'); // RFC 2822: Sat, 13 Sep 2025 03:23:41
-  print('RFC 3339: ${now.toRfc3339String()}'); // RFC 3339: 2025-09-13T03:23:41XXX
-  print('RFC 7231: ${now.toRfc7231String()}'); // RFC 7231: Sat, 13 Sep 2025 03:23:41 GMT
-  print('RSS format: ${now.toRssString()}'); // RSS format: Sat, 13 Sep 2025 03:23:41
-  print('W3C format: ${now.toW3cString()}'); // W3C format: 2025-09-13T03:23:41XXX
-  print('Atom format: ${now.toAtomString()}'); // Atom format: 2025-09-13T03:23:41XXX
-  print('Cookie format: ${now.toCookieString()}'); // Cookie format: Saturday, 13-Sep-2025 03:23:41 UTC
+  print('Date string: ${now.toDateString()}'); // Date string: 2019-02-01
+  print('Time string: ${now.toTimeString()}'); // Time string: 03:45:27
+  print('DateTime string: ${now.toDateTimeString()}'); // DateTime string: 2019-02-01 03:45:27
+  print('Formatted date: ${now.toFormattedDateString()}'); // Formatted date: Feb 1, 2019
+  print('Day date time: ${now.toDayDateTimeString()}'); // Day date time: Fri, Feb 1, 2019 3:45 AM
+  print('Local string: ${now.toDateTimeLocalString()}'); // Local string: 2019-02-01T03:45:27
+  print('RFC 822: ${now.toRfc822String()}'); // RFC 822: Fri, 01 Feb 19 03:45:27 +0000
+  print('RFC 1123: ${now.toRfc1123String()}'); // RFC 1123: Fri, 01 Feb 2019 03:45:27 +0000
+  print('RFC 2822: ${now.toRfc2822String()}'); // RFC 2822: Fri, 01 Feb 2019 03:45:27 +0000
+  print('RFC 3339: ${now.toRfc3339String()}'); // RFC 3339: 2019-02-01T03:45:27+00:00
+  print('RFC 7231: ${now.toRfc7231String()}'); // RFC 7231: Fri, 01 Feb 2019 03:45:27 GMT
+  print('RSS format: ${now.toRssString()}'); // RSS format: Fri, 01 Feb 2019 03:45:27 +0000
+  print('W3C format: ${now.toW3cString()}'); // W3C format: 2019-02-01T03:45:27+00:00
+  print('Atom format: ${now.toAtomString()}'); // Atom format: 2019-02-01T03:45:27+00:00
+  print('Cookie format: ${now.toCookieString()}'); // Cookie format: Friday, 01-Feb-2019 03:45:27 UTC
   print('Relative time: ${birthday.diffForHumans()}'); // Relative time: 35 years ago
   print('Relative time (Chinese): ${birthday.diffForHumans(locale: 'zh_tw')}'); // Relative time (Chinese): 約 35 年 前
   print('Relative time (Spanish): ${birthday.diffForHumans(locale: 'es')}'); // Relative time (Spanish): hace 35 años
   print('Relative time (French): ${birthday.diffForHumans(locale: 'fr')}'); // Relative time (French): il y a 35 ans
+
+  final toStringChronos = Chronos(2023, 12, 25, 14, 30, 45);
+  print(toStringChronos.toString_d()); // 25
+  print(toStringChronos.toString_E()); // Mon
+  print(toStringChronos.toString_EEEE()); // Monday
+  print(toStringChronos.toString_EEEEE()); // M
+  print(toStringChronos.toString_LLL()); // Dec
+  print(toStringChronos.toString_LLLL()); // December
+  print(toStringChronos.toString_M()); // 12
+  print(toStringChronos.toString_Md()); // 12/25
+  print(toStringChronos.toString_MEd()); // Mon, 12/25
+  print(toStringChronos.toString_MMM()); // Dec
+  print(toStringChronos.toString_MMMd()); // Dec 25
+  print(toStringChronos.toString_MMMEd()); // Mon, Dec 25
+  print(toStringChronos.toString_MMMM()); // December
+  print(toStringChronos.toString_MMMMd()); // December 25
+  print(toStringChronos.toString_MMMMEEEEd()); // Monday, December 25
+  print(toStringChronos.toString_QQQ()); // Q4
+  print(toStringChronos.toString_QQQQ()); // 4th quarter
+  print(toStringChronos.toString_y()); // 2023
+  print(toStringChronos.toString_yM()); // 12/2023
+  print(toStringChronos.toString_yMd()); // 12/25/2023
+  print(toStringChronos.toString_yMEd()); // Mon, 12/25/2023
+  print(toStringChronos.toString_yMMM()); // Dec 2023
+  print(toStringChronos.toString_yMMMd()); // Dec 25, 2023
+  print(toStringChronos.toString_yMMMEd()); // Mon, Dec 25, 2023
+  print(toStringChronos.toString_yMMMM()); // December 2023
+  print(toStringChronos.toString_yMMMMd()); // December 25, 2023
+  print(toStringChronos.toString_yMMMMEEEEd()); // Monday, December 25, 2023
+  print(toStringChronos.toString_yQQQ()); // Q4 2023
+  print(toStringChronos.toString_yQQQQ()); // 4th quarter 2023
+  print(toStringChronos.toString_H()); // 14
+  print(toStringChronos.toString_Hm()); // 14:30
+  print(toStringChronos.toString_Hms()); // 14:30:45
+  print(toStringChronos.toString_j()); // 2 PM
+  print(toStringChronos.toString_jm()); // 2:30 PM
+  print(toStringChronos.toString_jms()); // 2:30:45 PM
+  print(toStringChronos.toString_m()); // 30
+  print(toStringChronos.toString_ms()); // 30:45
+  print(toStringChronos.toString_s()); // 45
 
   print('Local time: ${now.toLocal()}'); // Local time: 2025-09-13 11:23:41.703648
   print('UTC time: ${now.toUtc()}'); // UTC time: 2025-09-13 03:23:41.703648Z

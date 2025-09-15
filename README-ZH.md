@@ -326,18 +326,65 @@ print(date.toDayDateTimeString());    // "Thu, Feb 29, 2024 2:30 PM"
 // ISO 8601 和其他標準格式 (需要 UTC 時間)
 Chronos utcDate = Chronos.utc(2024, 2, 29, 14, 30, 45);
 print(utcDate.toIso8601String());        // "2024-02-29T14:30:45.000Z"
-print(date.toDateTimeLocalString());     // "2024-02-29T14:30:45"
-print(utcDate.toRfc3339String());        // "2024-02-29T14:30:45XXX"
-print(utcDate.toRfc822String());         // "Thu, 29 Feb 24 14:30:45 "
+print(utcDate.toDateTimeLocalString());  // "2024-02-29T14:30:45"
+print(utcDate.toRfc3339String());        // "2024-02-29T14:30:45+00:00"
+print(utcDate.toRfc822String());         // "Thu, 29 Feb 24 14:30:45 +0000"
 print(utcDate.toRfc850String());         // "Thursday, 29-Feb-24 14:30:45 UTC"
-print(utcDate.toRfc1036String());        // "Thu, 29 Feb 24 14:30:45 "
-print(utcDate.toRfc1123String());        // "Thu, 29 Feb 2024 14:30:45 "
-print(utcDate.toRfc2822String());        // "Thu, 29 Feb 2024 14:30:45 "
+print(utcDate.toRfc1036String());        // "Thu, 29 Feb 24 14:30:45 +0000"
+print(utcDate.toRfc1123String());        // "Thu, 29 Feb 2024 14:30:45 +0000"
+print(utcDate.toRfc2822String());        // "Thu, 29 Feb 2024 14:30:45 +0000"
 print(utcDate.toRfc7231String());        // "Thu, 29 Feb 2024 14:30:45 GMT"
-print(utcDate.toAtomString());           // "2024-02-29T14:30:45XXX"
-print(utcDate.toW3cString());            // "2024-02-29T14:30:45XXX"
-print(utcDate.toRssString());            // "Thu, 29 Feb 2024 14:30:45 "
+print(utcDate.toAtomString());           // "2024-02-29T14:30:45+00:00"
+print(utcDate.toW3cString());            // "2024-02-29T14:30:45+00:00"
+print(utcDate.toRssString());            // "Thu, 29 Feb 2024 14:30:45 +0000"
 print(utcDate.toCookieString());         // "Thursday, 29-Feb-2024 14:30:45 UTC"
+```
+
+## 常用格式
+
+```dart
+final toStringChronos = Chronos(2023, 12, 25, 14, 30, 45);
+
+await Chronos.initI18n(); // init i18n for format
+
+print(toStringChronos.toString_d()); // 25
+print(toStringChronos.toString_E()); // Mon
+print(toStringChronos.toString_EEEE()); // Monday
+print(toStringChronos.toString_EEEEE()); // M
+print(toStringChronos.toString_LLL()); // Dec
+print(toStringChronos.toString_LLLL()); // December
+print(toStringChronos.toString_M()); // 12
+print(toStringChronos.toString_Md()); // 12/25
+print(toStringChronos.toString_MEd()); // Mon, 12/25
+print(toStringChronos.toString_MMM()); // Dec
+print(toStringChronos.toString_MMMd()); // Dec 25
+print(toStringChronos.toString_MMMEd()); // Mon, Dec 25
+print(toStringChronos.toString_MMMM()); // December
+print(toStringChronos.toString_MMMMd()); // December 25
+print(toStringChronos.toString_MMMMEEEEd()); // Monday, December 25
+print(toStringChronos.toString_QQQ()); // Q4
+print(toStringChronos.toString_QQQQ()); // 4th quarter
+print(toStringChronos.toString_y()); // 2023
+print(toStringChronos.toString_yM()); // 12/2023
+print(toStringChronos.toString_yMd()); // 12/25/2023
+print(toStringChronos.toString_yMEd()); // Mon, 12/25/2023
+print(toStringChronos.toString_yMMM()); // Dec 2023
+print(toStringChronos.toString_yMMMd()); // Dec 25, 2023
+print(toStringChronos.toString_yMMMEd()); // Mon, Dec 25, 2023
+print(toStringChronos.toString_yMMMM()); // December 2023
+print(toStringChronos.toString_yMMMMd()); // December 25, 2023
+print(toStringChronos.toString_yMMMMEEEEd()); // Monday, December 25, 2023
+print(toStringChronos.toString_yQQQ()); // Q4 2023
+print(toStringChronos.toString_yQQQQ()); // 4th quarter 2023
+print(toStringChronos.toString_H()); // 14
+print(toStringChronos.toString_Hm()); // 14:30
+print(toStringChronos.toString_Hms()); // 14:30:45
+print(toStringChronos.toString_j()); // 2 PM
+print(toStringChronos.toString_jm()); // 2:30 PM
+print(toStringChronos.toString_jms()); // 2:30:45 PM
+print(toStringChronos.toString_m()); // 30
+print(toStringChronos.toString_ms()); // 30:45
+print(toStringChronos.toString_s()); // 45
 ```
 
 ## 自訂格式化
@@ -354,7 +401,9 @@ String formatted1 = date.format('yyyy-MM-dd HH:mm:ss'); // "2024-02-29 14:30:45"
 String formatted2 = date.format('yyyy年MM月dd日');        // "2024年02月29日"
 String formatted3 = date.format('EEEE, MMMM d, y');     // "Thursday, February 29, 2024"
 
+
 // 本地化格式
+await Chronos.initI18n(); // init i18n for format
 String zhTW = date.format('yyyy年MM月dd日 EEEE', 'zh_TW'); // "2024年02月29日 星期四"
 
 ```

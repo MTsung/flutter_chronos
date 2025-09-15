@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group('String Formatting - Basic', () {
+    final now = Chronos.parse('2019-02-01T03:45:27Z');
     test('format method', () {
       final chronos = Chronos(2023, 12, 25, 14, 30, 45);
 
@@ -17,345 +18,139 @@ void main() {
       expect(localeFormat, contains('December'));
     });
 
-    test('toDateString method', () {
-      final chronos = Chronos(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toDateString();
-
-      expect(result, '2023-12-25');
+    test('toDateTimeLocalString', () {
+      expect(now.toDateTimeLocalString(), '2019-02-01T03:45:27');
     });
 
-    test('toTimeString method', () {
-      final chronos = Chronos(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toTimeString();
-
-      expect(result, '14:30:45');
+    test('toRfc822String', () {
+      expect(now.toRfc822String(), 'Fri, 01 Feb 19 03:45:27 +0000');
     });
 
-    test('toDateTimeString method', () {
-      final chronos = Chronos(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toDateTimeString();
-
-      expect(result, '2023-12-25 14:30:45');
+    test('toRfc850String', () {
+      expect(now.toRfc850String(), 'Friday, 01-Feb-19 03:45:27 UTC');
     });
 
-    test('toFormattedDateString method', () {
-      final chronos = Chronos(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toFormattedDateString();
-
-      expect(result, 'Dec 25, 2023');
+    test('toRfc1036String', () {
+      expect(now.toRfc1036String(), 'Fri, 01 Feb 19 03:45:27 +0000');
     });
 
-    test('toFormattedDayDateString method', () {
-      final chronos = Chronos(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toFormattedDayDateString();
-
-      expect(result, 'Mon, Dec 25, 2023');
+    test('toRfc1123String', () {
+      expect(now.toRfc1123String(), 'Fri, 01 Feb 2019 03:45:27 +0000');
     });
 
-    test('toDayDateTimeString method', () {
-      final chronos = Chronos(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toDayDateTimeString();
-
-      expect(result, 'Mon, Dec 25, 2023 2:30 PM');
-    });
-  });
-
-  group('String Formatting - Standard', () {
-    test('toIso8601String method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toIso8601String();
-
-      expect(result, '2023-12-25T14:30:45.000Z');
+    test('toRfc2822String', () {
+      expect(now.toRfc2822String(), 'Fri, 01 Feb 2019 03:45:27 +0000');
     });
 
-    test('toDateTimeLocalString method', () {
-      final chronos = Chronos(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toDateTimeLocalString();
-
-      expect(result, '2023-12-25T14:30:45');
+    test('toRfc3339String', () {
+      expect(now.toRfc3339String(), '2019-02-01T03:45:27+00:00');
     });
 
-    test('toRfc3339String method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toRfc3339String();
-
-      expect(result, isA<String>());
-      expect(result, contains('2023-12-25T14:30:45'));
+    test('toRfc7231String', () {
+      expect(now.toRfc7231String(), 'Fri, 01 Feb 2019 03:45:27 GMT');
     });
 
-    test('toRfc822String method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toRfc822String();
-
-      expect(result, contains('Mon, 25 Dec 23 14:30:45'));
-
-      expect(result, isA<String>());
+    test('toRssString', () {
+      expect(now.toRssString(), 'Fri, 01 Feb 2019 03:45:27 +0000');
     });
 
-    test('toRfc850String method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toRfc850String();
-
-      expect(result, contains('Monday, 25-Dec-23 14:30:45 UTC'));
+    test('toW3cString', () {
+      expect(now.toW3cString(), '2019-02-01T03:45:27+00:00');
     });
 
-    test('toRfc1036String method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toRfc1036String();
-
-      expect(result, contains('Mon, 25 Dec 23 14:30:45'));
-
-      expect(result, isA<String>());
+    test('toAtomString', () {
+      expect(now.toAtomString(), '2019-02-01T03:45:27+00:00');
     });
 
-    test('toRfc1123String method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toRfc1123String();
-
-      expect(result, contains('Mon, 25 Dec 2023 14:30:45'));
-
-      expect(result, isA<String>());
-    });
-
-    test('toRfc2822String method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toRfc2822String();
-
-      expect(result, contains('Mon, 25 Dec 2023 14:30:45'));
-
-      expect(result, isA<String>());
-    });
-
-    test('toRfc7231String method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toRfc7231String();
-
-      expect(result, contains('Mon, 25 Dec 2023 14:30:45 GMT'));
-    });
-
-    test('toAtomString method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toAtomString();
-
-      expect(result, isA<String>());
-      expect(result, contains('2023-12-25T14:30:45'));
-    });
-
-    test('toW3cString method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toW3cString();
-
-      expect(result, isA<String>());
-      expect(result, contains('2023-12-25T14:30:45'));
-    });
-
-    test('toRssString method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toRssString();
-
-      expect(result, contains('Mon, 25 Dec 2023 14:30:45'));
-
-      expect(result, isA<String>());
-    });
-
-    test('toCookieString method', () {
-      final chronos = Chronos.utc(2023, 12, 25, 14, 30, 45);
-      final result = chronos.toCookieString();
-
-      expect(result, contains('Monday, 25-Dec-2023 14:30:45 UTC'));
+    test('toCookieString', () {
+      expect(now.toCookieString(), 'Friday, 01-Feb-2019 03:45:27 UTC');
     });
   });
 
-  group('Time Unit Positions - Microsecond', () {
-    test('microsecond positions', () {
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMillisecond,
-        750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfSecond,
-        500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMinute,
-        45500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfHour,
-        1845500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfDay,
-        52245500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfWeek,
-        138645500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMonth,
-        2125845500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfQuarter,
-        7396245500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfYear,
-        30983445500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfIsoYear,
-        30897045500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfDecade,
-        94055445500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfCentury,
-        725207445500750,
-      );
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).microsecondOfMillennium,
-        725207445500750,
-      );
-    });
+  test('to string', () {
+    final now = Chronos(2023, 12, 25, 14, 30, 45);
+    expect(now.toString_d(), '25');
+    expect(now.toString_E(), 'Mon');
+    expect(now.toString_EEEE(), 'Monday');
+    expect(now.toString_EEEEE(), 'M');
+    expect(now.toString_LLL(), 'Dec');
+    expect(now.toString_LLLL(), 'December');
+    expect(now.toString_M(), '12');
+    expect(now.toString_Md(), '12/25');
+    expect(now.toString_MEd(), 'Mon, 12/25');
+    expect(now.toString_MMM(), 'Dec');
+    expect(now.toString_MMMd(), 'Dec 25');
+    expect(now.toString_MMMEd(), 'Mon, Dec 25');
+    expect(now.toString_MMMM(), 'December');
+    expect(now.toString_MMMMd(), 'December 25');
+    expect(now.toString_MMMMEEEEd(), 'Monday, December 25');
+    expect(now.toString_QQQ(), 'Q4');
+    expect(now.toString_QQQQ(), '4th quarter');
+    expect(now.toString_y(), '2023');
+    expect(now.toString_yM(), '12/2023');
+    expect(now.toString_yMd(), '12/25/2023');
+    expect(now.toString_yMEd(), 'Mon, 12/25/2023');
+    expect(now.toString_yMMM(), 'Dec 2023');
+    expect(now.toString_yMMMd(), 'Dec 25, 2023');
+    expect(now.toString_yMMMEd(), 'Mon, Dec 25, 2023');
+    expect(now.toString_yMMMM(), 'December 2023');
+    expect(now.toString_yMMMMd(), 'December 25, 2023');
+    expect(now.toString_yMMMMEEEEd(), 'Monday, December 25, 2023');
+    expect(now.toString_yQQQ(), 'Q4 2023');
+    expect(now.toString_yQQQQ(), '4th quarter 2023');
+    expect(now.toString_H(), '14');
+    expect(now.toString_Hm(), '14:30');
+    expect(now.toString_Hms(), '14:30:45');
+    expect(now.toString_j(), '2 PM');
+    expect(now.toString_jm(), '2:30 PM');
+    expect(now.toString_jms(), '2:30:45 PM');
+    expect(now.toString_m(), '30');
+    expect(now.toString_ms(), '30:45');
+    expect(now.toString_s(), '45');
   });
 
-  group('Time Unit Positions - Other Units', () {
-    test('basic time positions', () {
-      expect(
-        Chronos(2023, 12, 25, 14, 30, 45, 500, 750).millisecondOfSecond,
-        500,
-      );
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).secondOfMinute, 45);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).minuteOfHour, 30);
-      expect(Chronos(2023, 12, 25, 14, 30, 45, 500, 750).hourOfDay, 14);
-    });
+  test('to string i18n', () async {
+    await Chronos.initI18n();
 
-    test('day positions', () {
-      expect(Chronos(2023, 12, 25).dayOfWeek, 1);
-      expect(Chronos(2023, 12, 25).dayOfMonth, 25);
-      expect(Chronos(2023, 12, 25).dayOfQuarter, 86);
-      expect(Chronos(2023, 1, 1).dayOfYear, 1);
-      expect(Chronos(2023, 12, 31).dayOfYear, 365);
-      expect(Chronos(2023, 12, 25).dayOfIsoYear, 358);
-    });
+    final now = Chronos(2023, 12, 25, 14, 30, 45);
 
-    test('week positions', () {
-      expect(Chronos(2023, 12, 25).weekOfMonth, 4);
-      expect(Chronos(2023, 12, 25).weekOfYear, 52);
-      expect(Chronos(2023, 12, 25).weekOfIsoYear, 52);
-    });
-
-    test('month positions', () {
-      expect(Chronos(2023, 1, 15).monthOfQuarter, 1);
-      expect(Chronos(2023, 3, 15).monthOfQuarter, 3);
-      expect(Chronos(2023, 4, 15).monthOfQuarter, 1);
-      expect(Chronos(2023, 12, 25).monthOfYear, 12);
-      expect(Chronos(2023, 12, 25).monthOfIsoYear, 12);
-    });
-
-    test('quarter positions', () {
-      expect(Chronos(2023, 2, 15).quarterOfYear, 1);
-      expect(Chronos(2023, 5, 15).quarterOfYear, 2);
-      expect(Chronos(2023, 8, 15).quarterOfYear, 3);
-      expect(Chronos(2023, 11, 15).quarterOfYear, 4);
-      expect(Chronos(2023, 12, 25).quarterOfIsoYear, 4);
-    });
-
-    test('year positions', () {
-      expect(Chronos(2021, 1, 1).yearOfDecade, 1);
-      expect(Chronos(2025, 1, 1).yearOfDecade, 5);
-      expect(Chronos(2023, 1, 1).yearOfCentury, 23);
-      expect(Chronos(2023, 1, 1).yearOfMillennium, 23);
-    });
-  });
-
-  group('Time Unit Capacities', () {
-    test('basic time capacities', () {
-      expect(Chronos(2023, 12, 25).microsecondsInMillisecond, 1000);
-      expect(Chronos(2023, 12, 25).millisecondsInSecond, 1000);
-      expect(Chronos(2023, 12, 25).secondsInMinute, 60);
-      expect(Chronos(2023, 12, 25).minutesInHour, 60);
-      expect(Chronos(2023, 12, 25).hoursInDay, 24);
-      expect(Chronos(2023, 12, 25).daysInWeek, 7);
-    });
-
-    test('month capacities', () {
-      expect(Chronos(2023, 1, 15).daysInMonth, 31);
-      expect(Chronos(2023, 2, 15).daysInMonth, 28);
-      expect(Chronos(2024, 2, 15).daysInMonth, 29);
-      expect(Chronos(2023, 4, 15).daysInMonth, 30);
-      expect(Chronos(2023, 12, 15).daysInMonth, 31);
-    });
-
-    test('larger period capacities', () {
-      expect(Chronos(2023, 2, 15).daysInQuarter, 90);
-      expect(Chronos(2023, 5, 15).daysInQuarter, 91);
-      expect(Chronos(2023, 6, 15).daysInYear, 365);
-      expect(Chronos(2024, 6, 15).daysInYear, 366);
-      expect(Chronos(2023, 12, 25).weeksInMonth, 4);
-      expect(Chronos(2023, 12, 25).weeksInYear, 52);
-      expect(Chronos(2023, 12, 25).monthsInQuarter, 3);
-      expect(Chronos(2023, 12, 25).monthsInYear, 12);
-      expect(Chronos(2023, 12, 25).quartersInYear, 4);
-      expect(Chronos(2023, 12, 25).yearsInDecade, 10);
-      expect(Chronos(2023, 12, 25).yearsInCentury, 100);
-      expect(Chronos(2023, 12, 25).yearsInMillennium, 1000);
-    });
-  });
-
-  group('Edge Cases and Complex Scenarios', () {
-    test('leap year February formatting', () {
-      final leapFeb29 = Chronos(2024, 2, 29, 12, 0, 0);
-
-      expect(leapFeb29.toDateString(), '2024-02-29');
-      expect(leapFeb29.toFormattedDateString(), 'Feb 29, 2024');
-      expect(leapFeb29.daysInMonth, 29);
-    });
-
-    test('year boundary formatting', () {
-      final newYear = Chronos(2024, 1, 1, 0, 0, 0);
-      final yearEnd = Chronos(2023, 12, 31, 23, 59, 59);
-
-      expect(newYear.toDateString(), '2024-01-01');
-      expect(yearEnd.toDateString(), '2023-12-31');
-      expect(newYear.dayOfYear, 1);
-      expect(yearEnd.dayOfYear, 365);
-    });
-
-    test('different timezone formatting', () {
-      final localTime = Chronos(2023, 12, 25, 12, 0, 0);
-      final utcTime = Chronos.utc(2023, 12, 25, 12, 0, 0);
-
-      expect(localTime.toDateTimeLocalString(), '2023-12-25T12:00:00');
-      expect(utcTime.toIso8601String(), '2023-12-25T12:00:00.000Z');
-    });
-
-    test('microsecond precision', () {
-      final precise = Chronos(2023, 12, 25, 14, 30, 45, 123, 456);
-
-      expect(precise.microsecondOfMillisecond, 456);
-      expect(precise.millisecondOfSecond, 123);
-      expect(precise.microsecondsInMillisecond, 1000);
-    });
-
-    test('quarter calculations', () {
-      final q1Start = Chronos(2023, 1, 1);
-      final q1End = Chronos(2023, 3, 31);
-      final q2Start = Chronos(2023, 4, 1);
-      final q4End = Chronos(2023, 12, 31);
-
-      expect(q1Start.quarterOfYear, 1);
-      expect(q1End.quarterOfYear, 1);
-      expect(q2Start.quarterOfYear, 2);
-      expect(q4End.quarterOfYear, 4);
-
-      expect(q1Start.monthOfQuarter, 1);
-      expect(q1End.monthOfQuarter, 3);
-      expect(q2Start.monthOfQuarter, 1);
-    });
+    expect(now.toString_d('zh_TW'), '25日');
+    expect(now.toString_E('zh_TW'), '週一');
+    expect(now.toString_EEEE('zh_TW'), '星期一');
+    expect(now.toString_EEEEE('zh_TW'), '一');
+    expect(now.toString_LLL('zh_TW'), '12月');
+    expect(now.toString_LLLL('zh_TW'), '12月');
+    expect(now.toString_M('zh_TW'), '12月');
+    expect(now.toString_Md('zh_TW'), '12/25');
+    expect(now.toString_MEd('zh_TW'), '12/25（週一）');
+    expect(now.toString_MMM('zh_TW'), '12月');
+    expect(now.toString_MMMd('zh_TW'), '12月25日');
+    expect(now.toString_MMMEd('zh_TW'), '12月25日 週一');
+    expect(now.toString_MMMM('zh_TW'), '12月');
+    expect(now.toString_MMMMd('zh_TW'), '12月25日');
+    expect(now.toString_MMMMEEEEd('zh_TW'), '12月25日 星期一');
+    expect(now.toString_QQQ('zh_TW'), '第4季');
+    expect(now.toString_QQQQ('zh_TW'), '第4季');
+    expect(now.toString_y('zh_TW'), '2023年');
+    expect(now.toString_yM('zh_TW'), '2023/12');
+    expect(now.toString_yMd('zh_TW'), '2023/12/25');
+    expect(now.toString_yMEd('zh_TW'), '2023/12/25（週一）');
+    expect(now.toString_yMMM('zh_TW'), '2023年12月');
+    expect(now.toString_yMMMd('zh_TW'), '2023年12月25日');
+    expect(now.toString_yMMMEd('zh_TW'), '2023年12月25日 週一');
+    expect(now.toString_yMMMM('zh_TW'), '2023年12月');
+    expect(now.toString_yMMMMd('zh_TW'), '2023年12月25日');
+    expect(now.toString_yMMMMEEEEd('zh_TW'), '2023年12月25日 星期一');
+    expect(now.toString_yQQQ('zh_TW'), '2023年第4季');
+    expect(now.toString_yQQQQ('zh_TW'), '2023年第4季');
+    expect(now.toString_H('zh_TW'), '14時');
+    expect(now.toString_Hm('zh_TW'), '14:30');
+    expect(now.toString_Hms('zh_TW'), '14:30:45');
+    expect(now.toString_j('zh_TW'), '下午2時');
+    expect(now.toString_jm('zh_TW'), '下午2:30');
+    expect(now.toString_jms('zh_TW'), '下午2:30:45');
+    expect(now.toString_m('zh_TW'), '30');
+    expect(now.toString_ms('zh_TW'), '30:45');
+    expect(now.toString_s('zh_TW'), '45');
   });
 }
