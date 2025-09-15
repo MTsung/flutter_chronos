@@ -1,10 +1,17 @@
+# 1.2.0
+
+- Added `Chronos.parseTime` to parse time strings into today’s date with specified time
+- Added `Chronos.tryParseTime` to safely parse time strings and return null on failure
+- Supports formats: HH:mm:ss, HH:mm, HH
+- Updated DartDoc with usage examples
+
 # 1.1.1
 
 - Update README.md 
 
 # 1.1.0
 
-- `ChronosRange.period()` method to generate a list of `Chronos` between start and end, stepping by a given `TimeUnit` and interval.
+- Added `ChronosRange.period()` method to generate a list of `Chronos` between start and end, stepping by a given `TimeUnit` and interval.
 
 # 1.0.12
 

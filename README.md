@@ -94,6 +94,8 @@ Chronos fromMicro = Chronos.fromMicrosecondsSinceEpoch(1703505600000000);
 // Parse string
 Chronos parsed = Chronos.parse('2023-12-25T14:30:00');
 Chronos? tryParsed = Chronos.tryParse('2023-12-25T14:30:00');
+Chronos parseTime = Chronos.parseTime('14:30:00');
+Chronos? tryParseTime = Chronos.tryParseTime('14:30:00');
 
 // Create from Unix timestamp
 Chronos fromTimestamp = Chronos.fromTimestamp(1703505600);

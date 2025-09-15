@@ -5,6 +5,7 @@ void main() {
   final birthday = Chronos(1990, 5, 15, 10, 30);
   final fromTimestamp = Chronos.fromTimestamp(1640995200);
   final parsed = Chronos.parse('2024-12-25 10:30:00');
+  final parsedTime = Chronos.parseTime('10:30:00');
   final utcDate = Chronos.utc(2024, 3, 15, 14, 30, 45);
   final fromDateTime = Chronos.fromDateTime(DateTime.now());
   final today = Chronos.today();
@@ -15,6 +16,7 @@ void main() {
   print('Birthday: $birthday'); // Birthday: 1990-05-15 10:30:00.000
   print('From timestamp: $fromTimestamp'); // From timestamp: 2022-01-01 08:00:00.000
   print('Parsed string: $parsed'); // Parsed string: 2024-12-25 10:30:00.000
+  print('ParsedTime string: $parsedTime'); // Parsed string: 2025-09-13 10:30:00.000
   print('UTC date: $utcDate'); // UTC date: 2024-03-15 14:30:45.000Z
   print('fromDateTime: $fromDateTime'); // fromDateTime: 2025-09-13 11:23:41.708196
   print('Today: $today'); // Today: 2025-09-13 00:00:00.000

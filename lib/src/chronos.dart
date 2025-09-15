@@ -1,6 +1,7 @@
 import 'package:flutter_chronos/src/extension/type_casting.dart';
 import 'package:flutter_chronos/src/extension/modifiers.dart';
 import 'package:flutter_chronos/src/chronos_config.dart';
+import 'package:intl/intl.dart';
 
 /// A powerful extension of [DateTime] with additional utilities for date and time manipulation.
 ///
@@ -144,6 +145,45 @@ class Chronos extends DateTime {
   /// ```
   static Chronos? tryParse(String formattedString) =>
       DateTime.tryParse(formattedString)?.toChronos();
+
+  /// Parses a time string into a [Chronos] instance.
+  /// **today's date with the specified time**.
+  ///
+  /// Supported formats:
+  /// - `HH:mm:ss` (strict two digits, e.g. `08:05:03`)
+  /// - `HH:mm` (strict two digits, e.g. `08:05`)
+  /// - `HH` (strict two digits, e.g. `08`)
+  ///
+  /// Throws a [FormatException] if the string does not match
+  /// any of the supported formats.
+  static Chronos parseTime(String timeString) {
+    final formats = ['HH:mm:ss', 'HH:mm', 'HH'];
+
+    for (final pattern in formats) {
+      try {
+        return today().setTimeFrom(
+          DateFormat(pattern).parseStrict(timeString).toChronos(),
+        );
+      } catch (_) {
+        // Try the next pattern
+      }
+    }
+
+    throw FormatException('Invalid time format: $timeString');
+  }
+
+  /// Tries to parse a time string into a [Chronos] instance.
+  /// **today's date with the specified time**.
+  ///
+  /// Behaves the same as [parseTime], except that instead of throwing
+  /// a [FormatException] on failure, it returns `null`.
+  static Chronos? tryParseTime(String timeString) {
+    try {
+      return parseTime(timeString);
+    } catch (_) {
+      return null;
+    }
+  }
 
   /// Creates a Chronos instance from a Unix timestamp.
   ///

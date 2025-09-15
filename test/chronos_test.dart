@@ -82,6 +82,40 @@ void main() {
       expect(invalidChronos, isNull);
     });
 
+    test('parseTime method', () {
+      final chronos = Chronos.parseTime('14:30:45');
+      final today = Chronos.today();
+
+      expect(chronos.year, today.year);
+      expect(chronos.month, today.month);
+      expect(chronos.day, today.day);
+      expect(chronos.hour, 14);
+      expect(chronos.minute, 30);
+      expect(chronos.second, 45);
+      expect(chronos.millisecond, 0);
+      expect(chronos.microsecond, 0);
+
+      expect(Chronos.parseTime('1:3:5'), Chronos.parseTime('01:03:05'));
+    });
+
+    test('tryParseTime method', () {
+      final validChronos = Chronos.tryParseTime('15:38:40');
+      final today = Chronos.today();
+
+      expect(validChronos, isNotNull);
+      expect(validChronos!.year, today.year);
+      expect(validChronos.month, today.month);
+      expect(validChronos.day, today.day);
+      expect(validChronos.hour, 15);
+      expect(validChronos.minute, 38);
+      expect(validChronos.second, 40);
+      expect(validChronos.millisecond, 0);
+      expect(validChronos.microsecond, 0);
+
+      expect(Chronos.tryParse('invalid-date'), isNull);
+      expect(Chronos.tryParse('15:38:61'), isNull);
+    });
+
     test('fromTimestamp method', () {
       final timestamp = 1703505600;
       final chronos = Chronos.fromTimestamp(timestamp);
