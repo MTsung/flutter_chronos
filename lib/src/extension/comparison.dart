@@ -258,7 +258,7 @@ extension ChronosComparison on Chronos {
   /// print(date1.isSameUnit(TimeUnit.day, date2)); // true (same day)
   /// print(date1.isSameUnit(TimeUnit.hour, date2)); // false (different hour)
   /// ```
-  bool isSameUnit(TimeUnit timeUnit, Chronos? other) {
+  bool isSameUnit(TimeUnit timeUnit, [Chronos? other]) {
     if (other == null) {
       return isCurrentUnit(timeUnit);
     }
