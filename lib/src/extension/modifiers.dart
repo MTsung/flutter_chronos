@@ -1149,26 +1149,27 @@ extension ChronosModifiers on Chronos {
 
   /// Sets the date to the specified day of the week within the current week.
   ///
-  /// [dayOfWeek] - The day of the week (1 = Monday, 7 = Sunday)
+  /// [dayOfWeek] - The day of the week enum value
   ///
   /// Example:
   /// ```dart
   /// final date = Chronos(2024, 3, 15); // Friday
-  /// final monday = date.setDayOfWeek(1); // Monday of the same week
-  /// final sunday = date.setDayOfWeek(7); // Sunday of the same week
+  /// final monday = date.setDayOfWeek(DayOfWeek.monday); // Monday of the same week
+  /// final sunday = date.setDayOfWeek(DayOfWeek.sunday); // Sunday of the same week
   /// ```
-  Chronos setDayOfWeek(int dayOfWeek) => startOfWeek().addDays(dayOfWeek - 1);
+  Chronos setDayOfWeek(DayOfWeek dayOfWeek) =>
+      startOfWeek().addDays(dayOfWeek.value);
 
   /// Sets the date to the specified ISO day of the week within the current ISO week.
   ///
-  /// [isoDayOfWeek] - The ISO day of the week (1 = Monday, 7 = Sunday)
+  /// [isoDayOfWeek] - The ISO day of the week enum value
   ///
   /// Example:
   /// ```dart
   /// final date = Chronos(2024, 3, 15); // Friday
-  /// final monday = date.setIsoDayOfWeek(1); // Monday of the same ISO week
-  /// final sunday = date.setIsoDayOfWeek(7); // Sunday of the same ISO week
+  /// final monday = date.setIsoDayOfWeek(IsoDayOfWeek.monday); // Monday of the same ISO week
+  /// final sunday = date.setIsoDayOfWeek(IsoDayOfWeek.sunday); // Sunday of the same ISO week
   /// ```
-  Chronos setIsoDayOfWeek(int isoDayOfWeek) =>
-      startOfIsoWeek().addDays(isoDayOfWeek - 1);
+  Chronos setIsoDayOfWeek(IsoDayOfWeek isoDayOfWeek) =>
+      startOfIsoWeek().addDays(isoDayOfWeek.value - 1);
 }

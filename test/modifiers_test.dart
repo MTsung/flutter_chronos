@@ -104,17 +104,79 @@ void main() {
       expect(newDate.year, 2023);
       expect(newDate.isoWeek, 10);
     });
+
     test('setDayOfWeek method', () {
-      final date = Chronos(2023, 5, 15);
-      final newDate = date.setDayOfWeek(4);
-      expect(newDate.weekday, 3);
-      expect(newDate.isWednesday, isTrue);
+      expect(
+        Chronos(2023, 5, 15).setDayOfWeek(DayOfWeek.sunday).dayOfWeek,
+        DayOfWeek.sunday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setDayOfWeek(DayOfWeek.monday).dayOfWeek,
+        DayOfWeek.monday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setDayOfWeek(DayOfWeek.tuesday).dayOfWeek,
+        DayOfWeek.tuesday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setDayOfWeek(DayOfWeek.wednesday).dayOfWeek,
+        DayOfWeek.wednesday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setDayOfWeek(DayOfWeek.thursday).dayOfWeek,
+        DayOfWeek.thursday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setDayOfWeek(DayOfWeek.friday).dayOfWeek,
+        DayOfWeek.friday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setDayOfWeek(DayOfWeek.saturday).dayOfWeek,
+        DayOfWeek.saturday.value,
+      );
     });
+
     test('setIsoDayOfWeek method', () {
-      final date = Chronos(2023, 5, 15);
-      final newDate = date.setIsoDayOfWeek(3);
-      expect(newDate.isoDayOfWeek, 3);
-      expect(newDate.isWednesday, isTrue);
+      expect(
+        Chronos(2023, 5, 15).setIsoDayOfWeek(IsoDayOfWeek.sunday).isoDayOfWeek,
+        IsoDayOfWeek.sunday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setIsoDayOfWeek(IsoDayOfWeek.monday).isoDayOfWeek,
+        IsoDayOfWeek.monday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setIsoDayOfWeek(IsoDayOfWeek.tuesday).isoDayOfWeek,
+        IsoDayOfWeek.tuesday.value,
+      );
+      expect(
+        Chronos(
+          2023,
+          5,
+          15,
+        ).setIsoDayOfWeek(IsoDayOfWeek.wednesday).isoDayOfWeek,
+        IsoDayOfWeek.wednesday.value,
+      );
+      expect(
+        Chronos(
+          2023,
+          5,
+          15,
+        ).setIsoDayOfWeek(IsoDayOfWeek.thursday).isoDayOfWeek,
+        IsoDayOfWeek.thursday.value,
+      );
+      expect(
+        Chronos(2023, 5, 15).setIsoDayOfWeek(IsoDayOfWeek.friday).isoDayOfWeek,
+        IsoDayOfWeek.friday.value,
+      );
+      expect(
+        Chronos(
+          2023,
+          5,
+          15,
+        ).setIsoDayOfWeek(IsoDayOfWeek.saturday).isoDayOfWeek,
+        IsoDayOfWeek.saturday.value,
+      );
     });
   });
 

@@ -330,8 +330,8 @@ void main() async {
   print('Previous weekend day: ${now.previousWeekendDay()}'); // Previous weekend day: 2025-09-07 11:23:41.703648
   print('Set week 26: ${now.setWeek(26)}'); // Set week 26: 2025-06-25 00:00:00.000
   print('Set ISO week 26: ${now.setIsoWeek(26)}'); // Set ISO week 26: 2025-06-23 00:00:00.000
-  print('Set day of week (Monday): ${now.setDayOfWeek(1)}'); // Set day of week (Monday): 2025-09-07 00:00:00.000
-  print('Set ISO day of week (Friday): ${now.setIsoDayOfWeek(5)}'); // Set ISO day of week (Friday): 2025-09-12 00:00:00.000
+  print('Set day of week (Monday): ${now.setDayOfWeek(DayOfWeek.monday)}'); // Set day of week (Monday): 2025-09-07 00:00:00.000
+  print('Set ISO day of week (Friday): ${now.setIsoDayOfWeek(IsoDayOfWeek.friday)}'); // Set ISO day of week (Friday): 2025-09-12 00:00:00.000
   print('Copy with changes: ${now.copyWith(year: 2025, month: 12, day: 25)}'); // Copy with changes: 2025-12-25 11:23:41.703648
   print('Clone: ${now.clone()}'); // Clone: 2025-09-13 11:23:41.703648
 
