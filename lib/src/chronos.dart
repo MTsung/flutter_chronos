@@ -157,6 +157,13 @@ class Chronos extends DateTime {
   ///
   /// Throws a [FormatException] if the string does not match
   /// any of the supported formats.
+  ///
+  /// Example:
+  /// ```dart
+  /// final time1 = Chronos.parseTime('14:30:45'); // Today at 14:30:45
+  /// final time2 = Chronos.parseTime('08:15'); // Today at 08:15:00
+  /// final time3 = Chronos.parseTime('09'); // Today at 09:00:00
+  /// ```
   static Chronos parseTime(String timeString) {
     final formats = ['HH:mm:ss', 'HH:mm', 'HH'];
 
@@ -178,6 +185,14 @@ class Chronos extends DateTime {
   ///
   /// Behaves the same as [parseTime], except that instead of throwing
   /// a [FormatException] on failure, it returns `null`.
+  ///
+  /// Example:
+  /// ```dart
+  /// final validTime = Chronos.tryParseTime('14:30:45'); // Today at 14:30:45
+  /// final invalidTime = Chronos.tryParseTime('25:70:90'); // null
+  /// print(validTime != null); // true
+  /// print(invalidTime == null); // true
+  /// ```
   static Chronos? tryParseTime(String timeString) {
     try {
       return parseTime(timeString);
@@ -215,20 +230,88 @@ class Chronos extends DateTime {
   /// ```
   static Chronos fromDateTime(DateTime dateTime) => dateTime.toChronos();
 
+  /// Returns the current date and time.
+  ///
+  /// If a fake time is set via [ChronosConfig.setFakeNow], returns that time instead.
+  /// This is useful for testing time-dependent functionality.
+  ///
+  /// Example:
+  /// ```dart
+  /// final now = Chronos.now();
+  /// print(now); // Current date and time
+  /// ```
   static Chronos now() => ChronosConfig().fakeNow ?? DateTime.now().toChronos();
 
+  /// Returns today's date at 00:00:00.000.
+  ///
+  /// Example:
+  /// ```dart
+  /// final today = Chronos.today();
+  /// print(today.hour); // 0
+  /// print(today.minute); // 0
+  /// print(today.second); // 0
+  /// ```
   static Chronos today() => Chronos.now().setTime();
 
+  /// Returns tomorrow's date at 00:00:00.000.
+  ///
+  /// Example:
+  /// ```dart
+  /// final tomorrow = Chronos.tomorrow();
+  /// final today = Chronos.today();
+  /// ```
   static Chronos tomorrow() => today().addDay();
 
+  /// Returns yesterday's date at 00:00:00.000.
+  ///
+  /// Example:
+  /// ```dart
+  /// final yesterday = Chronos.yesterday();
+  /// final today = Chronos.today();
+  /// ```
   static Chronos yesterday() => today().subDay();
 
+  /// Calculates the difference between this and another Chronos instance.
+  ///
+  /// Returns a [Duration] representing the time difference. Positive duration
+  /// means this instance is after the other, negative means it's before.
+  ///
+  /// Example:
+  /// ```dart
+  /// final date1 = Chronos(2024, 3, 15, 14, 30);
+  /// final date2 = Chronos(2024, 3, 15, 12, 30);
+  /// final diff = date1.diff(date2);
+  /// print(diff.inHours); // 2
+  /// ```
   Duration diff(Chronos other) => difference(other);
 
+  /// Returns the Unix timestamp in seconds.
+  ///
+  /// Example:
+  /// ```dart
+  /// final chronos = Chronos(2024, 3, 15, 14, 30, 45);
+  /// final timestamp = chronos.timestamp;
+  /// print(timestamp); // Unix timestamp in seconds
+  /// ```
   int get timestamp => (millisecondsSinceEpoch / 1000).toInt();
 
+  /// Returns the timezone name.
+  ///
+  /// Example:
+  /// ```dart
+  /// final chronos = Chronos.now();
+  /// print(chronos.getTimeZone()); // e.g., "PST", "UTC", "JST"
+  /// ```
   String getTimeZone() => timeZoneName;
 
+  /// Returns the timezone offset from UTC.
+  ///
+  /// Example:
+  /// ```dart
+  /// final chronos = Chronos.now();
+  /// final offset = chronos.getTimeZoneOffset();
+  /// print(offset.inHours); // e.g., -8 for PST, 9 for JST
+  /// ```
   Duration getTimeZoneOffset() => timeZoneOffset;
 
   /// Creates a copy of this Chronos instance.
@@ -378,9 +461,33 @@ class Chronos extends DateTime {
   @override
   Chronos toUtc() => super.toUtc().toChronos();
 
+  /// Compares two Chronos instances for equality.
+  ///
+  /// Returns true if both instances represent the same moment in time,
+  /// regardless of timezone representation.
+  ///
+  /// Example:
+  /// ```dart
+  /// final chronos1 = Chronos(2024, 3, 15, 14, 30, 45);
+  /// final chronos2 = Chronos(2024, 3, 15, 14, 30, 45);
+  /// final chronos3 = Chronos(2024, 3, 15, 14, 30, 46);
+  /// print(chronos1 == chronos2); // true
+  /// print(chronos1 == chronos3); // false
+  /// ```
   @override
   bool operator ==(Object other) => other is Chronos && isAtSameMomentAs(other);
 
+  /// Returns the hash code for this Chronos instance.
+  ///
+  /// The hash code is based on the milliseconds since epoch, ensuring that
+  /// equal Chronos instances have the same hash code.
+  ///
+  /// Example:
+  /// ```dart
+  /// final chronos1 = Chronos(2024, 3, 15, 14, 30, 45);
+  /// final chronos2 = Chronos(2024, 3, 15, 14, 30, 45);
+  /// print(chronos1.hashCode == chronos2.hashCode); // true
+  /// ```
   @override
   int get hashCode => millisecondsSinceEpoch.hashCode;
 
@@ -397,6 +504,18 @@ class Chronos extends DateTime {
   static Future<void> initI18n([String locale = 'en_US']) async =>
       await initializeDateFormatting(locale);
 
+  /// Creates a copy of this Chronos with optionally modified values.
+  ///
+  /// Returns a new Chronos instance with the same values as this instance,
+  /// except for any values that are explicitly overridden by the parameters.
+  ///
+  /// Example:
+  /// ```dart
+  /// final original = Chronos(2024, 3, 15, 14, 30, 45);
+  /// final modified = original.copyWith(year: 2025, hour: 16);
+  /// print(modified); // 2025-03-15 16:30:45.000
+  /// print(original); // 2024-03-15 14:30:45.000 (unchanged)
+  /// ```
   Chronos copyWith({
     int? year,
     int? month,
