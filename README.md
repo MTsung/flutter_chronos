@@ -225,8 +225,8 @@ Chronos setTimestamp = date.setTimestamp(1703505600);
 // Set week related
 Chronos setWeek = date.setWeek(25);           // Set week of year
 Chronos setIsoWeek = date.setIsoWeek(25);     // Set ISO week
-Chronos setDayOfWeek = date.setDayOfWeek(3);  // Set day of week
-Chronos setIsoDayOfWeek = date.setIsoDayOfWeek(3); // Set ISO day of week
+Chronos setDayOfWeek = date.setDayOfWeek(DayOfWeek.monday);  // Set day of week
+Chronos setIsoDayOfWeek = date.setIsoDayOfWeek(IsoDayOfWeek.friday); // Set ISO day of week
 ```
 
 # Week Related Features

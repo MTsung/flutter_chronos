@@ -1,3 +1,9 @@
+# 1.4.0
+
+- Updated comments
+- `setDayOfWeek` and `setIsoDayOfWeek` use enum for `dayOfWeek` and `isoDayOfWeek`
+- Make `other` parameter optional in isSameUnit
+
 # 1.3.0
 
 - Added `toString_XXX` series methods for various date/time patterns with examples

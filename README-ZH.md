@@ -32,8 +32,8 @@ dt.isLeapYear; // 是否閏年 ✅
 dt.isLongYear; // 是否為 ISO 長年 ✅
 dt.season; // 取得季節 ✅
 dt > dt1; // 是否 dt 比 dt1 晚 ✅
-dt.startOfCentury() // 取的本世紀的起始 ✅
-dt.endOfMonth() // 取的本世紀的起始 ✅
+dt.startOfCentury() // 取得本世紀的開始 ✅
+dt.endOfMonth() // 取得本月的結束 ✅
 dt.subMonths(3); // 減 3 個月（不溢位） ✅
 dt.addWeekdays(6); // 加 6 個工作天 ✅
 dt.addWeeks(2); // 加 2 週 ✅
@@ -44,7 +44,7 @@ dt.min(dt1); // 取較早時間 ✅
 dt.diffInYear(dt1); // 計算相差年數（浮點數） ✅
 dt.setYear(2026); // 改年份 ✅
 dt.daysInMonth; // 該月份有幾天 ✅
-dt.secondOfDay; // 現在過了一天中的幾秒 ✅
+dt.secondOfDay; // 今天已過秒數 ✅
 dt.setDay(25).setHour(8); // 流暢介面 ✅
 ```
 
@@ -225,8 +225,8 @@ Chronos setTimestamp = date.setTimestamp(1703505600);
 // 設定週相關
 Chronos setWeek = date.setWeek(25);           // 設定年中第幾週
 Chronos setIsoWeek = date.setIsoWeek(25);     // 設定 ISO 週
-Chronos setDayOfWeek = date.setDayOfWeek(3);  // 設定星期幾
-Chronos setIsoDayOfWeek = date.setIsoDayOfWeek(3); // 設定 ISO 星期幾
+Chronos setDayOfWeek = date.setDayOfWeek(DayOfWeek.monday);  // 設定星期幾
+Chronos setIsoDayOfWeek = date.setIsoDayOfWeek(IsoDayOfWeek.friday); // 設定 ISO 星期幾
 ```
 
 # 週相關功能
