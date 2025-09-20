@@ -48,7 +48,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime(2019, 2, 1);
+  /// final dt = Chronos(2019, 2, 1);
   /// print(dt.toDateString()); // 2019-02-01
   /// ```
   String toDateString() => DateFormat('yyyy-MM-dd').format(this);
@@ -57,7 +57,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime(2019, 2, 1);
+  /// final dt = Chronos(2019, 2, 1);
   /// print(dt.toFormattedDateString()); // Feb 1, 2019
   /// ```
   String toFormattedDateString() => DateFormat('MMM d, yyyy').format(this);
@@ -66,7 +66,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime(2019, 2, 1);
+  /// final dt = Chronos(2019, 2, 1);
   /// print(dt.toFormattedDayDateString()); // Fri, Feb 1, 2019
   /// ```
   String toFormattedDayDateString() =>
@@ -76,7 +76,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime(2019, 2, 1, 15, 45, 27);
+  /// final dt = Chronos(2019, 2, 1, 15, 45, 27);
   /// print(dt.toTimeString()); // 15:45:27
   /// ```
   String toTimeString() => DateFormat('HH:mm:ss').format(this);
@@ -85,7 +85,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime(2019, 2, 1, 15, 45, 27);
+  /// final dt = Chronos(2019, 2, 1, 15, 45, 27);
   /// print(dt.toDateTimeString()); // 2019-02-01 15:45:27
   /// ```
   String toDateTimeString() => DateFormat('yyyy-MM-dd HH:mm:ss').format(this);
@@ -94,7 +94,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime(2019, 2, 1, 15, 45);
+  /// final dt = Chronos(2019, 2, 1, 15, 45);
   /// print(dt.toDayDateTimeString()); // Fri, Feb 1, 2019 3:45 PM
   /// ```
   String toDayDateTimeString() =>
@@ -104,7 +104,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime(2019, 2, 1, 15, 45, 27);
+  /// final dt = Chronos(2019, 2, 1, 15, 45, 27);
   /// print(dt.toDateTimeLocalString()); // 2019-02-01T15:45:27
   /// ```
   String toDateTimeLocalString() =>
@@ -114,7 +114,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime.utc(2019, 2, 1, 3, 45, 27);
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
   /// print(dt.toRfc822String()); // Fri, 01 Feb 19 03:45:27 +0000
   /// ```
   String toRfc822String() =>
@@ -124,33 +124,45 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime.utc(2019, 2, 1, 3, 45, 27);
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
   /// print(dt.toRfc850String()); // Friday, 01-Feb-19 03:45:27 UTC
   /// ```
   String toRfc850String() =>
       "${DateFormat("EEEE, dd-MMM-yy HH:mm:ss", 'en_US').format(toUtc())} UTC";
 
   /// Alias for RFC 822.
+  ///
+  /// Example:
+  /// ```dart
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
+  /// print(dt.toRfc1036String()); // Fri, 01 Feb 19 03:45:27 +0000
+  /// ```
   String toRfc1036String() => toRfc822String();
 
   /// Returns RFC 1123 formatted string: `EEE, dd MMM yyyy HH:mm:ss ±HHMM`.
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime.utc(2019, 2, 1, 3, 45, 27);
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
   /// print(dt.toRfc1123String()); // Fri, 01 Feb 2019 03:45:27 +0000
   /// ```
   String toRfc1123String() =>
       '${DateFormat("EEE, dd MMM yyyy HH:mm:ss", 'en_US').format(toUtc())} ${_offsetString()}';
 
   /// Alias for RFC 1123.
+  ///
+  /// Example:
+  /// ```dart
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
+  /// print(dt.toRfc2822String()); // Fri, 01 Feb 2019 03:45:27 +0000
+  /// ```
   String toRfc2822String() => toRfc1123String();
 
   /// Returns RFC 3339 formatted string: `YYYY-MM-DDTHH:mm:ss±HH:MM`.
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime.utc(2019, 2, 1, 3, 45, 27);
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
   /// print(dt.toRfc3339String()); // 2019-02-01T03:45:27+00:00
   /// ```
   String toRfc3339String() =>
@@ -160,32 +172,59 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime.utc(2019, 2, 1, 3, 45, 27);
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
   /// print(dt.toRfc7231String()); // Fri, 01 Feb 2019 03:45:27 GMT
   /// ```
   String toRfc7231String() =>
       "${DateFormat("EEE, dd MMM yyyy HH:mm:ss", 'en_US').format(toUtc())} GMT";
 
   /// Returns RSS-compatible format (same as RFC 1123).
+  ///
+  /// Example:
+  /// ```dart
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
+  /// print(dt.toRssString()); // Fri, 01 Feb 2019 03:45:27 +0000
+  /// ```
   String toRssString() => toRfc1123String();
 
   /// Returns W3C date-time format (same as RFC 3339).
+  ///
+  /// Example:
+  /// ```dart
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
+  /// print(dt.toW3cString()); // 2019-02-01T03:45:27+00:00
+  /// ```
   String toW3cString() => toRfc3339String();
 
   /// Returns Atom date-time format (same as RFC 3339).
+  ///
+  /// Example:
+  /// ```dart
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
+  /// print(dt.toAtomString()); // 2019-02-01T03:45:27+00:00
+  /// ```
   String toAtomString() => toRfc3339String();
 
   /// Returns Cookie date format: `EEEE, dd-MMM-yyyy HH:mm:ss UTC`.
   ///
   /// Example:
   /// ```dart
-  /// final dt = DateTime.utc(2019, 2, 1, 3, 45, 27);
+  /// final dt = Chronos.utc(2019, 2, 1, 3, 45, 27);
   /// print(dt.toCookieString()); // Friday, 01-Feb-2019 03:45:27 UTC
   /// ```
   String toCookieString() =>
       "${DateFormat("EEEE, dd-MMM-yyyy HH:mm:ss", 'en_US').format(toUtc())} UTC";
 
   /// Returns timezone offset string in format ±HHMM or ±HH:MM.
+  ///
+  /// [join] - Optional separator between hours and minutes (default: no separator)
+  ///
+  /// Example:
+  /// ```dart
+  /// final dt = Chronos(2019, 2, 1, 15, 45, 27);
+  /// print(dt._offsetString()); // "+0800" (for UTC+8)
+  /// print(dt._offsetString(':')); // "+08:00" (with colon separator)
+  /// ```
   String _offsetString([String join = '']) {
     final tzOffset = timeZoneOffset;
     final sign = tzOffset.isNegative ? '-' : '+';
@@ -198,7 +237,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_d()); // 25
   /// ```
   String toString_d([String? locale]) => DateFormat.d(locale).format(this);
@@ -207,7 +246,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_E()); // Mon
   /// ```
   String toString_E([String? locale]) => DateFormat.E(locale).format(this);
@@ -216,7 +255,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_EEEE()); // Monday
   /// ```
   String toString_EEEE([String? locale]) =>
@@ -226,7 +265,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_EEEEE()); // M
   /// ```
   String toString_EEEEE([String? locale]) =>
@@ -236,7 +275,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_LLL()); // Dec
   /// ```
   String toString_LLL([String? locale]) => DateFormat.LLL(locale).format(this);
@@ -245,7 +284,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_LLLL()); // December
   /// ```
   String toString_LLLL([String? locale]) =>
@@ -255,7 +294,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_M()); // 12
   /// ```
   String toString_M([String? locale]) => DateFormat.M(locale).format(this);
@@ -264,7 +303,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_Md()); // 12/25
   /// ```
   String toString_Md([String? locale]) => DateFormat.Md(locale).format(this);
@@ -273,7 +312,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_MEd()); // Mon, 12/25
   /// ```
   String toString_MEd([String? locale]) => DateFormat.MEd(locale).format(this);
@@ -282,7 +321,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_MMM()); // Dec
   /// ```
   String toString_MMM([String? locale]) => DateFormat.MMM(locale).format(this);
@@ -291,7 +330,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_MMMd()); // Dec 25
   /// ```
   String toString_MMMd([String? locale]) =>
@@ -301,7 +340,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_MMMEd()); // Mon, Dec 25
   /// ```
   String toString_MMMEd([String? locale]) =>
@@ -311,7 +350,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_MMMM()); // December
   /// ```
   String toString_MMMM([String? locale]) =>
@@ -321,7 +360,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_MMMMd()); // December 25
   /// ```
   String toString_MMMMd([String? locale]) =>
@@ -331,7 +370,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_MMMMEEEEd()); // Monday, December 25
   /// ```
   String toString_MMMMEEEEd([String? locale]) =>
@@ -341,7 +380,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_QQQ()); // Q4
   /// ```
   String toString_QQQ([String? locale]) => DateFormat.QQQ(locale).format(this);
@@ -350,7 +389,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_QQQQ()); // 4th quarter
   /// ```
   String toString_QQQQ([String? locale]) =>
@@ -360,7 +399,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_y()); // 2023
   /// ```
   String toString_y([String? locale]) => DateFormat.y(locale).format(this);
@@ -369,7 +408,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yM()); // 12/2023
   /// ```
   String toString_yM([String? locale]) => DateFormat.yM(locale).format(this);
@@ -378,7 +417,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yMd()); // 12/25/2023
   /// ```
   String toString_yMd([String? locale]) => DateFormat.yMd(locale).format(this);
@@ -387,7 +426,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yMEd()); // Mon, 12/25/2023
   /// ```
   String toString_yMEd([String? locale]) =>
@@ -397,7 +436,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yMMM()); // Dec 2023
   /// ```
   String toString_yMMM([String? locale]) =>
@@ -407,7 +446,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yMMMd()); // Dec 25, 2023
   /// ```
   String toString_yMMMd([String? locale]) =>
@@ -417,7 +456,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yMMMEd()); // Mon, Dec 25, 2023
   /// ```
   String toString_yMMMEd([String? locale]) =>
@@ -427,7 +466,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yMMMM()); // December 2023
   /// ```
   String toString_yMMMM([String? locale]) =>
@@ -437,7 +476,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yMMMMd()); // December 25, 2023
   /// ```
   String toString_yMMMMd([String? locale]) =>
@@ -447,7 +486,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yMMMMEEEEd()); // Monday, December 25, 2023
   /// ```
   String toString_yMMMMEEEEd([String? locale]) =>
@@ -457,7 +496,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yQQQ()); // Q4 2023
   /// ```
   String toString_yQQQ([String? locale]) =>
@@ -467,7 +506,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25);
+  /// final now = Chronos(2023, 12, 25);
   /// print(now.toString_yQQQQ()); // 4th quarter 2023
   /// ```
   String toString_yQQQQ([String? locale]) =>
@@ -477,7 +516,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14);
+  /// final now = Chronos(2023, 12, 25, 14);
   /// print(now.toString_H()); // 14
   /// ```
   String toString_H([String? locale]) => DateFormat.H(locale).format(this);
@@ -486,7 +525,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14, 30);
+  /// final now = Chronos(2023, 12, 25, 14, 30);
   /// print(now.toString_Hm()); // 14:30
   /// ```
   String toString_Hm([String? locale]) => DateFormat.Hm(locale).format(this);
@@ -495,7 +534,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14, 30, 45);
+  /// final now = Chronos(2023, 12, 25, 14, 30, 45);
   /// print(now.toString_Hms()); // 14:30:45
   /// ```
   String toString_Hms([String? locale]) => DateFormat.Hms(locale).format(this);
@@ -504,7 +543,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14);
+  /// final now = Chronos(2023, 12, 25, 14);
   /// print(now.toString_j()); // 2 PM
   /// ```
   String toString_j([String? locale]) => DateFormat.j(locale).format(this);
@@ -513,7 +552,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14, 30);
+  /// final now = Chronos(2023, 12, 25, 14, 30);
   /// print(now.toString_jm()); // 2:30 PM
   /// ```
   String toString_jm([String? locale]) => DateFormat.jm(locale).format(this);
@@ -522,7 +561,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14, 30, 45);
+  /// final now = Chronos(2023, 12, 25, 14, 30, 45);
   /// print(now.toString_jms()); // 2:30:45 PM
   /// ```
   String toString_jms([String? locale]) => DateFormat.jms(locale).format(this);
@@ -531,7 +570,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14, 30);
+  /// final now = Chronos(2023, 12, 25, 14, 30);
   /// print(now.toString_m()); // 30
   /// ```
   String toString_m([String? locale]) => DateFormat.m(locale).format(this);
@@ -540,7 +579,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14, 30, 45);
+  /// final now = Chronos(2023, 12, 25, 14, 30, 45);
   /// print(now.toString_ms()); // 30:45
   /// ```
   String toString_ms([String? locale]) => DateFormat.ms(locale).format(this);
@@ -549,7 +588,7 @@ extension ChronosConverter on Chronos {
   ///
   /// Example:
   /// ```dart
-  /// final now = DateTime(2023, 12, 25, 14, 30, 45);
+  /// final now = Chronos(2023, 12, 25, 14, 30, 45);
   /// print(now.toString_s()); // 45
   /// ```
   String toString_s([String? locale]) => DateFormat.s(locale).format(this);

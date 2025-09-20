@@ -261,7 +261,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2023, 12, 25); // Monday
+  /// final date = Chronos(2023, 12, 25); // Monday
   /// print(date.isoDayOfWeek); // 1
   /// ```
   int get isoDayOfWeek => weekday;
@@ -270,7 +270,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2023, 12, 25); // Monday
+  /// final date = Chronos(2023, 12, 25); // Monday
   /// print(date.dayOfWeek); // 1
   /// ```
   int get dayOfWeek => weekday % 7;
@@ -279,7 +279,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2021, 1, 1);
+  /// final date = Chronos(2021, 1, 1);
   /// print(date.isoYear); // 2020
   /// ```
   int get isoYear => add(Duration(days: 4 - isoDayOfWeek)).year;
@@ -288,7 +288,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2023, 1, 10);
+  /// final date = Chronos(2023, 1, 10);
   /// print(date.week); // 2
   /// ```
   int get week => ((diff(Chronos(year, 1, 1)).inDays) ~/ 7) + 1;
@@ -297,7 +297,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2023, 1, 5); // Thursday
+  /// final date = Chronos(2023, 1, 5); // Thursday
   /// print(date.isoWeek); // 1
   /// ```
   int get isoWeek {
@@ -314,7 +314,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2023);
+  /// final date = Chronos(2023);
   /// print(date.decade); // 203
   /// ```
   int get decade => (year - 1) ~/ 10 + 1;
@@ -323,7 +323,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2023);
+  /// final date = Chronos(2023);
   /// print(date.century); // 21
   /// ```
   int get century => (year - 1) ~/ 100 + 1;
@@ -332,7 +332,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2023);
+  /// final date = Chronos(2023);
   /// print(date.millennium); // 3
   /// ```
   int get millennium => (year - 1) ~/ 1000 + 1;
@@ -341,7 +341,7 @@ class Chronos extends DateTime {
   ///
   /// Example:
   /// ```dart
-  /// final date = DateTime(2023, 12);
+  /// final date = Chronos(2023, 12);
   /// print(date.quarter); // 4
   /// ```
   int get quarter => ((month - 1) ~/ 3) + 1;

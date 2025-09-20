@@ -248,6 +248,9 @@ extension ChronosComparison on Chronos {
 
   /// Returns true if this date is in the same time unit as [other] (or current time if null).
   ///
+  /// [timeUnit] - The time unit to compare (year, month, day, etc.)
+  /// [other] - The date to compare with (defaults to current time if null)
+  ///
   /// Example:
   /// ```dart
   /// final date1 = Chronos(2024, 3, 15, 14, 30, 45);
@@ -438,6 +441,17 @@ extension ChronosComparison on Chronos {
   /// ```
   bool get isCurrentQuarter => isCurrentUnit(TimeUnit.quarter);
 
+  /// Returns true if this date is in the current time unit.
+  ///
+  /// [timeUnit] - The time unit to check against current time
+  ///
+  /// Example:
+  /// ```dart
+  /// final now = Chronos.now();
+  /// final sameHour = now.copyWith(minute: 30);
+  /// print(sameHour.isCurrentUnit(TimeUnit.hour)); // true
+  /// print(sameHour.isCurrentUnit(TimeUnit.minute)); // false
+  /// ```
   bool isCurrentUnit(TimeUnit timeUnit) {
     Chronos now = Chronos.now();
 
@@ -618,6 +632,16 @@ extension ChronosComparison on Chronos {
   /// ```
   bool get isNextQuarter => isNextUnit(TimeUnit.quarter);
 
+  /// Returns true if this date is in the next time unit relative to current time.
+  ///
+  /// [timeUnit] - The time unit to check (year, month, day, etc.)
+  ///
+  /// Example:
+  /// ```dart
+  /// final nextHour = Chronos.now().addHours(1);
+  /// print(nextHour.isNextUnit(TimeUnit.hour)); // true
+  /// print(nextHour.isNextUnit(TimeUnit.day)); // false (same day)
+  /// ```
   bool isNextUnit(TimeUnit timeUnit) {
     Chronos now = Chronos.now();
 
@@ -807,6 +831,16 @@ extension ChronosComparison on Chronos {
   /// ```
   bool get isLastQuarter => isLastUnit(TimeUnit.quarter);
 
+  /// Returns true if this date is in the last time unit relative to current time.
+  ///
+  /// [timeUnit] - The time unit to check (year, month, day, etc.)
+  ///
+  /// Example:
+  /// ```dart
+  /// final lastHour = Chronos.now().subHours(1);
+  /// print(lastHour.isLastUnit(TimeUnit.hour)); // true
+  /// print(lastHour.isLastUnit(TimeUnit.day)); // false (same day)
+  /// ```
   bool isLastUnit(TimeUnit timeUnit) {
     Chronos now = Chronos.now();
 
@@ -1042,21 +1076,174 @@ extension ChronosComparison on Chronos {
   /// ```
   bool get isLastOfMonth => endOfMonth().isSameDay();
 
+  /// Returns true if this date is at the start of the day (00:00:00.000).
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfDay = Chronos(2024, 3, 15, 0, 0, 0);
+  /// final midDay = Chronos(2024, 3, 15, 12, 30, 45);
+  /// print(startOfDay.isStartOfDay); // true
+  /// print(midDay.isStartOfDay); // false
+  /// ```
   bool get isStartOfDay => isStartOfUnit(TimeUnit.day);
+
+  /// Returns true if this date is at the start of the week.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfWeek = Chronos(2024, 3, 10, 0, 0, 0); // Sunday 00:00:00
+  /// final midWeek = Chronos(2024, 3, 13, 14, 30, 45); // Wednesday 14:30:45
+  /// print(startOfWeek.isStartOfWeek); // true
+  /// print(midWeek.isStartOfWeek); // false
+  /// ```
   bool get isStartOfWeek => isStartOfUnit(TimeUnit.week);
+
+  /// Returns true if this date is at the start of the ISO week.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfIsoWeek = Chronos(2024, 3, 11, 0, 0, 0); // Monday 00:00:00
+  /// final midWeek = Chronos(2024, 3, 13, 14, 30, 45); // Wednesday 14:30:45
+  /// print(startOfIsoWeek.isStartOfIsoWeek); // true
+  /// print(midWeek.isStartOfIsoWeek); // false
+  /// ```
   bool get isStartOfIsoWeek => isStartOfUnit(TimeUnit.isoWeek);
+
+  /// Returns true if this date is at the start of the month.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfMonth = Chronos(2024, 3, 1, 0, 0, 0); // March 1st 00:00:00
+  /// final midMonth = Chronos(2024, 3, 15, 14, 30, 45); // March 15th 14:30:45
+  /// print(startOfMonth.isStartOfMonth); // true
+  /// print(midMonth.isStartOfMonth); // false
+  /// ```
   bool get isStartOfMonth => isStartOfUnit(TimeUnit.month);
+
+  /// Returns true if this date is at the start of the quarter.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfQ1 = Chronos(2024, 1, 1, 0, 0, 0); // January 1st 00:00:00
+  /// final startOfQ2 = Chronos(2024, 4, 1, 0, 0, 0); // April 1st 00:00:00
+  /// final midQuarter = Chronos(2024, 2, 15, 14, 30, 45); // February 15th
+  /// print(startOfQ1.isStartOfQuarter); // true
+  /// print(startOfQ2.isStartOfQuarter); // true
+  /// print(midQuarter.isStartOfQuarter); // false
+  /// ```
   bool get isStartOfQuarter => isStartOfUnit(TimeUnit.quarter);
+
+  /// Returns true if this date is at the start of the year.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfYear = Chronos(2024, 1, 1, 0, 0, 0); // January 1st 00:00:00
+  /// final midYear = Chronos(2024, 6, 15, 14, 30, 45); // June 15th 14:30:45
+  /// print(startOfYear.isStartOfYear); // true
+  /// print(midYear.isStartOfYear); // false
+  /// ```
   bool get isStartOfYear => isStartOfUnit(TimeUnit.year);
+
+  /// Returns true if this date is at the start of the ISO year.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfIsoYear = Chronos(2024, 1, 1, 0, 0, 0); // ISO year start
+  /// final midYear = Chronos(2024, 6, 15, 14, 30, 45); // Mid ISO year
+  /// print(startOfIsoYear.isStartOfIsoYear); // true (if Jan 1 is ISO year start)
+  /// print(midYear.isStartOfIsoYear); // false
+  /// ```
   bool get isStartOfIsoYear => isStartOfUnit(TimeUnit.isoYear);
+
+  /// Returns true if this date is at the start of the decade.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfDecade = Chronos(2021, 1, 1, 0, 0, 0); // 2020s decade start
+  /// final midDecade = Chronos(2025, 6, 15, 14, 30, 45); // Mid 2020s
+  /// print(startOfDecade.isStartOfDecade); // true
+  /// print(midDecade.isStartOfDecade); // false
+  /// ```
   bool get isStartOfDecade => isStartOfUnit(TimeUnit.decade);
+
+  /// Returns true if this date is at the start of the century.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfCentury = Chronos(2001, 1, 1, 0, 0, 0); // 21st century start
+  /// final midCentury = Chronos(2050, 6, 15, 14, 30, 45); // Mid 21st century
+  /// print(startOfCentury.isStartOfCentury); // true
+  /// print(midCentury.isStartOfCentury); // false
+  /// ```
   bool get isStartOfCentury => isStartOfUnit(TimeUnit.century);
+
+  /// Returns true if this date is at the start of the millennium.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfMillennium = Chronos(2001, 1, 1, 0, 0, 0); // 3rd millennium start
+  /// final midMillennium = Chronos(2500, 6, 15, 14, 30, 45); // Mid 3rd millennium
+  /// print(startOfMillennium.isStartOfMillennium); // true
+  /// print(midMillennium.isStartOfMillennium); // false
+  /// ```
   bool get isStartOfMillennium => isStartOfUnit(TimeUnit.millennium);
+
+  /// Returns true if this date is at the start of the hour.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfHour = Chronos(2024, 3, 15, 14, 0, 0); // 14:00:00.000
+  /// final midHour = Chronos(2024, 3, 15, 14, 30, 45); // 14:30:45.000
+  /// print(startOfHour.isStartOfHour); // true
+  /// print(midHour.isStartOfHour); // false
+  /// ```
   bool get isStartOfHour => isStartOfUnit(TimeUnit.hour);
+
+  /// Returns true if this date is at the start of the minute.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfMinute = Chronos(2024, 3, 15, 14, 30, 0); // 14:30:00.000
+  /// final midMinute = Chronos(2024, 3, 15, 14, 30, 45); // 14:30:45.000
+  /// print(startOfMinute.isStartOfMinute); // true
+  /// print(midMinute.isStartOfMinute); // false
+  /// ```
   bool get isStartOfMinute => isStartOfUnit(TimeUnit.minute);
+
+  /// Returns true if this date is at the start of the second.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfSecond = Chronos(2024, 3, 15, 14, 30, 45, 0); // 14:30:45.000
+  /// final midSecond = Chronos(2024, 3, 15, 14, 30, 45, 500); // 14:30:45.500
+  /// print(startOfSecond.isStartOfSecond); // true
+  /// print(midSecond.isStartOfSecond); // false
+  /// ```
   bool get isStartOfSecond => isStartOfUnit(TimeUnit.second);
+
+  /// Returns true if this date is at the start of the millisecond.
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfMs = Chronos(2024, 3, 15, 14, 30, 45, 123, 0); // 14:30:45.123000
+  /// final midMs = Chronos(2024, 3, 15, 14, 30, 45, 123, 500); // 14:30:45.123500
+  /// print(startOfMs.isStartOfMillisecond); // true
+  /// print(midMs.isStartOfMillisecond); // false
+  /// ```
   bool get isStartOfMillisecond => isStartOfUnit(TimeUnit.millisecond);
 
+  /// Returns true if this date is at the start of the specified time unit.
+  ///
+  /// [timeUnit] - The time unit to check (day, week, month, etc.)
+  /// [accuracyUnit] - Optional accuracy unit for comparison precision
+  ///
+  /// Example:
+  /// ```dart
+  /// final startOfMonth = Chronos(2024, 3, 1, 0, 0, 0);
+  /// final midMonth = Chronos(2024, 3, 15, 12, 30, 45);
+  /// print(startOfMonth.isStartOfUnit(TimeUnit.month)); // true
+  /// print(midMonth.isStartOfUnit(TimeUnit.month)); // false
+  /// ```
   bool isStartOfUnit(TimeUnit timeUnit, [TimeUnit? accuracyUnit]) {
     switch (timeUnit) {
       case TimeUnit.millisecond:
@@ -1107,21 +1294,174 @@ extension ChronosComparison on Chronos {
     }
   }
 
+  /// Returns true if this date is at the end of the day.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfDay = Chronos(2024, 3, 15, 23, 59, 59, 999, 999); // 23:59:59.999999
+  /// final midDay = Chronos(2024, 3, 15, 14, 30, 45); // 14:30:45.000
+  /// print(endOfDay.isEndOfDay); // true
+  /// print(midDay.isEndOfDay); // false
+  /// ```
   bool get isEndOfDay => isEndOfUnit(TimeUnit.day);
+
+  /// Returns true if this date is at the end of the week.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfWeek = Chronos(2024, 3, 16, 23, 59, 59, 999, 999); // Saturday 23:59:59.999999
+  /// final midWeek = Chronos(2024, 3, 13, 14, 30, 45); // Wednesday 14:30:45
+  /// print(endOfWeek.isEndOfWeek); // true
+  /// print(midWeek.isEndOfWeek); // false
+  /// ```
   bool get isEndOfWeek => isEndOfUnit(TimeUnit.week);
+
+  /// Returns true if this date is at the end of the ISO week.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfIsoWeek = Chronos(2024, 3, 17, 23, 59, 59, 999, 999); // Sunday 23:59:59.999999
+  /// final midWeek = Chronos(2024, 3, 13, 14, 30, 45); // Wednesday 14:30:45
+  /// print(endOfIsoWeek.isEndOfIsoWeek); // true
+  /// print(midWeek.isEndOfIsoWeek); // false
+  /// ```
   bool get isEndOfIsoWeek => isEndOfUnit(TimeUnit.isoWeek);
+
+  /// Returns true if this date is at the end of the month.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfMonth = Chronos(2024, 3, 31, 23, 59, 59, 999, 999); // March 31st 23:59:59.999999
+  /// final midMonth = Chronos(2024, 3, 15, 14, 30, 45); // March 15th 14:30:45
+  /// print(endOfMonth.isEndOfMonth); // true
+  /// print(midMonth.isEndOfMonth); // false
+  /// ```
   bool get isEndOfMonth => isEndOfUnit(TimeUnit.month);
+
+  /// Returns true if this date is at the end of the quarter.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfQ1 = Chronos(2024, 3, 31, 23, 59, 59, 999, 999); // March 31st 23:59:59.999999
+  /// final endOfQ2 = Chronos(2024, 6, 30, 23, 59, 59, 999, 999); // June 30th 23:59:59.999999
+  /// final midQuarter = Chronos(2024, 2, 15, 14, 30, 45); // February 15th
+  /// print(endOfQ1.isEndOfQuarter); // true
+  /// print(endOfQ2.isEndOfQuarter); // true
+  /// print(midQuarter.isEndOfQuarter); // false
+  /// ```
   bool get isEndOfQuarter => isEndOfUnit(TimeUnit.quarter);
+
+  /// Returns true if this date is at the end of the year.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfYear = Chronos(2024, 12, 31, 23, 59, 59, 999, 999); // December 31st 23:59:59.999999
+  /// final midYear = Chronos(2024, 6, 15, 14, 30, 45); // June 15th 14:30:45
+  /// print(endOfYear.isEndOfYear); // true
+  /// print(midYear.isEndOfYear); // false
+  /// ```
   bool get isEndOfYear => isEndOfUnit(TimeUnit.year);
+
+  /// Returns true if this date is at the end of the ISO year.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfIsoYear = Chronos(2024, 12, 29, 23, 59, 59, 999, 999); // End of ISO year 2024
+  /// final midYear = Chronos(2024, 6, 15, 14, 30, 45); // Mid ISO year
+  /// print(endOfIsoYear.isEndOfIsoYear); // true (if Dec 29 is ISO year end)
+  /// print(midYear.isEndOfIsoYear); // false
+  /// ```
   bool get isEndOfIsoYear => isEndOfUnit(TimeUnit.isoYear);
+
+  /// Returns true if this date is at the end of the decade.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfDecade = Chronos(2030, 12, 31, 23, 59, 59, 999, 999); // 2020s decade end
+  /// final midDecade = Chronos(2025, 6, 15, 14, 30, 45); // Mid 2020s
+  /// print(endOfDecade.isEndOfDecade); // true
+  /// print(midDecade.isEndOfDecade); // false
+  /// ```
   bool get isEndOfDecade => isEndOfUnit(TimeUnit.decade);
+
+  /// Returns true if this date is at the end of the century.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfCentury = Chronos(2100, 12, 31, 23, 59, 59, 999, 999); // 21st century end
+  /// final midCentury = Chronos(2050, 6, 15, 14, 30, 45); // Mid 21st century
+  /// print(endOfCentury.isEndOfCentury); // true
+  /// print(midCentury.isEndOfCentury); // false
+  /// ```
   bool get isEndOfCentury => isEndOfUnit(TimeUnit.century);
+
+  /// Returns true if this date is at the end of the millennium.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfMillennium = Chronos(3000, 12, 31, 23, 59, 59, 999, 999); // 3rd millennium end
+  /// final midMillennium = Chronos(2500, 6, 15, 14, 30, 45); // Mid 3rd millennium
+  /// print(endOfMillennium.isEndOfMillennium); // true
+  /// print(midMillennium.isEndOfMillennium); // false
+  /// ```
   bool get isEndOfMillennium => isEndOfUnit(TimeUnit.millennium);
+
+  /// Returns true if this date is at the end of the hour.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfHour = Chronos(2024, 3, 15, 14, 59, 59, 999, 999); // 14:59:59.999999
+  /// final midHour = Chronos(2024, 3, 15, 14, 30, 45); // 14:30:45.000
+  /// print(endOfHour.isEndOfHour); // true
+  /// print(midHour.isEndOfHour); // false
+  /// ```
   bool get isEndOfHour => isEndOfUnit(TimeUnit.hour);
+
+  /// Returns true if this date is at the end of the minute.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfMinute = Chronos(2024, 3, 15, 14, 30, 59, 999, 999); // 14:30:59.999999
+  /// final midMinute = Chronos(2024, 3, 15, 14, 30, 45); // 14:30:45.000
+  /// print(endOfMinute.isEndOfMinute); // true
+  /// print(midMinute.isEndOfMinute); // false
+  /// ```
   bool get isEndOfMinute => isEndOfUnit(TimeUnit.minute);
+
+  /// Returns true if this date is at the end of the second.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfSecond = Chronos(2024, 3, 15, 14, 30, 45, 999, 999); // 14:30:45.999999
+  /// final midSecond = Chronos(2024, 3, 15, 14, 30, 45, 500); // 14:30:45.500000
+  /// print(endOfSecond.isEndOfSecond); // true
+  /// print(midSecond.isEndOfSecond); // false
+  /// ```
   bool get isEndOfSecond => isEndOfUnit(TimeUnit.second);
+
+  /// Returns true if this date is at the end of the millisecond.
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfMs = Chronos(2024, 3, 15, 14, 30, 45, 123, 999); // 14:30:45.123999
+  /// final midMs = Chronos(2024, 3, 15, 14, 30, 45, 123, 500); // 14:30:45.123500
+  /// print(endOfMs.isEndOfMillisecond); // true
+  /// print(midMs.isEndOfMillisecond); // false
+  /// ```
   bool get isEndOfMillisecond => isEndOfUnit(TimeUnit.millisecond);
 
+  /// Returns true if this date is at the end of the specified time unit.
+  ///
+  /// [timeUnit] - The time unit to check (day, week, month, etc.)
+  /// [accuracyUnit] - Optional accuracy unit for comparison precision
+  ///
+  /// Example:
+  /// ```dart
+  /// final endOfMonth = Chronos(2024, 3, 31, 23, 59, 59, 999);
+  /// final midMonth = Chronos(2024, 3, 15, 12, 30, 45);
+  /// print(endOfMonth.isEndOfUnit(TimeUnit.month)); // true
+  /// print(midMonth.isEndOfUnit(TimeUnit.month)); // false
+  /// ```
   bool isEndOfUnit(TimeUnit timeUnit, [TimeUnit? accuracyUnit]) {
     switch (timeUnit) {
       case TimeUnit.millisecond:
@@ -1163,6 +1503,17 @@ extension ChronosComparison on Chronos {
     }
   }
 
+  /// Returns the season for this date based on the configured hemisphere.
+  ///
+  /// The season is determined by the month and the hemisphere setting in ChronosConfig.
+  /// For Northern hemisphere: Spring (Mar-May), Summer (Jun-Aug), Fall (Sep-Nov), Winter (Dec-Feb)
+  /// For Southern hemisphere: seasons are shifted by 6 months.
+  ///
+  /// Example:
+  /// ```dart
+  /// final springDate = Chronos(2024, 4, 15); // April
+  /// print(springDate.season); // Season.spring (Northern hemisphere)
+  /// ```
   Season get season {
     final offset = ChronosConfig().hemisphere == Hemisphere.northern ? 0 : 6;
     final shiftedMonth = (month + offset - 1) % 12 + 1;
